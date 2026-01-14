@@ -1,0 +1,3820 @@
+"use strict";
+
+webpackJsonp([1], {
+  "/H2j": function H2j(e, t) {},
+  "/ZoI": function ZoI(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        class: e.containerClasses
+      }, [e.composable ? n("div", [n("strong", [e._v(e._s(e.options.definition.label || e.options.class_type))]), e._v(" "), e.options.class_type ? n("small", {
+        staticClass: "text-info"
+      }, [e.options.relationName ? n("span", [e._v(e._s(e.options.relationName))]) : e._e(), e._v(" "), e.options.relationName ? n("span", [e._v("(")]) : e._e(), e._v(e._s(e.options.class_type)), e.options.relationName ? n("span", [e._v(")")]) : e._e()]) : n("span", [n("span", {
+        staticClass: "text-faded"
+      }, [e._v("Select a class.")])])]) : e._e(), e._v(" "), !e.options.items.length && e.options.class_type ? n("p", {
+        staticClass: "ClassComponent__empty-placeholder text-faded"
+      }, [e._v("Drop components below, or add a member from the detail view.")]) : e._e(), e._v(" "), !e.composable && e.options.definition.repeater ? n("h3", {
+        staticClass: "ClassComponent__heading"
+      }, [e._v("\n\t\t\t" + e._s(e.options.name) + " " + e._s(e.index + 1) + "\n\t\t\t"), n("button", {
+        staticClass: "ClassComponent__remove-btn",
+        attrs: {
+          type: "button"
+        }
+      }, [e._v("Remove this " + e._s(e.options.name.toLowerCase()))])]) : e._e(), e._v(" "), e._t("default"), e._v(" "), e.canRepeat ? n("div", {
+        staticClass: "ClassComponent__add"
+      }, [n("button", {
+        staticClass: "ClassComponent__add-btn",
+        attrs: {
+          type: "button"
+        }
+      }, [e._v("Add another " + e._s(e.options.name))])]) : e._e()], 2);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  "/cZl": function cZl(e, t) {},
+  "0C09": function C09(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "ComponentMenuView"
+      }, [n("draggable", {
+        attrs: {
+          options: {
+            group: {
+              name: "Component",
+              put: !1,
+              pull: "clone"
+            },
+            sort: !1,
+            animation: 150,
+            forceFallback: !0
+          }
+        },
+        model: {
+          value: e.components,
+          callback: function callback(t) {
+            e.components = t;
+          },
+          expression: "components"
+        }
+      }, e._l(e.components, function (t) {
+        return n("div", {
+          key: t,
+          staticClass: "Component"
+        }, [n("i", {
+          class: "Component__icon fa fa-" + e.getComponentIcon(e.getComponent(t).tagName)
+        }), e._v("\n\t\t\t\t" + e._s(e.getComponent(t).name) + "\n\t\t\t")]);
+      }))], 1);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  "2MAZ": function MAZ(e, t, n) {
+    "use strict";
+
+    var a = n("yI9a"),
+        i = n.n(a),
+        r = n("7+uW"),
+        o = n("WU2P"),
+        s = n("Cwpt");
+    t.a = r.a.extend({
+      name: "MemberElementDetail",
+      mixins: [s.b],
+      props: {
+        data: Object
+      },
+      computed: {
+        description: Object(s.a)("description"),
+        displayInGrid: {
+          get: function get() {
+            var e = this.$store.getters.getSelectedForm();
+            return -1 !== this.$store.getters.getRenderable(e).gridItems.indexOf(this.data.id);
+          },
+          set: function set(e) {
+            var t = this.$store.getters.getSelectedForm();
+            this.displayInGrid ? this.$store.commit("updateRenderable", {
+              id: t,
+              property: "gridItems",
+              value: i()(this.$store.getters.getRenderable(t).gridItems, this.data.id)
+            }) : this.$store.commit("updateRenderable", {
+              id: t,
+              property: "gridItems",
+              value: [this.data.id].concat(this.$store.getters.getRenderable(t).gridItems)
+            });
+          }
+        },
+        fieldProperties: function fieldProperties() {
+          return Object(o.b)(this.data.definition.class);
+        },
+        canShowInGrid: function canShowInGrid() {
+          return this.$store.getters.doesRenderableOrItsParentsRepeat(this.data.id);
+        }
+      }
+    });
+  },
+  "2aWy": function aWy(e, t) {},
+  "3HHT": function HHT(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("Cwpt");
+    t.a = a.a.extend({
+      name: "HeadingElement",
+      mixins: [i.b],
+      props: {
+        options: {
+          type: Object,
+          required: !0
+        },
+        composable: Boolean
+      },
+      computed: {
+        containerClasses: function containerClasses() {
+          return {
+            HeadingElement: !0,
+            "HeadingElement--composable": this.composable,
+            "HeadingElement--is-selected": this.isSelected
+          };
+        }
+      }
+    });
+  },
+  "4uZr": function uZr(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        class: e.containerClasses
+      }, [n("p", [e._v("Guidance text")]), e._v(" "), n("p", {
+        staticClass: "GuidanceElement__text",
+        domProps: {
+          innerHTML: e._s(e.marked(e.options.definition.text))
+        }
+      })]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  "54TA": function TA(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("DMSa");
+    }
+
+    var i = n("ig27"),
+        r = n("VU/8"),
+        o = a,
+        s = r(i.a, null, !1, o, "data-v-7fbd7446", null);
+    t.a = s.exports;
+  },
+  "66bu": function bu(e, t, n) {
+    "use strict";
+
+    function a(e, t, n) {
+      for (; t < 0;) {
+        t += e.length;
+      }
+
+      for (; n < 0;) {
+        n += e.length;
+      }
+
+      if (n >= e.length) for (var a = n - e.length; 1 + a--;) {
+        e.push(void 0);
+      }
+      return e.splice(n, 0, e.splice(t, 1)[0]), e;
+    }
+
+    t.a = a;
+  },
+  "6h5I": function h5I(e, t, n) {
+    "use strict";
+
+    var a = n("MzfL"),
+        i = n("c9v3"),
+        r = n("VU/8"),
+        o = r(a.a, i.a, !1, null, null, null);
+    t.a = o.exports;
+  },
+  AOfL: function AOfL(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        class: e.containerClasses
+      }, [n("p", [e._v("Text")]), e._v(" "), n("span", {
+        staticClass: "DescriptionElement__text",
+        domProps: {
+          innerHTML: e._s(e.marked(e.options.definition.text))
+        }
+      })]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  Cwpt: function Cwpt(e, t, n) {
+    "use strict";
+
+    n.d(t, "a", function () {
+      return i;
+    });
+
+    var a = n("7+uW"),
+        i = function i(e, t) {
+      return {
+        get: function get() {
+          return t ? void 0 !== this.data.definition[e] ? this.data.definition[e] : this.data[t] : this.data.definition[e];
+        },
+        set: function set(t) {
+          this.$store.commit("updateRenderableDefinition", {
+            id: this.data.id,
+            property: e,
+            value: t
+          });
+        }
+      };
+    },
+        r = a.a.extend({
+      name: "BaseRenderableMixin",
+      computed: {
+        name: i("name", "id")
+      }
+    });
+
+    t.b = r;
+  },
+  DMSa: function DMSa(e, t) {},
+  "F9Z+": function F9Z(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("Cwpt");
+    t.a = a.a.extend({
+      name: "DescriptionElementDetail",
+      mixins: [i.b],
+      props: {
+        data: Object
+      },
+      computed: {
+        text: Object(i.a)("text")
+      }
+    });
+  },
+  FCjW: function FCjW(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "FormNode"
+      }, [!e.composable && e.dataArray ? e._l(e.dataArray, function (t, a) {
+        return n("div", {
+          key: t
+        }, [n("div", {
+          class: e.containerClasses
+        }, [n("Renderable", {
+          attrs: {
+            component: e.renderable.tagName,
+            componentProps: Object.assign({}, e.getComponentProps(), {
+              composable: e.composable,
+              index: a,
+              isLast: a === e.dataArray.length - 1
+            })
+          }
+        }, e._l(e.renderable.items, function (a) {
+          return n("FormNode", {
+            key: a,
+            attrs: {
+              id: a,
+              parentId: e.id,
+              composable: e.composable,
+              dataArray: e.getMappedFields(e.getClassTypeFromRenderable(a), t),
+              model: e.getClassModel(t),
+              modelId: t
+            }
+          });
+        }))], 1)]);
+      }) : e._e(), e._v(" "), e.composable | !e.dataArray ? [n("div", {
+        class: e.containerClasses
+      }, [n("Renderable", {
+        attrs: {
+          component: e.renderable.tagName,
+          parentId: e.parentId,
+          componentProps: Object.assign.apply(Object, [{}].concat(e.getComponentProps(), [{
+            composable: e.composable,
+            model: e.model,
+            modelId: e.modelId
+          }]))
+        }
+      }, [n("draggable", {
+        class: e.draggableClasses,
+        attrs: {
+          options: {
+            group: {
+              name: e.id,
+              put: ["Component", e.id]
+            },
+            animation: 150,
+            forceFallback: !0,
+            fallbackOnBody: !0
+          }
+        },
+        model: {
+          value: e.items,
+          callback: function callback(t) {
+            e.items = t;
+          },
+          expression: "items"
+        }
+      }, e._l(e.renderable.items, function (t) {
+        return n("FormNode", {
+          key: t,
+          attrs: {
+            id: t,
+            composable: e.composable,
+            parentId: e.id
+          }
+        });
+      }))], 1)], 1)] : e._e()], 2);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  FIgi: function FIgi(e, t) {},
+  FOQD: function FOQD(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW");
+    t.a = a.a.extend({
+      name: "SpacerElement",
+      props: {
+        options: {
+          type: Object,
+          required: !0
+        },
+        composable: Boolean
+      },
+      computed: {
+        containerClasses: function containerClasses() {
+          return {
+            SpacerElement: !0,
+            "SpacerElement--composable": this.composable,
+            "SpacerElement--is-selected": this.isSelected
+          };
+        }
+      }
+    });
+  },
+  FldL: function FldL(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("Ow1u"),
+        r = n("P5XG"),
+        o = n("T3Qu"),
+        s = n("6h5I");
+    t.a = a.a.extend({
+      name: "RenderableDetailView",
+      components: {
+        ClassComponentDetail: i.a,
+        MemberElementDetail: o.a,
+        DescriptionElementDetail: r.a,
+        GuidanceElementDetail: r.a,
+        HeadingElementDetail: r.a,
+        SpacerElementDetail: s.a
+      },
+      computed: {
+        selectedRenderable: function selectedRenderable() {
+          return this.$store.getters.getSelectedRenderable();
+        },
+        renderable: function renderable() {
+          return this.$store.getters.getRenderable(this.selectedRenderable) || null;
+        }
+      }
+    });
+  },
+  "G+93": function G93(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("iW0m");
+    }
+
+    var i = n("n4oR"),
+        r = n("zl7V"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-4815adcc", null);
+    t.a = l.exports;
+  },
+  "G+Cw": function GCw(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("V55M");
+    }
+
+    var i = n("FldL"),
+        r = n("GxJC"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-2fa00920", null);
+    t.a = l.exports;
+  },
+  GxJC: function GxJC(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "RenderableDetailView"
+      }, [e.selectedRenderable && e.renderable ? e._e() : n("div", {
+        staticClass: "text-faded"
+      }, [e._v("Nothing selected yet.")]), e._v(" "), e.selectedRenderable && e.renderable ? n(e.renderable.tagName + "Detail", {
+        tag: "div",
+        attrs: {
+          data: e.renderable
+        }
+      }) : e._e()]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  IB64: function IB64(e, t) {},
+  JEr2: function JEr2(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        class: e.containerClasses
+      }, [n("p", [e._v("Heading text")]), e._v(" "), n("p", [e._v("\n\t\t\t" + e._s(e.options.definition.text) + "\n\t\t")])]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  JM5Z: function JM5Z(e, t) {},
+  LTsl: function LTsl(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("RZgG");
+    }
+
+    var i = n("QVwU"),
+        r = n("LoEm"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-a0dd2e1e", null);
+    t.a = l.exports;
+  },
+  LoEm: function LoEm(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "PhoebeFormMetaEditor"
+      }, [e.hasForm ? n("h3", [e._v("\n\t\tEditing form: " + e._s(e.formName) + " \n\t\t"), n("button", {
+        staticClass: "btn btn-primary pull-right",
+        attrs: {
+          disabled: e.canEditFormRef
+        },
+        on: {
+          click: e.saveForm
+        }
+      }, [n("i", {
+        staticClass: "fa fa-save"
+      }), e._v("\n\t\t\tSave form\n\t\t")])]) : n("h3", [e._v("\n\t\tNo form found\n\t")]), e._v(" "), n("div", {
+        staticClass: "row"
+      }, [e._m(0), e._v(" "), e._m(1), e._v(" "), e._m(2), e._v(" "), n("div", {
+        staticClass: "col-xs-5"
+      }, [n("label", {
+        staticClass: "control-label",
+        attrs: {
+          for: "data-name"
+        }
+      }, [e._v("Data requirements")]), e._v(" "), n("select", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.selectedDataSource,
+          expression: "selectedDataSource"
+        }],
+        staticClass: "btn btn-xs btn-default",
+        on: {
+          change: function change(t) {
+            var n = Array.prototype.filter.call(t.target.options, function (e) {
+              return e.selected;
+            }).map(function (e) {
+              return "_value" in e ? e._value : e.value;
+            });
+            e.selectedDataSource = t.target.multiple ? n : n[0];
+          }
+        }
+      }, [n("option", {
+        attrs: {
+          value: "",
+          disabled: "",
+          selected: ""
+        }
+      }, [e._v("Select a class")]), e._v(" "), e._l(e.classes, function (t) {
+        return n("option", {
+          key: t.label,
+          domProps: {
+            value: t.class_type
+          }
+        }, [e._v("\n\t\t\t\t\t" + e._s(t.label) + " \n\t\t\t\t")]);
+      })], 2), e._v(" "), n("button", {
+        staticClass: "btn btn-xs btn-default",
+        attrs: {
+          disabled: !e.selectedDataSource
+        },
+        on: {
+          click: e.addDataSource
+        }
+      }, [e._v("Add")])])]), e._v(" "), n("div", {
+        staticClass: "row"
+      }, [n("div", {
+        staticClass: "col-xs-2"
+      }, [n("div", {
+        staticClass: "form-group form-group--code-label"
+      }, [n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.formName,
+          expression: "formName"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          name: "hint"
+        },
+        domProps: {
+          value: e.formName
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.formName = t.target.value);
+          }
+        }
+      })])]), e._v(" "), n("div", {
+        staticClass: "col-xs-2"
+      }, [n("div", {
+        staticClass: "form-group form-group--code-label"
+      }, [n("div", {
+        staticClass: "input-group"
+      }, [n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.localFormRef,
+          expression: "localFormRef"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          type: "text",
+          disabled: !e.canEditFormRef,
+          name: "hint"
+        },
+        domProps: {
+          value: e.localFormRef
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.localFormRef = t.target.value);
+          }
+        }
+      }), e._v(" "), n("span", {
+        staticClass: "input-group-btn"
+      }, [n("button", {
+        staticClass: "btn btn-primary",
+        attrs: {
+          type: "button",
+          disabled: !e.canEditFormRef
+        },
+        on: {
+          click: e.saveFormRef
+        }
+      }, [n("span", {
+        staticClass: "fa fa-check"
+      })])])])])]), e._v(" "), n("div", {
+        staticClass: "col-xs-3"
+      }, [e._l(e.displayData, function (t) {
+        return n("span", {
+          key: t.label
+        }, [n("span", {
+          staticClass: "PhoebeFormMetaEditor__label label label-primary"
+        }, [n("span", {
+          staticClass: "glyphicon glyphicon-remove",
+          attrs: {
+            "aria-hidden": "true"
+          },
+          on: {
+            click: function click(n) {
+              e.removeDisplayIndexRenderable(t.id);
+            }
+          }
+        }), e._v("\n\t\t\t\t\t" + e._s(t.label) + "\n\t\t\t\t")])]);
+      }), e._v(" "), e.displayData.length ? e._e() : n("span", {
+        staticClass: "text-faded"
+      }, [e._v("Nothing selected yet.")])], 2), e._v(" "), n("div", {
+        staticClass: "col-xs-5"
+      }, [e.formDataSources && Object.keys(e.formDataSources).length ? n("div", {
+        staticClass: "PhoebeFormMetaEditor__data-req-container"
+      }, e._l(e.formDataSources, function (t, a) {
+        return n("div", {
+          key: t.class_type + "_" + a,
+          staticClass: "PhoebeFormMetaEditor__data-req"
+        }, [n("div", {
+          staticClass: "input-group input-group input-group-sm"
+        }, [n("span", {
+          staticClass: "input-group-addon"
+        }, [e._v(e._s(t.class_type))]), e._v(" "), n("input", {
+          staticClass: "PhoebeFormMetaEditor__data-req-input form-control",
+          attrs: {
+            type: "text"
+          },
+          domProps: {
+            value: t.label
+          },
+          on: {
+            input: function input(n) {
+              return e.changeDataSourceLabel(n, t.id);
+            }
+          }
+        })]), e._v(" "), n("div", {
+          staticClass: "PhoebeFormMetaEditor__btn-remove btn btn-xs btn-danger"
+        }, [n("i", {
+          staticClass: "fa fa-remove",
+          on: {
+            click: function click(n) {
+              e.removeDataSource(t.id);
+            }
+          }
+        })])]);
+      })) : n("p", {
+        staticClass: "text-faded"
+      }, [e._v("No data requirements yet.")])])])]);
+    },
+        i = [function () {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "col-xs-2"
+      }, [n("label", {
+        staticClass: "control-label",
+        attrs: {
+          for: "data-name"
+        }
+      }, [e._v("Form name")])]);
+    }, function () {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "col-xs-2"
+      }, [n("label", {
+        staticClass: "control-label",
+        attrs: {
+          for: "data-name"
+        }
+      }, [e._v("Form ref")])]);
+    }, function () {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "col-xs-3"
+      }, [n("label", {
+        staticClass: "control-label",
+        attrs: {
+          for: "data-name"
+        }
+      }, [e._v("Data shown in instance grid")])]);
+    }],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  M93x: function M93x(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("2aWy");
+    }
+
+    var i = n("edak"),
+        r = n("Mcx7"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, null, null);
+    t.a = l.exports;
+  },
+  Mcx7: function Mcx7(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "container-fluid PhoebeEditor"
+      }, [n("div", {
+        staticClass: "row PhoebeEditor__header"
+      }, [n("div", {
+        staticClass: "col-xs-12"
+      }, [n("PhoebeFormMetaEditor", {
+        attrs: {
+          id: e.selectedForm
+        }
+      })], 1)]), e._v(" "), n("div", {
+        staticClass: "row PhoebeEditor__body"
+      }, [n("div", {
+        staticClass: "PhoebeEditor__palette-view col-xs-2"
+      }, [n("h4", [e._v("Palette")]), e._v(" "), n("ComponentMenuView")], 1), e._v(" "), n("div", {
+        staticClass: "PhoebeEditor__form-view col-xs-6"
+      }, [n("h4", [e._v("Form composition")]), e._v(" "), n("div", {}, [n("PhoebeForm", {
+        attrs: {
+          id: e.selectedForm,
+          composable: !0
+        }
+      })], 1)]), e._v(" "), n("div", {
+        staticClass: "PhoebeEditor__detail-view col-xs-4"
+      }, [n("h4", [e._v("Detail view")]), e._v(" "), n("RenderableDetailView")], 1)])]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  Mw02: function Mw02(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("FIgi");
+    }
+
+    var i = n("iV5y"),
+        r = n("4uZr"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-1714721e", null);
+    t.a = l.exports;
+  },
+  MzfL: function MzfL(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("Cwpt");
+    t.a = a.a.extend({
+      name: "DescriptionElementDetail",
+      mixins: [i.b],
+      props: {
+        data: Object
+      },
+      computed: {
+        height: Object(i.a)("height")
+      }
+    });
+  },
+  NAjj: function NAjj(e, t) {},
+  NgP3: function NgP3(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("Cwpt");
+    t.a = a.a.extend({
+      name: "MemberElement",
+      mixins: [i.b],
+      props: {
+        options: {
+          type: Object,
+          required: !0
+        },
+        modelId: [Number, String],
+        model: Object,
+        composable: Boolean
+      },
+      computed: {
+        containerClasses: function containerClasses() {
+          return {
+            MemberElement: !0,
+            "MemberElement--composable": this.composable,
+            "MemberElement--is-selected": this.isSelected
+          };
+        },
+        memberValue: {
+          get: function get() {
+            return this.model[this.options.member];
+          },
+          set: function set(e) {
+            this.$store.commit("updateData", {
+              model: this.options.class_type,
+              id: this.modelId,
+              property: this.options.member,
+              value: e
+            });
+          }
+        }
+      }
+    });
+  },
+  "O+WF": function OWF(e, t, n) {
+    "use strict";
+
+    var a = n("yI9a"),
+        i = n.n(a),
+        r = n("7+uW"),
+        o = n("DAYN"),
+        s = n.n(o),
+        l = {
+      GuidanceElement: "font",
+      DescriptionElement: "font",
+      HeadingElement: "font",
+      SpacerElement: "minus",
+      ClassComponent: "file"
+    };
+    t.a = r.a.extend({
+      name: "ComponentMenu",
+      components: {
+        draggable: s.a
+      },
+      computed: {
+        components: {
+          get: function get() {
+            return i()(Object.keys(this.$store.state.form.components), "memberElement");
+          }
+        }
+      },
+      methods: {
+        getComponent: function getComponent(e) {
+          return this.$store.state.form.components[e];
+        },
+        getComponentIcon: function getComponentIcon(e) {
+          return l[e] || "";
+        }
+      }
+    });
+  },
+  Ow1u: function Ow1u(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("R/L7");
+    }
+
+    var i = n("Z7VZ"),
+        r = n("mvwg"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-7f254228", null);
+    t.a = l.exports;
+  },
+  P5XG: function P5XG(e, t, n) {
+    "use strict";
+
+    var a = n("F9Z+"),
+        i = n("nY9z"),
+        r = n("VU/8"),
+        o = r(a.a, i.a, !1, null, null, null);
+    t.a = o.exports;
+  },
+  PPO6: function PPO6(e, t, n) {
+    "use strict";
+
+    n.d(t, "a", function () {
+      return c;
+    }), n.d(t, "b", function () {
+      return _;
+    });
+
+    var a = this && this.__assign || Object.assign || function (e) {
+      for (var t, n = 1, a = arguments.length; n < a; n++) {
+        t = arguments[n];
+
+        for (var i in t) {
+          Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
+        }
+      }
+
+      return e;
+    },
+        i = {
+      type: "ElementComponent",
+      tagName: "GuidanceElement",
+      definition: {
+        text: "Example guidance",
+        class: "neon\\core\\form\\fields\\Guidance",
+        displayTextFormat: "markdown"
+      }
+    },
+        r = {
+      type: "ElementComponent",
+      tagName: "SpacerElement",
+      name: "Spacer",
+      definition: {
+        height: 25,
+        class: "neon\\core\\form\\fields\\Spacer"
+      }
+    },
+        o = {
+      type: "ClassComponent",
+      tagName: "ClassComponent",
+      name: "Class",
+      dataSourceMap: {}
+    },
+        s = {
+      type: "MemberComponent",
+      tagName: "MemberElement"
+    },
+        l = {
+      type: "ElementComponent",
+      tagName: "DescriptionElement",
+      definition: {
+        class: "neon\\core\\form\\fields\\Text",
+        text: "Block text",
+        displayTextFormat: "markdown"
+      }
+    },
+        d = {
+      type: "ElementComponent",
+      tagName: "HeadingElement",
+      definition: {
+        class: "neon\\core\\form\\fields\\Heading",
+        text: "Heading text"
+      }
+    },
+        c = {
+      guidanceElement: a({}, i, {
+        name: "Guidance",
+        id: "guidanceElement"
+      }),
+      headingElement: a({}, d, {
+        id: "headingElement",
+        name: "Heading"
+      }),
+      textElement: a({}, l, {
+        id: "textElement",
+        name: "Description"
+      }),
+      spacerElement: a({}, r, {
+        id: "spacerElement",
+        name: "Spacer"
+      }),
+      classElement: a({}, o, {
+        id: "classElement",
+        definition: {},
+        items: [],
+        dataSourceMap: {}
+      }),
+      memberElement: a({}, s)
+    },
+        m = {
+      id: "example-form",
+      name: "An example form",
+      type: "FormComponent",
+      gridItems: [],
+      items: [],
+      dataSources: []
+    },
+        p = a({}, o, {
+      id: "project-section-1-ref",
+      definition: {
+        isRepeater: !0
+      },
+      items: ["project-name-ref", "project-organisation-heading-ref", "project-org-private-ref", "project-org-public-ref", "project-org-civil-ref", "project-lead-organisation", "project-geographic-focus-ref", "project-size-ref", "project-investment-heading-ref", "project-investment-private-ref", "project-investment-public-ref", "project-beneficiaries-ref"]
+    }),
+        u = a({}, o, {
+      id: "project-section-2-ref",
+      class_type: "project",
+      items: ["project-stage-budget-heading-ref", "project-total-cost-ref", "project-breakdown-heading-ref", "project-private-sector-contrib-ref", "project-public-sector-contrib-ref", "project-other-contrib-ref", "project-other-donors-contrib-ref", "project-requested-contrib-ref", "project-risk-management-strategy-ref", "project-risk-heading-ref", "risk-ref"],
+      definition: {}
+    }),
+        f = a({}, o, {
+      class_type: "risk",
+      name: "Risk",
+      id: "risk-ref",
+      items: ["risk-heading-ref", "risk-potential-ref", "risk-classication-ref", "risk-impact-ref", "risk-management-heading-ref", "risk-management-impact-ref", "risk-management-likelihood-ref", "risk-management-mitigation-plan-ref"],
+      definition: {
+        isRepeater: !0
+      }
+    }),
+        b = a({}, o, {
+      class_type: "deliverable",
+      name: "Deliverable",
+      id: "deliverable-ref",
+      items: ["deliverable-name-ref"],
+      definition: {
+        isRepeater: !0
+      }
+    }),
+        h = a({}, o, {
+      class_type: "output",
+      name: "Output",
+      id: "output-ref",
+      items: ["output-name-ref", "milestone-ref"],
+      definition: {
+        isRepeater: !0
+      }
+    }),
+        v = a({}, o, {
+      class_type: "milestone",
+      id: "milestone-ref",
+      name: "Milestone",
+      items: ["milestone-name-ref", "deliverable-ref"],
+      definition: {
+        isRepeater: !0
+      }
+    }),
+        g = {
+      class_type: "neon\\core\\form\\fields\\Text",
+      label: "Text",
+      hint: "",
+      placeholder: "",
+      required: !1,
+      deleted: 0,
+      classLabel: "Single Line Text",
+      name: "text",
+      order: 0
+    },
+        _ = (a({}, l, {
+      id: "form-text-ref",
+      definition: {
+        text: "Please complete all relevant sections and questions in the form. Complete the form using Arial Font 10. Where appropriate, you may use bold or italic formatting for added emphasis or layout purposes. "
+      }
+    }), a({}, r, {
+      id: "spacer-ref"
+    }), a({}, l, {
+      id: "milestone-text-ref",
+      class_type: "milestone",
+      definition: {
+        text: "This is a description of the outputs repeater field. It is displayed only once, whereas guidance for outputs is repeated for each ouput."
+      }
+    }), a({}, s, {
+      id: "milestone-name-ref",
+      fieldType: "textarea",
+      class_type: "milestone",
+      member_ref: "name",
+      definition: a({}, g, {
+        name: "Milestone description"
+      })
+    }), a({}, s, {
+      id: "project-test-ref-2",
+      class_type: "project",
+      member_ref: "example-member",
+      definition: a({}, g, {
+        name: "1. Proposed project title",
+        description: "The title of the project that is being proposed."
+      })
+    }), a({}, s, {
+      id: "project-test-ref-2",
+      class_type: "project",
+      member_ref: "example-member-2",
+      definition: a({}, g, {
+        name: "1. Proposed project title",
+        description: "The title of the project that is being proposed."
+      })
+    }), a({}, s, {
+      id: "project-name-ref",
+      class_type: "project",
+      member_ref: "name",
+      definition: a({}, g, {
+        name: "1. Proposed project title",
+        description: "The title of the project that is being proposed."
+      })
+    }), a({}, d, {
+      id: "project-organisation-heading-ref",
+      definition: {
+        text: "2. Implementing organisation(s)"
+      }
+    }), a({}, s, {
+      id: "project-org-private-ref",
+      class_type: "project",
+      member_ref: "org-private",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Private",
+        description: "The names of the private sector organisation(s) that will be implementing the project."
+      })
+    }), a({}, s, {
+      id: "project-org-public-ref",
+      class_type: "project",
+      member_ref: "org-public",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Public",
+        description: "The names of the public sector organisation(s) that will be implementing the project."
+      })
+    }), a({}, s, {
+      id: "project-org-civil-ref",
+      class_type: "project",
+      member_ref: "org-civil",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Civil",
+        description: "The names of the civil society/NGO organisation(s) that will be implementing the project."
+      })
+    }), a({}, s, {
+      id: "project-lead-organisation",
+      class_type: "project",
+      member_ref: "org-lead",
+      definition: a({}, g, {
+        name: "3. Lead Organisation",
+        description: "The name of the organisation submitting the Project Concept Note and leading on the implementation of the project."
+      })
+    }), a({}, s, {
+      id: "project-geographic-focus-ref",
+      class_type: "project",
+      member_ref: "geographic-focus",
+      definition: a({}, g, {
+        name: "4. Geographic focus",
+        description: "The countries (and the specific regions within the countries) in which the project will operate in and."
+      })
+    }), a({}, s, {
+      id: "project-size-ref",
+      class_type: "project",
+      member_ref: "project-size-ref",
+      definition: a({}, g, {
+        name: "5.a. Current Project Size and Expected Project Size by 2020",
+        description: "The area of land that is owned, leased or subject to a written management agreement or contract. The expected area must be subject to written agreement or contract signed by all stakeholders before the end of 2020."
+      })
+    }), a({}, d, {
+      id: "project-investment-heading-ref",
+      definition: {
+        text: "5.b. Expected Total Project Investment by 2020"
+      }
+    }), a({}, s, {
+      id: "project-investment-private-ref",
+      class_type: "project",
+      member_ref: "investment-private",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Private",
+        description: "Finance from non-public sources such as banks (including multilateral or regional development banks (MDBs) and development finance institutions (DFIs), private companies, private or company pension funds, NGO money, CDM financing, voluntary carbon credit market, insurance companies, private savings, family money, entrepreneurs’ own capital and sovereign wealth funds. This includes all types such as equity, debt and guarantees. The resources must be contracted before the end of 2020 but can be delivered up until the end of 2025. "
+      })
+    }), a({}, s, {
+      id: "project-investment-public-ref",
+      class_type: "project",
+      member_ref: "investment-public",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Public",
+        description: "Finance from public sources such as direct grants from government departments, project tax exemptions or other public subsidies. The resources must be contracted before the end of 2020 but can be delivered up until the end of 2025."
+      })
+    }), a({}, s, {
+      id: "project-beneficiaries-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "beneficiaries",
+      definition: a({}, g, {
+        name: "5.c. Expected Beneficiaries by 2020",
+        description: "People that are expected to benefit from improved livelihoods (in terms of one or more of the following aspects - human, natural, financial, physical and social capital) and/or employment and/or reduced poverty from communities living or working within the project areas."
+      })
+    }), a({}, s, {
+      id: "project-summary-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "summary",
+      definition: a({}, g, {
+        name: "6. Summary of Project purpose/ rationale/objective (Approx.200 words). ",
+        description: "Summarise in short bullet-points the problem that the project will seek to address, why it needs addressing and what the expected impact & outcomes are expected to be once the problem is addressed."
+      })
+    }), a({}, s, {
+      id: "project-description-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "description",
+      definition: a({}, g, {
+        name: "7. Project Description",
+        description: "Please provide a detailed description of the project covering the below key headings:\n1.\tContext / Background (including an explanation of the need for the project, the international / regional / country context etc.)\n2.\tApproach and Methodology (including an explanation of the activities that need to be performed to produce the various project deliverables, the project’s governance structure, the key implementation personnel etc.)."
+      })
+    }), a({}, d, {
+      id: "project-relevancy-heading-ref",
+      definition: {
+        text: "8. Relevancy to P4F"
+      }
+    }), a({}, l, {
+      id: "project-relevancy-description-ref",
+      definition: {
+        text: "Each section should contain a concise description of how the proposed project is relevant to one of the P4F eligibility criteria. Please refer to the guidance below and endeavour to not exceed 2 pages.\n\nThe programme’s main focus is supporting key actors from the public, private and community sectors who want to form partnerships that deliver enhanced value for all while reducing impacts on neighbouring forests. The programme will support partnerships at a variety of scales, from smaller scale projects that have the potential to be replicated to larger, more complex deals. It will also support projects at different levels of maturity, ranging from those at the idea stage through to projects that are well advanced and that have already been piloted.\n\nWe are looking to support proposals that:\n* Contribute to reduced deforestation, reforestation, afforestation, forest restoration, and/or forest conservation outcomes, at scale\n* Have a positive impact on the livelihoods of local communities\n* Aim to catalyse investment in forests and sustainable land use\n* Aim to result in positive outcomes for all partners\n* Comprise (or plan to comprise) a formal partnership that includes a private sector company and at least one partner from either the public sector or civil society. (Partnerships that include representative from all 3 partners will be prioritised."
+      }
+    }), a({}, s, {
+      id: "project-sustainable-land-use-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "sustainable-land-use",
+      definition: a({}, g, {
+        name: "Sustainable land use",
+        description: "What is the impact on the landscape in relation to sustainable land use, forests and deforestation, natural capital, biodiversity, soil and water quality, etc.?"
+      })
+    }), a({}, s, {
+      id: "project-carbon-impact-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "carbon-impact",
+      definition: a({}, g, {
+        name: "Carbon impact",
+        description: "What is the carbon density of the current landscape and the project’s potential impact on carbon sequestration?"
+      })
+    }), a({}, s, {
+      id: "project-social-impact-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "social-impact",
+      definition: a({}, g, {
+        name: "Social impact",
+        description: "What will be the economic, social, and gender impacts of the project?"
+      })
+    }), a({}, s, {
+      id: "project-business-case-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "business-case",
+      definition: a({}, g, {
+        name: "Business case",
+        description: "What is the business case and risk return profile for partners and investors?"
+      })
+    }), a({}, s, {
+      id: "project-partnership-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "partnership",
+      definition: a({}, g, {
+        name: "Partnership",
+        description: "Who are the partners (if known) in terms of public, private, people and community and what form will the partnership take? This should include an explanation of the current state of the partnership, the strategy for further developing and formalising the partnership, and the expected roles/responsibilities of the different partners."
+      })
+    }), a({}, s, {
+      id: "project-scale-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "scale",
+      definition: a({}, g, {
+        name: "Scale",
+        description: "What scale will the partnership operate on and what scope is there for scale-up or replication?"
+      })
+    }), a({}, s, {
+      id: "project-innovation-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "innovation",
+      definition: a({}, g, {
+        name: "Innovation",
+        description: "How is the partnership or approach innovative?"
+      })
+    }), a({}, s, {
+      id: "project-management-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "management",
+      definition: a({}, g, {
+        name: "Management",
+        description: "What management capacity does the partnership have to help ensure success?"
+      })
+    }), a({}, s, {
+      id: "project-learning-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "learning",
+      definition: a({}, g, {
+        name: "Learning",
+        description: "What learning will result from the partnership and will that be available others outside of the partnership?"
+      })
+    }), a({}, s, {
+      id: "project-political-considerations-ref",
+      fieldType: "textarea",
+      class_type: "political-considerations",
+      member_ref: "political-considerations",
+      definition: a({}, g, {
+        name: "Political considerations",
+        description: "Have political risks and opportunities been considered?"
+      })
+    }), a({}, s, {
+      id: "project-additionality-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "additionality",
+      definition: a({}, g, {
+        name: "Additionality",
+        description: "How will P4F funding be instrumental to the partnership? For example, without P4F funding, the partnership is unlikely to take off, or it may happen but at a reduced scale."
+      })
+    }), a({}, s, {
+      id: "project-support-ref",
+      fieldType: "textarea",
+      class_type: "project",
+      member_ref: "support-requested",
+      definition: a({}, g, {
+        name: "11. Describe the P4F support requested and explain how it will contribute to the project reaching the next stage of implementation",
+        description: "P4F is an incubator. Through grants and technical assistance, we help selected partners move\nthrough the stages required to get to market – from (1) idea development and memorandum of\nunderstanding (MOU), to (2) business planning, to (3) deal negotiation and piloting, and finally to (4)\ncommercial scale-up. See ‘A Partnerships for Forests Journey’ for more details\n(https://partnershipsforforests.com/what-we-do/how-we-work/). Please note that P4F does not\nguarantee funding for multiple stages."
+      })
+    }), a({}, d, {
+      id: "project-outputs-heading-ref",
+      definition: {
+        text: "12. Outline of expected Outputs, Milestones, and Deliverables "
+      }
+    }), a({}, l, {
+      id: "project-outputs-description-ref",
+      definition: {
+        text: "This section should be used to provide an overview of the outputs, milestones and deliverables expected to result from the P4F supported activities. This information should link directly to the ‘P4F Budget Forecast’ sheet in the T07(b) Budget template.\n\nPlease also append a workplan further detailing the expected implementation of the P4F supported project activities to be undertaken during this stage of the project."
+      }
+    }), a({}, d, {
+      id: "project-stage-budget-heading-ref",
+      definition: {
+        text: "Project Stage Budget"
+      }
+    }), a({}, s, {
+      id: "project-total-cost-ref",
+      class_type: "project",
+      member_ref: "total-cost",
+      definition: a({}, g, {
+        name: "13. Total estimated cost (GBP)",
+        description: "This should be the total estimated cost for this stage of the project, including match funding contributions from all partners and any requested P4F support. Please note the quality and realism of T07b Budget and the extent of match funding form part of our assessment criteria. Applicants are encouraged to provide a minimum of 25% match funding (in kind or cash contributions)."
+      })
+    }), a({}, d, {
+      id: "project-breakdown-heading-ref",
+      definition: {
+        text: "Breakdown"
+      }
+    }), a({}, s, {
+      id: "project-private-sector-contrib-ref",
+      class_type: "project",
+      member_ref: "private-sector-contrib",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "13.a. Private sector contribution (GBP)",
+        description: "This should be the total estimated cost for this stage of the project, including match funding contributions from all partners and any requested P4F support. Please note the quality and realism of T07b Budget and the extent of match funding form part of our assessment criteria. Applicants are encouraged to provide a minimum of 25% match funding (in kind or cash contributions)."
+      })
+    }), a({}, s, {
+      id: "project-public-sector-contrib-ref",
+      class_type: "project",
+      member_ref: "public-sector-contrib",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "13.b. Public sector contribution (GBP)",
+        description: "This should be the total estimated amount of match funding contributions for this stage of the project provided by private sector partners."
+      })
+    }), a({}, s, {
+      id: "project-other-contrib-ref",
+      class_type: "project",
+      member_ref: "other-contrib",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "13.c. Other contributions (GBP)",
+        description: "This should be the total estimated amount of match funding contributions for this stage of the project provided by public sector partners."
+      })
+    }), a({}, s, {
+      id: "project-other-donors-contrib-ref",
+      class_type: "project",
+      member_ref: "donors-contrib",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "13.d. Contributions from other Donors (GBP)",
+        description: "This should be the total estimated amount of match funding contributions for this stage of the project provided by any other Donors."
+      })
+    }), a({}, s, {
+      id: "project-requested-contrib-ref",
+      class_type: "project",
+      member_ref: "requested-contrib",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "13.e. Contribution requested from Partnerships for Forests (GBP)",
+        description: "This should be the total estimated cost for this stage of the project, including match funding contributions from all partners and any requested P4F support. Please note the quality and realism of T07b Budget and the extent of match funding form part of our assessment criteria. Applicants are encouraged to provide a minimum of 25% match funding (in kind or cash contributions)."
+      })
+    }), a({}, s, {
+      id: "project-risk-management-strategy-ref",
+      class_type: "project",
+      member_ref: "risk-management-strategy",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "14.a. Project Risk Management Strategy",
+        description: "This should linked directly to the T07b Budget. Please refer to the Guidelines for Using P4F Grant Funds for further information as to eligible expenditure."
+      })
+    }), a({}, d, {
+      id: "project-risk-heading-ref",
+      definition: {
+        text: "14.b. Risk Identification (Add more rows as necessary)"
+      }
+    }), a({}, s, {
+      id: "output-name-ref",
+      fieldType: "textarea",
+      class_type: "output",
+      member_ref: "name",
+      definition: a({}, g, {
+        name: "Output description"
+      })
+    }), a({}, s, {
+      id: "deliverable-name-ref",
+      fieldType: "textarea",
+      class_type: "deliverable",
+      member_ref: "name",
+      definition: a({}, g, {
+        name: "Deliverable description"
+      })
+    }), a({}, i, {
+      id: "milestone-guidance-ref",
+      definition: {
+        text: "example guidance text for milestone"
+      }
+    }), a({}, i, {
+      id: "project-guidance-ref",
+      definition: {
+        text: "example guidance text for project"
+      }
+    }), a({}, i, {
+      id: "output-guidance-ref",
+      definition: {
+        text: "example guidance text for output"
+      }
+    }), a({}, i, {
+      id: "deliverable-guidance-ref",
+      definition: {
+        text: "example guidance text for deliverable"
+      }
+    }), a({}, d, {
+      id: "risk-heading-ref",
+      definition: {
+        text: "Risk Identification"
+      }
+    }), a({}, s, {
+      id: "risk-potential-ref",
+      fieldType: "textarea",
+      class_type: "risk",
+      member_ref: "potential",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Potential risk"
+      })
+    }), a({}, s, {
+      id: "risk-classication-ref",
+      fieldType: "textarea",
+      class_type: "risk",
+      member_ref: "classification",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Classification",
+        description: "Operational / Safeguarding / Delivery / Reputational / Fiduciary"
+      })
+    }), a({}, s, {
+      id: "risk-impact-ref",
+      fieldType: "textarea",
+      class_type: "risk",
+      member_ref: "impact",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Impact on Project / P4F etc."
+      })
+    }), a({}, d, {
+      id: "risk-management-heading-ref",
+      definition: {
+        text: "Risk Management"
+      }
+    }), a({}, s, {
+      id: "risk-management-impact-ref",
+      fieldType: "textarea",
+      class_type: "risk",
+      member_ref: "management-impact",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Impact"
+      })
+    }), a({}, s, {
+      id: "risk-management-likelihood-ref",
+      fieldType: "textarea",
+      class_type: "risk",
+      member_ref: "management-likelihood",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Likelihood"
+      })
+    }), a({}, s, {
+      id: "risk-management-mitigation-plan-ref",
+      fieldType: "textarea",
+      class_type: "risk",
+      member_ref: "management-mitigation-plan",
+      definition: a({}, g, {
+        subfield: !0,
+        name: "Mitigation plan"
+      })
+    }), {
+      form: {
+        "example-form": {
+          project: [1],
+          output: [1, 2]
+        }
+      },
+      project: {
+        1: {
+          id: 1,
+          name: "project 1",
+          $mappedFields: {
+            risk: [1]
+          }
+        }
+      },
+      output: {
+        1: {
+          id: 1,
+          name: "milestone 1",
+          $mappedFields: {
+            milestone: [1]
+          }
+        },
+        2: {
+          name: "milestone 2",
+          id: 2,
+          $mappedFields: {
+            milestone: [2, 3]
+          }
+        }
+      },
+      milestone: {
+        1: {
+          id: 1,
+          name: "output 1",
+          $mappedFields: {
+            deliverable: [1, 2]
+          }
+        },
+        2: {
+          id: 2,
+          name: "output 2",
+          $mappedFields: {
+            deliverable: [3, 4]
+          }
+        },
+        3: {
+          id: 3,
+          name: "output 3",
+          $mappedFields: {
+            deliverable: [5, 6]
+          }
+        }
+      },
+      deliverable: {
+        1: {
+          id: 1,
+          name: "deliverable 1",
+          other: "Example other property 1"
+        },
+        2: {
+          id: 2,
+          name: "deliverable 2",
+          other: "Example other property 2"
+        },
+        3: {
+          id: 3,
+          name: "deliverable 3",
+          other: "Example other property 3"
+        },
+        4: {
+          id: 4,
+          name: "deliverable 4",
+          other: "Example other property 4"
+        },
+        5: {
+          id: 5,
+          name: "deliverable 5",
+          other: "Example other property 5"
+        },
+        6: {
+          id: 6,
+          name: "deliverable 6",
+          other: "Example other property 6"
+        }
+      },
+      risk: {
+        1: {
+          id: 1
+        }
+      }
+    });
+  },
+  PoVU: function PoVU(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("xnNO");
+    }
+
+    var i = n("R2Im"),
+        r = n("cDUf"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-5279cebf", null);
+    t.a = l.exports;
+  },
+  QVwU: function QVwU(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("yI9a"),
+        r = n.n(i);
+    t.a = a.a.extend({
+      name: "PhoebeFormMetaEditor",
+      props: {
+        id: String
+      },
+      data: function data() {
+        return {
+          localFormRef: this.$store.getters.getRenderable(this.id).form_ref,
+          selectedDataSource: ""
+        };
+      },
+      computed: {
+        hasForm: function hasForm() {
+          return !!this.id && !!this.$store.getters.getRenderable(this.id);
+        },
+        classes: function classes() {
+          return this.$store.getters.getClasses();
+        },
+        formName: {
+          get: function get() {
+            var e = !!this.id && this.$store.getters.getRenderable(this.id);
+            return e ? e.name : "";
+          },
+          set: function set(e) {
+            this.$store.commit("updateRenderable", {
+              id: this.id,
+              property: "name",
+              value: e
+            });
+          }
+        },
+        formDataSources: {
+          get: function get() {
+            return this.$store.getters.getDataSources();
+          }
+        },
+        canEditFormRef: function canEditFormRef() {
+          var e = !!this.id && this.$store.getters.getRenderable(this.id);
+          return e && !e.form_ref;
+        },
+        displayData: function displayData() {
+          var e = this,
+              t = this.$store.getters.getRenderable(this.id);
+          return t ? t.gridItems.map(function (t) {
+            var n = e.$store.getters.getRenderable(t),
+                a = e.$store.getters.getClass(n.class_type),
+                i = n && n.definition ? n.definition.label : "No renderable found";
+            return {
+              label: (a ? a.label : "No class found") + " - " + i,
+              id: t
+            };
+          }) : [];
+        }
+      },
+      methods: {
+        saveFormRef: function saveFormRef() {
+          this.$store.commit("updateRenderable", {
+            id: this.id,
+            property: "form_ref",
+            value: this.localFormRef
+          });
+        },
+        saveForm: function saveForm() {
+          this.$store.dispatch("save", this.id);
+        },
+        addDataSource: function addDataSource() {
+          this.$store.dispatch("addDataSource", {
+            class_type: this.selectedDataSource,
+            label: this.selectedDataSource
+          });
+        },
+        removeDataSource: function removeDataSource(e) {
+          this.$store.dispatch("removeDataSource", e);
+        },
+        changeDataSourceLabel: function changeDataSourceLabel(e, t) {
+          this.$store.dispatch("updateDataSourceLabel", {
+            id: t,
+            label: e.target.value
+          });
+        },
+        removeDisplayIndexRenderable: function removeDisplayIndexRenderable(e) {
+          var t = this.$store.getters.getSelectedForm();
+          this.$store.commit("updateRenderable", {
+            id: this.id,
+            property: "gridItems",
+            value: r()(this.$store.getters.getRenderable(t).gridItems, e)
+          });
+        }
+      }
+    });
+  },
+  "R/L7": function RL7(e, t) {},
+  R219: function R219(e, t) {},
+  R2Im: function R2Im(e, t, n) {
+    "use strict";
+
+    var a = n("kvU2"),
+        i = n.n(a),
+        r = n("WlNK"),
+        o = n.n(r),
+        s = n("DlMc"),
+        l = (n.n(s), n("7+uW")),
+        d = n("DAYN"),
+        c = n.n(d),
+        m = n("ZWDk"),
+        p = this && this.__assign || Object.assign || function (e) {
+      for (var t, n = 1, a = arguments.length; n < a; n++) {
+        t = arguments[n];
+
+        for (var i in t) {
+          Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
+        }
+      }
+
+      return e;
+    };
+
+    t.a = l.a.extend({
+      name: "PhoebeForm",
+      props: {
+        id: String,
+        composable: Boolean
+      },
+      components: {
+        FormNode: m.a,
+        draggable: c.a
+      },
+      computed: {
+        items: {
+          get: function get() {
+            var e = this.$store.state.form.renderables[this.id];
+            return e ? e.items : null;
+          },
+          set: function set(e) {
+            var t = this,
+                n = o()(e, Object.keys(this.$store.state.form.renderables));
+
+            if (n.length) {
+              var a = n.map(function (e) {
+                return Object(s.v4)();
+              });
+              n.forEach(function (e, n) {
+                t.$store.commit("createRenderable", p({}, i()(t.$store.state.form.components[e]), {
+                  id: a[n]
+                }));
+              }), e = e.map(function (e, t) {
+                var i = n.indexOf(e);
+                return -1 !== i ? a[i] : e;
+              });
+            }
+
+            this.$store.commit("updateRenderableItems", {
+              id: this.id,
+              items: e
+            });
+          }
+        },
+        containerClasses: function containerClasses() {
+          return {
+            PhoebeForm: !0,
+            "PhoebeForm--composable": this.composable
+          };
+        }
+      },
+      methods: {
+        getRenderable: function getRenderable(e) {
+          return this.$store.state.form.renderables[e] || null;
+        },
+        getFormData: function getFormData(e) {
+          if (this.composable) return [null];
+          if (!e) return console.warn("getFormData() called, but no classType provided");
+          var t = this.$store.state.form.data.form[this.id];
+          return t ? t[e] : console.warn("getFormData() called, but no form data for form id " + this.id);
+        }
+      }
+    });
+  },
+  RZgG: function RZgG(e, t) {},
+  S3o6: function S3o6(e, t) {},
+  T3Qu: function T3Qu(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("/cZl");
+    }
+
+    var i = n("2MAZ"),
+        r = n("fHNX"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-f7adc1e6", null);
+    t.a = l.exports;
+  },
+  V55M: function V55M(e, t) {},
+  VYho: function VYho(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      if ("MemberElement" === e.tagName) {
+        r()(e).definition = {};
+      }
+    }
+
+    var i = n("kvU2"),
+        r = n.n(i),
+        o = n("RyI1"),
+        s = n.n(o),
+        l = n("309y"),
+        d = n.n(l),
+        c = n("2247"),
+        m = n.n(c),
+        p = n("Dc7M"),
+        u = n.n(p),
+        f = n("w9Mt"),
+        b = n.n(f),
+        h = n("WIDu"),
+        v = n.n(h),
+        g = n("yI9a"),
+        _ = n.n(g),
+        y = n("DtRx"),
+        C = n.n(y),
+        x = n("7+uW"),
+        R = n("WU2P"),
+        w = n("66bu"),
+        j = n("PPO6"),
+        F = this && this.__assign || Object.assign || function (e) {
+      for (var t, n = 1, a = arguments.length; n < a; n++) {
+        t = arguments[n];
+
+        for (var i in t) {
+          Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
+        }
+      }
+
+      return e;
+    },
+        k = {
+      components: j.a,
+      renderables: window.APP_FORM && window.APP_FORM.definition && window.APP_FORM.definition.renderables ? window.APP_FORM.definition.renderables : {},
+      classes: {},
+      members: {},
+      data: j.b,
+      selectedRenderable: null,
+      selectedForm: "example-form"
+    },
+        S = {
+      selectForm: function selectForm(e, t) {
+        e.selectedForm = t;
+      },
+      updateData: function updateData(e, t) {
+        var n = t.model,
+            a = t.id,
+            i = t.property,
+            r = t.value;
+        e.data[n] || console.warn("updateData() called, but no model for '" + n + "'"), e.data[n][a] || console.warn("updateData() called, but no id for '" + n + "' with id '" + a + "'"), e.data[n][a][i] = r;
+      },
+      createRenderable: function createRenderable(e, t) {
+        a(t), x.a.set(e.renderables, t.id, t);
+      },
+      rehydrateRenderables: function rehydrateRenderables(e, t) {
+        x.a.set(e, "renderables", t);
+      },
+      createClasses: function createClasses(e, t) {
+        t.forEach(function (t) {
+          x.a.set(e.classes, t.class_type, t);
+        });
+      },
+      createMembers: function createMembers(e, t) {
+        t.forEach(function (t) {
+          x.a.set(e.members, t.id, t);
+        });
+      },
+      updateClassType: function updateClassType(e, t) {
+        var n = t.id,
+            a = t.classType,
+            i = t.parentClassId,
+            r = t.relationName;
+        if (!e.renderables[n]) return console.warn("updateClassType() called, but no renderable for id '" + n + "'");
+        if ("ClassComponent" !== e.renderables[n].type) return console.warn("updateClassType() called, the element with id '" + n + "' is not a ClassComponent");
+        if (!e.classes[a]) return console.warn("updateClassType() called, but no class found for classType " + a);
+        var o = F({}, e.classes[a]);
+        delete o.relations, x.a.set(e.renderables, n, F({}, o, e.renderables[n], {
+          definition: {
+            label: o.definition.label,
+            showLabel: !1
+          },
+          parentClassId: i,
+          relationName: r
+        }));
+      },
+      addDataSourceToClassMember: function addDataSourceToClassMember(e, t) {
+        var n = t.id,
+            a = t.classMemberRef,
+            i = t.dataSourceId,
+            r = t.dataSourceMemberRef;
+        if (!e.renderables[n]) return console.warn("updateClassDeriveDataMap() called, but no renderable for id " + n);
+        e.renderables[n].dataSourceMap && !Array.isArray(e.renderables[n].dataSourceMap) || x.a.set(e.renderables[n], "dataSourceMap", {}), x.a.set(e.renderables[n].dataSourceMap, a, {
+          id: i,
+          memberRef: r
+        });
+      },
+      removeDataSourceFromClassMember: function removeDataSourceFromClassMember(e, t) {
+        var n = t.id,
+            a = t.memberRef;
+        return e.renderables[n] ? e.renderables[n].dataSourceMap ? void x.a.delete(e.renderables[n].dataSourceMap, a) : console.warn("updateClassDeriveDataMap() called, but no derived data map for id " + n) : console.warn("updateClassDeriveDataMap() called, but no renderable for id " + n);
+      },
+      updateRenderable: function updateRenderable(e, t) {
+        var n = t.id,
+            a = t.property,
+            i = t.value;
+        if (!e.renderables[n]) return console.warn("updateRenderable() called, but no renderable for id '" + n + "'");
+        x.a.set(e.renderables[n], a, i);
+      },
+      updateRenderableDefinition: function updateRenderableDefinition(e, t) {
+        var n = t.id,
+            a = t.property,
+            i = t.value;
+        return e.renderables[n] ? e.renderables[n].definition ? void x.a.set(e.renderables[n].definition, a, i) : console.warn("updateRenderable() called, but no meta for renderable with id '" + n + "'") : console.warn("updateRenderable() called, but no renderable for id '" + n + "'");
+      },
+      updateRenderableItems: function updateRenderableItems(e, t) {
+        var n = t.id,
+            a = t.items;
+        if (!e.renderables[n]) return console.warn("updateRenderable() called, but no renderable for id '" + n + "'");
+        e.renderables[n];
+        x.a.set(e.renderables[n], "items", a);
+      },
+      selectRenderable: function selectRenderable(e, t) {
+        e.selectedRenderable = t;
+      },
+      addRenderablesToComponent: function addRenderablesToComponent(e, t) {
+        var n = t.renderableIds,
+            a = t.componentId,
+            i = e.renderables[a];
+        if (!i) return console.warn("addRenderablesToComponent() called, but no component with id " + a);
+        var r = v()(i.items.concat(n));
+        i.items = r;
+      },
+      removeRenderable: function removeRenderable(e, t) {
+        x.a.delete(e.renderables, t);
+      },
+      removeRenderablesFromComponent: function removeRenderablesFromComponent(e, t) {
+        var n = t.renderableIds,
+            a = t.componentId,
+            i = e.renderables[a],
+            r = _.a.apply(void 0, [i.items].concat(n));
+
+        i.items = r, -1 !== n.indexOf(e.selectedRenderable) && (e.selectedRenderable = null);
+
+        var o = function o(t) {
+          var n = e.renderables[t];
+          n && n.items && n.items.forEach(o), x.a.delete(e.renderables, t);
+        };
+
+        n.forEach(o);
+      },
+      moveRenderable: function moveRenderable(e, t) {
+        var n = t.renderableId,
+            a = t.componentId,
+            i = t.index,
+            r = e.renderables[a],
+            o = r.items.indexOf(n);
+        return -1 === o ? console.warn("Could not find renderable " + n + " in component " + a) : i > r.items.length - 1 ? console.warn("Index " + i + " outside bounds of item array with length " + r.items.length) : void Object(w.a)(r.items, o, i);
+      }
+    },
+        D = {
+      getClass: function getClass(e) {
+        return function (t) {
+          return e.classes[t];
+        };
+      },
+      getClasses: function getClasses(e) {
+        return function () {
+          return e.classes;
+        };
+      },
+      getMember: function getMember(e) {
+        return function (t) {
+          return e.members[t];
+        };
+      },
+      getMembers: function getMembers(e) {
+        return function () {
+          return e.members;
+        };
+      },
+      getDataSources: function getDataSources(e, t) {
+        return function () {
+          return t.getRenderable(t.getSelectedForm()).dataSources;
+        };
+      },
+      getMembersFromDataSources: function getMembersFromDataSources(e, t) {
+        return function () {
+          var e = {};
+          return d()(t.getDataSources(), function (n) {
+            e[n.id] = {
+              id: n.id,
+              label: n.label,
+              members: s()(t.getMembers(), function (e) {
+                return e.class_type === n.class_type;
+              }).map(function (e) {
+                return e.member_ref;
+              })
+            };
+          }), e;
+        };
+      },
+      getRenderable: function getRenderable(e) {
+        return function (t) {
+          return e.renderables[t];
+        };
+      },
+      getRenderables: function getRenderables(e) {
+        return function () {
+          return e.renderables;
+        };
+      },
+      getSelectedForm: function getSelectedForm(e) {
+        return function () {
+          return e.selectedForm;
+        };
+      },
+      getSelectedRenderable: function getSelectedRenderable(e) {
+        return function () {
+          return e.selectedRenderable;
+        };
+      },
+      isRenderableInComponent: function isRenderableInComponent(e) {
+        return function (t) {
+          var n = t.renderableId,
+              a = t.componentId,
+              i = e.renderables[a];
+          return i ? -1 !== i.items.indexOf(n) : console.warn("isRenderableInComponent() called, but no component with id " + a);
+        };
+      },
+      isMemberInComponent: function isMemberInComponent(e, t) {
+        return function (n) {
+          var a = n.memberId,
+              i = n.parentId,
+              r = e.renderables[i];
+          if (!r) return console.warn("isMemberInComponent() called, but no component with id " + i);
+          var o = t.getMember(a).definition.name;
+          return -1 !== r.items.map(function (e) {
+            var n = t.getRenderable(e);
+            return "MemberElement" === n.tagName ? n.definition.name : null;
+          }).indexOf(o);
+        };
+      },
+      getParentOfRenderable: function getParentOfRenderable(e, t) {
+        return function (t) {
+          var n = null;
+          return d()(e.renderables, function (e) {
+            e.items && -1 !== e.items.indexOf(t) && (n = e.id);
+          }), n ? e.renderables[n] : null;
+        };
+      },
+      doesRenderableOrItsParentsRepeat: function doesRenderableOrItsParentsRepeat(e, t) {
+        var n = function n(e) {
+          var a = t.getParentOfRenderable(e);
+          return !!a && a.id !== t.getSelectedForm && (!(!a.definition || !a.definition.isRepeater) || n(a.id));
+        };
+
+        return function (e) {
+          var a = t.getRenderable(e);
+          return a ? !(!a.definition || !a.definition.isRepeater) || n(e) : (console.warn("doesRenderableOrItsParentsRepeat called, but no renderable for", e), !1);
+        };
+      }
+    },
+        P = function P(e, t) {
+      return t + "::" + e;
+    },
+        M = {
+      addDataSource: function addDataSource(e, t) {
+        var n = t.class_type,
+            a = t.label,
+            i = e.getters.getRenderable(e.getters.getSelectedForm()),
+            r = C()(),
+            o = F({}, i.dataSources, (s = {}, s[r] = {
+          class_type: n,
+          label: a,
+          id: r
+        }, s));
+        return e.commit("updateRenderable", {
+          id: i.id,
+          property: "dataSources",
+          value: o
+        }), r;
+        var s;
+      },
+      updateDataSourceLabel: function updateDataSourceLabel(e, t) {
+        var n = t.id,
+            a = t.label,
+            i = e.getters.getRenderable(e.getters.getSelectedForm()),
+            r = F({}, i.dataSources);
+        r[n] = {
+          class_type: i.dataSources[n].class_type,
+          label: a,
+          id: n
+        }, e.commit("updateRenderable", {
+          id: i.id,
+          property: "dataSources",
+          value: r
+        });
+      },
+      removeDataSource: function removeDataSource(e, t) {
+        var n = e.getters.getRenderable(e.getters.getSelectedForm());
+        e.commit("updateRenderable", {
+          id: n.id,
+          property: "dataSources",
+          value: u()(n.dataSources, t)
+        });
+      },
+      fetchClasses: function fetchClasses(e, t) {
+        var n = [];
+        t = r()(t).map(function (e) {
+          var t = [],
+              a = m()(e.members, function (a) {
+            var i = P(a.member_ref, e.class_type);
+            a.id = i, a.class_type = e.class_type, a.tagName = "MemberElement";
+
+            try {
+              a.definition = JSON.parse(a.definition);
+            } catch (t) {
+              console.warn("There was an error parsing the member definition for member " + a.member_ref + "\n\t\t\t\t\t\tin class " + e.class_type + ". It's possible that the data definitions passed to the form builder\n\t\t\t\t\t\tare malformed. This member's definition will be blank as a result."), a.definition = {};
+            }
+
+            "link_multi" !== a.data_type_ref && "link_uni" !== a.data_type_ref || (a.definition.dataMapKey ? t.push({
+              classId: a.link_class,
+              name: a.member_ref
+            }) : console.warn("Odd result - member has a data_type_ref but no dataMapKey")), delete a.map_field, delete a.label, delete a.description, delete a.choices;
+            var r = a.definition.order;
+            return a.definition = b()(a.definition, ["class", "hint", "label", "name", "placeholder", "required"]), n.push(a), {
+              memberId: i,
+              order: r
+            };
+          }).filter(function (e) {
+            return !!e;
+          }).sort(function (e, t) {
+            return e.order < t.order ? -1 : e.order === t.order ? 0 : 1;
+          }).map(function (e) {
+            return e.memberId;
+          });
+          return F({}, b()(e, ["label", "class_type", "module"]), {
+            id: e.class_type,
+            definition: JSON.parse(e.definition),
+            members: a,
+            relations: t
+          });
+        }), e.commit("createClasses", t), e.commit("createMembers", n);
+      },
+      save: function save(e, t) {
+        var n = r()(e.getters.getRenderables()),
+            a = n[t];
+        if (!t) return void console.warn("Attempted to save, but there is no data at " + t);
+        if (!a.form_ref) return void console.warn("Attempted to save, but there is no form_ref for renderable with id " + t);
+        var i = JSON.stringify(F({}, Object(R.a)(a), {
+          renderables: n
+        }));
+        fetch(window.neon.url("/phoebe/appforms/api/form/save", {
+          class: a.form_ref
+        }), {
+          method: "POST",
+          body: i,
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": window.neon.csrfToken()
+          },
+          credentials: "include"
+        }).then(function (e) {
+          e.json().then(console.log);
+        }).catch(function (e) {
+          console.warn("Error saving form data", e);
+        });
+      }
+    },
+        O = {
+      strict: !0,
+      state: k,
+      mutations: S,
+      getters: D,
+      actions: M
+    };
+
+    t.a = O;
+  },
+  WU2P: function WU2P(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      return {
+        rootNode: e.id,
+        gridItems: e.gridItems,
+        dataSources: e.dataSources,
+        name: e.name,
+        form_ref: e.form_ref
+      };
+    }
+
+    function i(e) {
+      return ["form-builder-field-form-element-name", "form-builder-field-form-element-label", "form-builder-field-form-element-hint", "form-builder-field-form-element-required", "form-builder-field-form-element-readonly"];
+    }
+
+    t.a = a, t.b = i;
+  },
+  YFjX: function YFjX(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        class: e.containerClasses
+      }, [n("div", {
+        staticClass: "MemberElement__name"
+      }, [e._v(e._s(e.options.definition.label)), n("small", {
+        staticClass: "text-info text-small"
+      }, [e._v(" " + e._s(e.options.data_type_ref))])]), e._v(" "), n("div", {
+        staticClass: "MemberElement__description",
+        domProps: {
+          innerHTML: e._s(e.options.definition.description)
+        }
+      }), e._v(" "), n("div", {
+        staticClass: "MemberElement__description",
+        domProps: {
+          innerHTML: e._s(e.options.definition.hint)
+        }
+      }), e._v(" "), e.model && "text" === e.options.data_type_ref ? n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.memberValue,
+          expression: "memberValue"
+        }],
+        staticClass: "MemberElement__data MemberElement__text",
+        domProps: {
+          value: e.memberValue
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.memberValue = t.target.value);
+          }
+        }
+      }) : e._e(), e._v(" "), e.model && "textarea" === e.options.data_type_ref ? n("textarea", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.memberValue,
+          expression: "memberValue"
+        }],
+        staticClass: "MemberElement__data MemberElement__textarea",
+        attrs: {
+          lines: "3"
+        },
+        domProps: {
+          value: e.memberValue
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.memberValue = t.target.value);
+          }
+        }
+      }) : e._e()]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  YSkz: function YSkz(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("/H2j"), n("mg1E");
+    }
+
+    var i = n("NgP3"),
+        r = n("YFjX"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-51c56e1c", null);
+    t.a = l.exports;
+  },
+  Yqbf: function Yqbf(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("JM5Z");
+    }
+
+    var i = n("3HHT"),
+        r = n("JEr2"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-85309220", null);
+    t.a = l.exports;
+  },
+  Z7VZ: function Z7VZ(e, t, n) {
+    "use strict";
+
+    var a = n("kvU2"),
+        i = n.n(a),
+        r = n("RyI1"),
+        o = n.n(r),
+        s = n("DtRx"),
+        l = n.n(s),
+        d = n("7+uW"),
+        c = n("NYxO"),
+        m = n("G+93"),
+        p = n("Cwpt"),
+        u = this && this.__assign || Object.assign || function (e) {
+      for (var t, n = 1, a = arguments.length; n < a; n++) {
+        t = arguments[n];
+
+        for (var i in t) {
+          Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
+        }
+      }
+
+      return e;
+    };
+
+    t.a = d.a.extend({
+      name: "ClassComponentDetail",
+      mixins: [p.b],
+      components: {
+        TextHighlighter: m.a
+      },
+      props: {
+        data: Object
+      },
+      data: function data() {
+        return {
+          isLinkedFromRoot: !!this.data.parentClassId,
+          memberFilter: ""
+        };
+      },
+      computed: u({
+        showLabel: Object(p.a)("showLabel"),
+        label: Object(p.a)("label"),
+        isRepeater: Object(p.a)("isRepeater"),
+        minInstances: Object(p.a)("minInstances"),
+        maxInstances: Object(p.a)("maxInstances"),
+        defaultInstances: Object(p.a)("defaultInstances")
+      }, Object(c.b)(["isRenderableInComponent"]), {
+        availableClasses: function availableClasses() {
+          var e = this.parentRenderable;
+
+          if ("ClassComponent" === e.type) {
+            var t = this.$store.getters.getClass(e.class_type);
+            return t || console.warn("Attempted to derive available classes for item with class " + e.class_type + ", but no class found"), t.relations.map(function (e) {
+              return e.name;
+            });
+          }
+
+          return "FormComponent" === e.type ? Object.keys(this.$store.state.form.classes) : [];
+        },
+        parentRenderable: function parentRenderable() {
+          return this.$store.getters.getParentOfRenderable(this.data.id);
+        },
+        memberDataSources: function memberDataSources() {
+          return this.$store.getters.getMembersFromDataSources();
+        },
+        isParentRoot: function isParentRoot() {
+          return this.$store.getters.getParentOfRenderable(this.data.id).id === this.$store.getters.getSelectedForm();
+        }
+      }),
+      methods: {
+        getMembersForClass: function getMembersForClass(e, t) {
+          var n = this;
+          return void 0 === t && (t = !0), e ? o()(this.$store.state.form.classes[e].members, function (e) {
+            return "ClassComponent" !== n.$store.getters.getMember(e).tagName && (!n.memberFilter || !t || -1 !== e.indexOf(n.memberFilter));
+          }) : [];
+        },
+        isDataSourceAppliedToMember: function isDataSourceAppliedToMember(e, t, n) {
+          if (!this.data.dataSourceMap || !Object.keys(this.data.dataSourceMap).length) return !1;
+          var a = this.$store.getters.getMember(e);
+          return this.data.dataSourceMap[a.member_ref] && this.data.dataSourceMap[a.member_ref].id === t && this.data.dataSourceMap[a.member_ref].memberRef === n;
+        },
+        modifyDerivedDataMap: function modifyDerivedDataMap(e, t) {
+          var n = e.target.value.split("::"),
+              a = n[0],
+              i = n[1],
+              r = this.$store.getters.getMember(t);
+          if (!i) return this.$store.commit("removeDataSourceFromClassMember", {
+            id: this.data.id,
+            memberRef: r.member_ref
+          });
+          this.$store.commit("addDataSourceToClassMember", {
+            id: this.data.id,
+            classMemberRef: r.member_ref,
+            dataSourceId: a,
+            dataSourceMemberRef: i
+          });
+        },
+        getRelationsForClass: function getRelationsForClass(e) {
+          if (!e) return [];
+          var t = this.$store.state.form.classes[e];
+          return t ? t.relations.map(function (e) {
+            return e.name;
+          }) : [];
+        },
+        isMemberInParent: function isMemberInParent(e) {
+          return this.$store.getters.isMemberInComponent({
+            memberId: e,
+            parentId: this.data.id
+          });
+        },
+        addMemberToComponent: function addMemberToComponent(e) {
+          var t = l()();
+          return this.$store.commit("createRenderable", u({}, i()(this.$store.state.form.components.memberElement), i()(this.$store.state.form.members[e]), {
+            id: t
+          })), this.$store.commit("addRenderablesToComponent", {
+            renderableIds: [t],
+            componentId: this.data.id
+          }), t;
+        },
+        addAllMembers: function addAllMembers() {
+          var e = this;
+          this.getMembersForClass(this.data.class_type).filter(function (t) {
+            return !e.$store.getters.isMemberInComponent({
+              memberId: t,
+              parentId: e.data.id
+            });
+          }).map(function (t) {
+            return e.addMemberToComponent(t);
+          });
+        },
+        removeMembers: function removeMembers(e) {
+          this.$store.commit("removeRenderablesFromComponent", {
+            renderableIds: e,
+            componentId: this.data.id
+          });
+        },
+        updateClassType: function updateClassType(e) {
+          var t,
+              n = e.target.value;
+
+          if ("ClassComponent" === this.parentRenderable.type) {
+            t = this.$store.getters.getClass(this.parentRenderable.class_type);
+            var a = t.relations.filter(function (e) {
+              return e.name === n;
+            });
+            a.length && a[0] && a[0].name || console.warn("updateClassType was called, but there is no relation for " + n + " in the parent class,\n\t\t\t\t\t\tand things have gone horribly, horribly wrong"), this.$store.commit("updateClassType", {
+              id: this.data.id,
+              classType: a[0].classId,
+              relationName: a[0].name,
+              parentClassId: t.id
+            });
+          } else this.$store.commit("updateClassType", {
+            id: this.data.id,
+            classType: n
+          });
+        }
+      }
+    });
+  },
+  ZWDk: function ZWDk(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("IB64");
+    }
+
+    var i = n("wLiT"),
+        r = n("FCjW"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-1336c0b0", null);
+    t.a = l.exports;
+  },
+  c9v3: function c9v3(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "DescriptionElementDetail"
+      }, [n("div", {
+        staticClass: "RenderableDetailView--input-container"
+      }, [n("span", {
+        staticClass: "RenderableDetailView--input-description"
+      }, [e._v("Name: ")]), e._v(" "), n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.name,
+          expression: "name"
+        }],
+        staticClass: "RenderableDetailView--input",
+        attrs: {
+          type: "text"
+        },
+        domProps: {
+          value: e.name
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.name = t.target.value);
+          }
+        }
+      })]), e._v(" "), n("div", {
+        staticClass: "RenderableDetailView--input-container"
+      }, [n("span", {
+        staticClass: "RenderableDetailView--input-description"
+      }, [e._v("Height (px): ")]), e._v(" "), n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.height,
+          expression: "height"
+        }],
+        staticClass: "RenderableDetailView--input form-control",
+        attrs: {
+          type: "number"
+        },
+        domProps: {
+          value: e.height
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.height = t.target.value);
+          }
+        }
+      })])]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  cDUf: function cDUf(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", [e.getRenderable(e.id).form_ref ? n("form", {
+        class: e.containerClasses,
+        on: {
+          submit: function submit(t) {
+            t.preventDefault(), e.onSubmit(t);
+          }
+        }
+      }, [e.items && e.items.length ? e._e() : n("p", {
+        staticClass: "PhoebeForm__empty-placeholder text-faded"
+      }, [e._v("Drag a component here to begin.")]), e._v(" "), n("draggable", {
+        staticClass: "PhoebeForm__drag-container",
+        attrs: {
+          options: {
+            group: {
+              name: "FormRoot",
+              put: ["Component", "FormRoot"]
+            },
+            animation: 150,
+            forceFallback: !0,
+            fallbackOnBody: !0
+          }
+        },
+        model: {
+          value: e.items,
+          callback: function callback(t) {
+            e.items = t;
+          },
+          expression: "items"
+        }
+      }, e._l(e.items, function (t) {
+        return n("FormNode", {
+          key: t,
+          attrs: {
+            id: t,
+            parentId: e.id,
+            dataArray: e.getFormData([e.getRenderable(t).class_type]),
+            composable: e.composable
+          }
+        });
+      }))], 1) : n("p", {
+        staticClass: "text-faded"
+      }, [e._v("Define a form ref above to drag components into a form.")])]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  edak: function edak(e, t, n) {
+    "use strict";
+
+    var a = n("DtRx"),
+        i = n.n(a),
+        r = n("7+uW"),
+        o = n("j3To"),
+        s = n("PoVU"),
+        l = n("LTsl"),
+        d = n("G+Cw");
+    t.a = r.a.extend({
+      name: "app",
+      components: {
+        PhoebeForm: s.a,
+        RenderableDetailView: d.a,
+        ComponentMenuView: o.a,
+        PhoebeFormMetaEditor: l.a
+      },
+      beforeCreate: function beforeCreate() {
+        if (this.$store.dispatch("fetchClasses", window.APP_FORM.classes), window.APP_FORM && window.APP_FORM.definition && window.APP_FORM.definition.renderables) this.$store.commit("rehydrateRenderables", window.APP_FORM.definition.renderables), this.$store.commit("selectForm", window.APP_FORM.definition.rootNode);else {
+          var e = i()();
+          this.$store.commit("createRenderable", {
+            id: e,
+            name: "New form",
+            gridItems: [],
+            items: [],
+            dataSources: {},
+            type: "FormComponent"
+          }), this.$store.commit("selectForm", e);
+        }
+      },
+      computed: {
+        renderableData: function renderableData() {
+          return this.$store.getters.getRenderables();
+        },
+        selectedForm: function selectedForm() {
+          return this.$store.getters.getSelectedForm();
+        }
+      }
+    });
+  },
+  fHNX: function fHNX(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "MemberElementDetail"
+      }, [e._l(e.fieldProperties, function (t) {
+        return n("div", {
+          key: t
+        }, [n(t, {
+          tag: "div",
+          attrs: {
+            field: e.data.definition,
+            id: e.data.id
+          }
+        })]);
+      }), e._v(" "), e.canShowInGrid ? n("p", [e._v("This data can't be shown in the form instance grid, as one of its parents is a repeater.")]) : n("div", {
+        staticClass: "checkbox"
+      }, [n("label", [n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.displayInGrid,
+          expression: "displayInGrid"
+        }],
+        attrs: {
+          type: "checkbox"
+        },
+        domProps: {
+          checked: Array.isArray(e.displayInGrid) ? e._i(e.displayInGrid, null) > -1 : e.displayInGrid
+        },
+        on: {
+          change: function change(t) {
+            var n = e.displayInGrid,
+                a = t.target,
+                i = !!a.checked;
+
+            if (Array.isArray(n)) {
+              var r = e._i(n, null);
+
+              a.checked ? r < 0 && (e.displayInGrid = n.concat([null])) : r > -1 && (e.displayInGrid = n.slice(0, r).concat(n.slice(r + 1)));
+            } else e.displayInGrid = i;
+          }
+        }
+      }), e._v(" Show in the form instance grid\n\t\t")])])], 2);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  hSFW: function hSFW(e, t, n) {
+    "use strict";
+
+    var a = n("EFqf"),
+        i = n.n(a),
+        r = n("7+uW");
+    t.a = r.a.extend({
+      name: "DescriptionElement",
+      props: {
+        options: {
+          type: Object,
+          required: !0
+        },
+        composable: Boolean
+      },
+      computed: {
+        containerClasses: function containerClasses() {
+          return {
+            DescriptionElement: !0,
+            "DescriptionElement--composable": this.composable
+          };
+        }
+      },
+      methods: {
+        marked: function marked(e) {
+          return i()(e);
+        }
+      }
+    });
+  },
+  iV5y: function iV5y(e, t, n) {
+    "use strict";
+
+    var a = n("EFqf"),
+        i = n.n(a),
+        r = n("7+uW"),
+        o = n("Cwpt");
+    t.a = r.a.extend({
+      name: "GuidanceElement",
+      mixins: [o.b],
+      props: {
+        options: {
+          type: Object,
+          required: !0
+        },
+        composable: Boolean
+      },
+      computed: {
+        containerClasses: function containerClasses() {
+          return {
+            GuidanceElement: !0,
+            "GuidanceElement--composable": this.composable,
+            "GuidanceElement--selected": this.isSelected
+          };
+        }
+      },
+      methods: {
+        marked: function marked(e) {
+          return i()(e);
+        }
+      }
+    });
+  },
+  iW0m: function iW0m(e, t) {},
+  ig27: function ig27(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("qnv3"),
+        r = n("mD8z"),
+        o = n("Mw02"),
+        s = n("Yqbf"),
+        l = n("YSkz"),
+        d = n("oVcY");
+    t.a = a.a.extend({
+      name: "Renderable",
+      props: {
+        component: String,
+        parentId: [String, Number],
+        componentProps: Object
+      },
+      components: {
+        GuidanceElement: o.a,
+        DescriptionElement: r.a,
+        MemberElement: l.a,
+        SpacerElement: d.a,
+        ClassComponent: i.a,
+        HeadingElement: s.a
+      },
+      data: function data() {
+        return {
+          isOpen: !1
+        };
+      },
+      computed: {
+        isSelected: function isSelected() {
+          return this.componentProps.composable && this.$store.state.form.selectedRenderable === this.componentProps.options.id;
+        }
+      },
+      methods: {
+        selectRenderable: function selectRenderable(e) {
+          e.preventDefault(), e.stopPropagation(), this.$store.commit("selectRenderable", this.componentProps.options.id);
+        },
+        removeRenderable: function removeRenderable(e) {
+          e.preventDefault(), e.stopPropagation(), this.$store.commit("removeRenderablesFromComponent", {
+            renderableIds: [this.componentProps.options.id],
+            componentId: this.parentId
+          });
+        }
+      },
+      render: function render(e) {
+        var t = this;
+        return e("div", {
+          class: {
+            Renderable: !0,
+            "Renderable--is-selected": this.isSelected,
+            "Renderable--composable": this.componentProps.composable,
+            "Renderable--is-open": this.isOpen
+          },
+          on: {
+            click: this.selectRenderable
+          }
+        }, [this.componentProps.composable && e("div", {
+          class: "Renderable--tag"
+        }, this.componentProps.options.tagName), e(this.component, {
+          props: this.componentProps
+        }, [e("slot", this.$slots.default)]), this.componentProps.composable && e("button", {
+          class: "Renderable__btn-delete btn btn-danger btn-xs",
+          on: {
+            click: this.removeRenderable
+          }
+        }, [e("span", {
+          class: "glyphicon glyphicon-remove"
+        })]), e("button", {
+          class: "Renderable__btn-open btn btn-default btn-xs",
+          on: {
+            click: function click() {
+              return t.isOpen = !t.isOpen;
+            }
+          }
+        }, [e("i", {
+          class: "fa fa-caret-" + (this.isOpen ? "down" : "up")
+        })])]);
+      }
+    });
+  },
+  j3To: function j3To(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("NAjj");
+    }
+
+    var i = n("O+WF"),
+        r = n("0C09"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-76726ee7", null);
+    t.a = l.exports;
+  },
+  kmUT: function kmUT(e, t) {},
+  mD8z: function mD8z(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("R219");
+    }
+
+    var i = n("hSFW"),
+        r = n("AOfL"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, null, null);
+    t.a = l.exports;
+  },
+  mg1E: function mg1E(e, t) {},
+  mvwg: function mvwg(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "ClassComponentDetail"
+      }, [e.data.class_type ? n("div", [n("strong", [e._v("Class:")]), e._v(" " + e._s(e.data.class_type) + "\n\t\t"), e.data.relationName ? n("span", [e._v("(" + e._s(e.data.relationName) + ")")]) : e._e()]) : n("div", [n("strong", [e._v("Class:")]), e._v(" "), n("select", {
+        on: {
+          change: e.updateClassType
+        }
+      }, [n("option", {
+        attrs: {
+          disabled: "",
+          selected: "",
+          value: ""
+        }
+      }, [e._v("Select a class")]), e._v(" "), e._l(e.availableClasses, function (t) {
+        return n("option", {
+          key: t,
+          domProps: {
+            value: t
+          }
+        }, [e._v("\n\t\t\t\t" + e._s(t) + "\n\t\t\t")]);
+      })], 2)]), e._v(" "), n("div", {
+        staticClass: "checkbox"
+      }, [n("label", [n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.showLabel,
+          expression: "showLabel"
+        }],
+        attrs: {
+          type: "checkbox"
+        },
+        domProps: {
+          checked: Array.isArray(e.showLabel) ? e._i(e.showLabel, null) > -1 : e.showLabel
+        },
+        on: {
+          change: function change(t) {
+            var n = e.showLabel,
+                a = t.target,
+                i = !!a.checked;
+
+            if (Array.isArray(n)) {
+              var r = e._i(n, null);
+
+              a.checked ? r < 0 && (e.showLabel = n.concat([null])) : r > -1 && (e.showLabel = n.slice(0, r).concat(n.slice(r + 1)));
+            } else e.showLabel = i;
+          }
+        }
+      }), e._v("Show label\n\t\t")])]), e._v(" "), e.showLabel ? n("div", {
+        staticClass: "ClassComponentDetail__input-container"
+      }, [n("label", {
+        staticClass: "control-label"
+      }, [e._v("Label")]), e._v(" "), n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.label,
+          expression: "label"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          type: "text"
+        },
+        domProps: {
+          value: e.label
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.label = t.target.value);
+          }
+        }
+      })]) : e._e(), e._v(" "), n("div", {
+        staticClass: "checkbox"
+      }, [n("label", [n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.isRepeater,
+          expression: "isRepeater"
+        }],
+        attrs: {
+          type: "checkbox"
+        },
+        domProps: {
+          checked: Array.isArray(e.isRepeater) ? e._i(e.isRepeater, null) > -1 : e.isRepeater
+        },
+        on: {
+          change: function change(t) {
+            var n = e.isRepeater,
+                a = t.target,
+                i = !!a.checked;
+
+            if (Array.isArray(n)) {
+              var r = e._i(n, null);
+
+              a.checked ? r < 0 && (e.isRepeater = n.concat([null])) : r > -1 && (e.isRepeater = n.slice(0, r).concat(n.slice(r + 1)));
+            } else e.isRepeater = i;
+          }
+        }
+      }), e._v("Repeater\n\t\t")])]), e._v(" "), e.isRepeater ? n("span", [n("div", {
+        staticClass: "ClassComponentDetail__input-container"
+      }, [n("span", {
+        staticClass: "ClassComponentDetail__input-description"
+      }, [e._v("Min. instances:")]), e._v(" "), n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.minInstances,
+          expression: "minInstances"
+        }],
+        staticClass: "ClassComponentDetail__input form-control",
+        attrs: {
+          type: "number"
+        },
+        domProps: {
+          value: e.minInstances
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.minInstances = t.target.value);
+          }
+        }
+      })]), e._v(" "), n("div", {
+        staticClass: "ClassComponentDetail__input-container"
+      }, [n("span", {
+        staticClass: "ClassComponentDetail__input-description"
+      }, [e._v("Max. instances:")]), e._v(" "), n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.maxInstances,
+          expression: "maxInstances"
+        }],
+        staticClass: "ClassComponentDetail__input form-control",
+        attrs: {
+          type: "number"
+        },
+        domProps: {
+          value: e.maxInstances
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.maxInstances = t.target.value);
+          }
+        }
+      })]), e._v(" "), n("div", {
+        staticClass: "ClassComponentDetail__input-container"
+      }, [n("span", {
+        staticClass: "ClassComponentDetail__input-description"
+      }, [e._v("Default instances:")]), e._v(" "), n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.defaultInstances,
+          expression: "defaultInstances"
+        }],
+        staticClass: "ClassComponentDetail__input form-control",
+        attrs: {
+          type: "number"
+        },
+        domProps: {
+          value: e.defaultInstances
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.defaultInstances = t.target.value);
+          }
+        }
+      })])]) : e._e(), e._v(" "), n("hr"), e._v(" "), e.data.class_type ? n("h4", [e._v("\n\t\tMembers (" + e._s(e.getMembersForClass(e.data.class_type, !1).length) + ")\n\t\t"), n("span", {
+        staticClass: "pull-right"
+      }, [n("button", {
+        staticClass: "btn btn-info btn-xs",
+        on: {
+          click: e.addAllMembers
+        }
+      }, [e._v("Add all")]), e._v(" "), n("button", {
+        staticClass: "btn btn-info btn-xs",
+        on: {
+          click: function click(t) {
+            e.removeMembers(e.data.items);
+          }
+        }
+      }, [e._v("Remove all")])])]) : n("p", [e._v("Waiting for class")]), e._v(" "), n("div", {
+        staticClass: "form-group"
+      }, [n("input", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.memberFilter,
+          expression: "memberFilter"
+        }],
+        staticClass: "form-control input-sm",
+        attrs: {
+          type: "text",
+          placeholder: "Search for members"
+        },
+        domProps: {
+          value: e.memberFilter
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.memberFilter = t.target.value);
+          }
+        }
+      })]), e._v(" "), e._l(e.getMembersForClass(e.data.class_type), function (t) {
+        return n("div", {
+          key: t,
+          staticClass: "ClassComponentDetail__member-container"
+        }, [n("span", {
+          staticClass: "ClassComponentDetail__member-description"
+        }, [n("TextHighlighter", {
+          attrs: {
+            originalString: t,
+            searchString: e.memberFilter
+          }
+        })], 1), e._v(" "), n("span", {
+          staticClass: "ClassComponentDetail__member-control"
+        }, [Object.keys(e.memberDataSources).length ? n("select", {
+          staticClass: "btn btn-xs btn-default",
+          on: {
+            change: function change(n) {
+              return e.modifyDerivedDataMap(n, t);
+            }
+          }
+        }, [n("option", {
+          attrs: {
+            default: ""
+          }
+        }, [e._v("Add a data source")]), e._v(" "), e._l(e.memberDataSources, function (a, i) {
+          return n("optgroup", {
+            key: i,
+            attrs: {
+              label: a.label
+            }
+          }, [n("option", {
+            key: "_uuid",
+            domProps: {
+              value: i + "::_uuid",
+              selected: e.isDataSourceAppliedToMember(t, i, "_uuid")
+            }
+          }, [e._v("uuid")]), e._v(" "), e._l(a.members, function (a) {
+            return n("option", {
+              key: a,
+              domProps: {
+                value: i + "::" + a,
+                selected: e.isDataSourceAppliedToMember(t, i, a)
+              }
+            }, [e._v(e._s(a))]);
+          })], 2);
+        })], 2) : e._e(), e._v(" "), e.isMemberInParent(t) ? n("span", {
+          staticClass: "ClassComponentDetail__tick fa fa-check"
+        }) : e._e(), e._v(" "), e.isMemberInParent(t) ? e._e() : n("button", {
+          staticClass: "ClassComponentDetail__add-member-btn btn btn-default btn-xs",
+          on: {
+            click: function click(n) {
+              e.addMemberToComponent(t);
+            }
+          }
+        }, [e._v("Add")])])]);
+      }), e._v(" "), e.getRelationsForClass(e.data.class_type).length ? n("hr") : e._e(), e._v(" "), e.getRelationsForClass(e.data.class_type).length ? n("h4", [e._v("\n\t\tRelations (" + e._s(e.getRelationsForClass(e.data.class_type).length) + ")\n\t")]) : e._e(), e._v(" "), e._l(e.getRelationsForClass(e.data.class_type), function (t) {
+        return n("div", {
+          key: t,
+          staticClass: "ClassComponentDetail__relation-container"
+        }, [e._v("\n\t\t\t" + e._s(t) + "\n\t")]);
+      })], 2);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  n4oR: function n4oR(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW");
+    t.a = a.a.extend({
+      name: "TextHighlighter",
+      props: {
+        originalString: String,
+        searchString: String
+      },
+      computed: {
+        stringData: function stringData() {
+          var e, t, n;
+
+          if (this.searchString && this.originalString) {
+            var a = this.originalString.toLowerCase().indexOf(this.searchString.toLowerCase());
+
+            if (-1 !== a) {
+              var i = a + this.searchString.length;
+              e = this.originalString.substring(0, a), t = this.originalString.substring(a, i), n = this.originalString.substring(i, this.originalString.length);
+            }
+          }
+
+          return {
+            leadingString: e,
+            highlightString: t,
+            trailingString: n
+          };
+        }
+      }
+    });
+  },
+  nY9z: function nY9z(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", {
+        staticClass: "DescriptionElementDetail"
+      }, [n("div", {
+        staticClass: "form-group"
+      }, [n("label", [e._v("Text")]), e._v(" "), n("textarea", {
+        directives: [{
+          name: "model",
+          rawName: "v-model",
+          value: e.text,
+          expression: "text"
+        }],
+        staticClass: "form-control",
+        attrs: {
+          rows: 10
+        },
+        domProps: {
+          value: e.text
+        },
+        on: {
+          input: function input(t) {
+            t.target.composing || (e.text = t.target.value);
+          }
+        }
+      })])]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  oVcY: function oVcY(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("S3o6");
+    }
+
+    var i = n("FOQD"),
+        r = n("rctB"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-dacc0d6c", null);
+    t.a = l.exports;
+  },
+  qnv3: function qnv3(e, t, n) {
+    "use strict";
+
+    function a(e) {
+      n("kmUT");
+    }
+
+    var i = n("sX91"),
+        r = n("/ZoI"),
+        o = n("VU/8"),
+        s = a,
+        l = o(i.a, r.a, !1, s, "data-v-b29a7d8a", null);
+    t.a = l.exports;
+  },
+  rctB: function rctB(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("div", [e.composable ? e._e() : n("div", {
+        class: e.containerClasses,
+        style: {
+          height: !e.composable && e.options.params.height + "px"
+        }
+      }), e._v(" "), e.composable ? n("p", [e._v("Spacer")]) : e._e()]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  },
+  sX91: function sX91(e, t, n) {
+    "use strict";
+
+    var a = n("7+uW"),
+        i = n("Cwpt");
+    t.a = a.a.extend({
+      name: "ClassComponent",
+      mixins: [i.b],
+      props: {
+        id: [String, Number],
+        options: {
+          type: Object,
+          required: !0
+        },
+        composable: Boolean,
+        isLast: Boolean,
+        index: Number
+      },
+      computed: {
+        containerClasses: function containerClasses() {
+          return {
+            ClassComponent: !0,
+            "ClassComponent--composable": this.composable,
+            "ClassComponent--repeatable": this.options.definition.isRepeater,
+            "ClassComponent--selected": this.isSelected
+          };
+        },
+        canRepeat: function canRepeat() {
+          return !this.composable && this.isLast && this.options.definition && this.options.definition.isRepeater;
+        }
+      }
+    });
+  },
+  wLiT: function wLiT(e, t, n) {
+    "use strict";
+
+    var a = n("kvU2"),
+        i = n.n(a),
+        r = n("WlNK"),
+        o = n.n(r),
+        s = n("DlMc"),
+        l = (n.n(s), n("7+uW")),
+        d = n("DAYN"),
+        c = n.n(d),
+        m = n("54TA"),
+        p = this && this.__assign || Object.assign || function (e) {
+      for (var t, n = 1, a = arguments.length; n < a; n++) {
+        t = arguments[n];
+
+        for (var i in t) {
+          Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
+        }
+      }
+
+      return e;
+    };
+
+    t.a = l.a.extend({
+      name: "FormNode",
+      props: {
+        id: String,
+        composable: Boolean,
+        dataArray: Array,
+        model: Object,
+        modelId: [Number, String],
+        parentId: [Number, String]
+      },
+      components: {
+        Renderable: m.a,
+        draggable: c.a
+      },
+      computed: {
+        items: {
+          get: function get() {
+            var e = this.$store.state.form.renderables[this.id];
+            return e ? e.items : null;
+          },
+          set: function set(e) {
+            var t = this,
+                n = o()(e, Object.keys(this.$store.state.form.renderables));
+
+            if (n.length) {
+              var a = n.map(function (e) {
+                return Object(s.v4)();
+              });
+              n.forEach(function (e, n) {
+                t.$store.commit("createRenderable", p({}, i()(t.$store.state.form.components[e]), {
+                  id: a[n]
+                }));
+              }), e = e.map(function (e, t) {
+                var i = n.indexOf(e);
+                return -1 !== i ? a[i] : e;
+              });
+            }
+
+            this.$store.commit("updateRenderableItems", {
+              id: this.id,
+              items: e
+            });
+          }
+        },
+        renderable: function renderable() {
+          return this.$store.state.form.renderables[this.id] || null;
+        },
+        containerClasses: function containerClasses() {
+          return {
+            FormNode: !0,
+            "FormNode--composable": this.composable,
+            "FormNode--array": !!this.dataArray
+          };
+        },
+        draggableClasses: function draggableClasses() {
+          return {
+            FormNode__draggable: !0,
+            "FormNode__draggable--is-empty": this.items && !this.items.length
+          };
+        },
+        classResource: function classResource() {
+          return this.renderable ? this.$store.state.form.data[this.renderable.class_type] || null : null;
+        }
+      },
+      methods: {
+        getClassModel: function getClassModel(e) {
+          return this.classResource ? this.classResource[e] : null;
+        },
+        getClassTypeFromRenderable: function getClassTypeFromRenderable(e) {
+          return this.$store.state.form.renderables[e].class_type || null;
+        },
+        getMappedFields: function getMappedFields(e, t) {
+          if (!e || !t) return null;
+          var n = this.classResource[t].$mappedFields;
+          return n ? n[e] : null;
+        },
+        getComponentProps: function getComponentProps() {
+          return {
+            options: this.renderable,
+            composable: this.composable
+          };
+        }
+      }
+    });
+  },
+  x35b: function x35b(e, t, n) {
+    "use strict";
+
+    Object.defineProperty(t, "__esModule", {
+      value: !0
+    });
+    var a = n("kbi+"),
+        i = n.n(a),
+        r = n("hz+3"),
+        o = n.n(r),
+        s = n("7+uW"),
+        l = n("DAYN"),
+        d = n.n(l),
+        c = n("NYxO"),
+        m = n("VYho"),
+        p = n("M93x");
+    s.a.config.productionTip = !1, s.a.use(c.a);
+    var u = new c.a.Store({
+      strict: !0,
+      modules: {
+        form: m.a
+      }
+    });
+    new s.a({
+      el: "#app",
+      store: u,
+      template: "<App/>",
+      components: {
+        App: p.a
+      }
+    }), t.default = u, s.a.component("form-builder-field-form-dynamic-map", s.a.extend({
+      props: {
+        field: Object
+      },
+      template: "\n\t\t\t<div>\n\t\t\t\t<div class='form-group' >\n\t\t\t\t\t<label class='control-label' for='placeholder'>Data Map Key</label>\n\t\t\t\t\t<select v-model='field.dataMapKey' class='form-control'>\n\t\t\t\t\t\t<option v-for='(type, key) in mapTypes' :value='key'>\n\t\t\t\t\t\t\t{{ type }}\n\t\t\t\t\t\t</option>\n\t\t\t\t\t</select>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t",
+      computed: {
+        mapTypes: function mapTypes() {
+          return this.$store.state.dds.map_types;
+        }
+      },
+      methods: {
+        updateProvider: function updateProvider(e) {
+          this.field.dataMapProvider = e.target.value, this.$store.commit("updateField", {
+            field: this.field
+          });
+        },
+        updateKey: function updateKey(e) {
+          this.field.dataMapKey = e.target.value, this.$store.commit("updateField", {
+            field: this.field
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-decimal", s.a.extend({
+      props: {
+        field: Object
+      },
+      template: "\n\t\t<div class='form-group'>\n\t\t\t<label class='control-label' for='data-name'>Decimal Places</label>\n\t\t\t<div class='hint-block hint-top  '>Set the max number of decimal places</div>\n\t\t\t<input class='form-control' :value='field.decimal' @change='update($event.target.value)' type='number' min=0 max=10 id='data-decimal' name='decimal'  />\n\t\t</div>\n\t",
+      methods: {
+        update: function update(e) {
+          this.field.decimal = e, this.$store.commit("updateField", {
+            field: this.field
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-delete", s.a.extend({
+      props: {
+        field: Object,
+        wrapperClass: String,
+        btnClass: String
+      },
+      data: function data() {
+        return {
+          isDeleting: !1
+        };
+      },
+      template: "\n\t\t<button @click='click' class='btn btn-danger' :class='btnClass'><i class='fa fa-trash'></i><span v-if='isDeleting'>Deleting...</span></button>\n\t",
+      methods: {
+        click: function click(e) {
+          var t = this;
+          t.isDeleting = !0, this.$store.dispatch("deleteField", {
+            field: this.field
+          }).then(function () {
+            t.isDeleting = !1;
+          }, function () {
+            t.isDeleting = !1;
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-hint", s.a.extend({
+      props: {
+        field: Object,
+        id: String
+      },
+      template: "\n\t\t<div class='form-group'>\n\t\t\t<label class='control-label' for='hint'>Guide Text</label>\n\t\t\t<input v-model='computedHint' type='text' id='hint' class='form-control' name='hint' placeholder='Add additional guide text' />\n\t\t</div>\n\t",
+      computed: {
+        computedHint: {
+          get: function get() {
+            return this.field.hint;
+          },
+          set: function set(e) {
+            this.$store.commit("updateRenderableDefinition", {
+              id: this.id,
+              property: "hint",
+              value: e
+            });
+          }
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-label", s.a.extend({
+      props: {
+        field: Object,
+        id: String
+      },
+      template: "\n\t\t<div class='form-group'>\n\t\t\t<label class='control-label' for='label'>Label</label>\n\t\t\t\x3c!--<div class='hint-block hint-top'>Set the label for the field</div>--\x3e\n\t\t\t<input :value='field.label' @input='update' type='text' id='label' class='form-control' name='label' placeholder='Set the label for the field' />\n\t\t</div>\n\t",
+      methods: {
+        update: function update(e) {
+          this.$store.commit("updateRenderableDefinition", {
+            id: this.id,
+            property: "label",
+            value: e.target.value
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-list-items", s.a.extend({
+      props: {
+        field: Object
+      },
+      components: {
+        draggable: d.a
+      },
+      template: "\n\t\t<div class='form-group'>\n\t\t\t<label class='control-label' for='form-text'>Options <button @click='addOption()' class='btn btn-default' style='border-radius:100px'>+</button></label>\n\t\t\t<draggable v-model='choicesList' :options='dragOptions'>\n\t\t\t\t<div class='input-group' v-for='(item, index) in choicesList' style='padding:5px 0'>\n\t\t\t\t\t<div class='dragGrip' style='display: table-cell'></div>\n\t\t\t\t\t<input style='width:50%' placeholder='Key, e.g GB' :value='item.key' @input='updateOptionKey($event, item)' type='text' name='options' class='form-control' >\n\t\t\t\t\t<input style='width:50%' placeholder='Description, e.g Great Britain' :value='item.value' @input='updateOptionValue($event, item)' type='text' name='options' class='form-control' >\n\t\t\t\t\t<span style='padding:8px 8px' :disabled='field.items.length == 1' @click='removeOption(item, index)' data-remove-btn='' class='btn btn-default input-group-addon' >-</span>\n\t\t\t\t\t<span style='padding:8px 8pxborder-radius: 0 3px 3px 0' @click='addOption(item, index)' data-add-btn='' class='btn btn-default input-group-addon '>+</span>\n\t\t\t\t</div>\n\t\t\t</draggable>\n\t\t</div>\n\t",
+      computed: {
+        dragOptions: function dragOptions() {
+          return {
+            animation: 100,
+            ghostClass: "ghost"
+          };
+        },
+        choicesList: {
+          get: function get() {
+            return this.field.items;
+          },
+          set: function set(e) {
+            this.field.items = e, this.$store.commit("updateField", {
+              field: this.field
+            });
+          }
+        }
+      },
+      methods: {
+        addOption: function addOption(e, t) {
+          var n = this.field.items.length + 1,
+              a = {
+            key: "Key " + n,
+            value: "Option " + n
+          };
+          o()(e) && o()(t) ? this.field.items.unshift(a) : this.field.items.splice(t + 1, 0, a), this.$store.commit("updateField", {
+            field: this.field
+          });
+        },
+        removeOption: function removeOption(e, t) {
+          this.field.items.length > 1 && (this.field.items.splice(t, 1), this.$store.commit("updateField", {
+            field: this.field
+          }));
+        },
+        updateOptionKey: function updateOptionKey(e, t) {
+          t = i()(this.field.items, {
+            key: t.key
+          }), t.key = e.target.value, this.$store.commit("updateField", {
+            field: this.field
+          });
+        },
+        updateOptionValue: function updateOptionValue(e, t) {
+          t = i()(this.field.items, {
+            key: t.key
+          }), t.value = e.target.value, this.$store.commit("updateField", {
+            field: this.field
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-name", s.a.extend({
+      props: {
+        field: Object
+      },
+      template: "\n\t\t<div class='form-group form-group--code-label '>\n\t\t\t<label class='control-label' for='data-name'>Member name</label>\n\t\t\t<input :value='field.name' readonly @change='update' type='text' id='data-name' class='form-control' name='hint'  />\n\t\t</div>\n\t",
+      methods: {
+        update: function update(e) {
+          var t = e.target.value;
+          t.toLowerCase().replace(/ +/g, "_").replace(/[^a-z0-9_]/g, ""), this.field.name;
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-placeholder", s.a.extend({
+      props: {
+        field: Object
+      },
+      template: "\n\t\t<div class='form-group' >\n\t\t\t<label class='control-label' for='placeholder'>Placeholder</label>\n\t\t\t<input :value='field.placeholder' @input='update' type='text' id='placeholder' class='form-control' name='placeholder' placeholder='Add helper placeholder text'/>\n\t\t</div>\n\t",
+      methods: {
+        update: function update(e) {
+          this.$store.commit("updateRenderableDefinition", {
+            id: this.field.id,
+            property: "placeholder",
+            value: e.target.value
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-required", s.a.extend({
+      props: {
+        field: Object,
+        id: String
+      },
+      template: "\n\t\t<div class='form-group'>\n\t\t\t<div class='checkbox'>\n\t\t\t\t<label>\n\t\t\t\t\t<input type='checkbox' :checked='field.required' @change='update' />Required\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</div>\n\t",
+      methods: {
+        update: function update(e) {
+          this.$store.commit("updateRenderableDefinition", {
+            id: this.id,
+            property: "required",
+            value: e.target.checked
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-readonly", s.a.extend({
+      props: {
+        field: Object,
+        id: String
+      },
+      template: "\n\t\t<div class='form-group'>\n\t\t\t<div class='checkbox'>\n\t\t\t\t<label>\n\t\t\t\t\t<input type='checkbox' :checked='field.readOnly' @change='update' />Read only\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</div>\n\t",
+      methods: {
+        update: function update(e) {
+          this.$store.commit("updateRenderableDefinition", {
+            id: this.id,
+            property: "readOnly",
+            value: e.target.checked
+          });
+        }
+      }
+    })), s.a.component("form-builder-field-form-element-type", s.a.extend({
+      props: {
+        field: Object
+      },
+      template: "\n\t\t\t<div class='hr-text'>{{field.classLabel}}</div>\n\t\t",
+      methods: {
+        update: function update(e) {
+          var t = e.target.value;
+          t.toLowerCase().replace(/ +/g, "_").replace(/[^a-z0-9_]/g, ""), this.field.name;
+        }
+      }
+    })), s.a.component("form-builder-field-form-link-multiplicity", s.a.extend({
+      props: {
+        field: Object
+      },
+      template: "\n\t\t\t<div class='form-group form-group--code-label '>\n\t\t\t\t<label class='control-label' for='data-name'>Multiple Links?</label>\n\t\t\t\t<neon-switch-input :value='field.multiple' offLabel='No' onLabel='Yes' @input='update' style='float:rightmargin-top:0' class='switch--small' ></neon-switch-input>\n\t\t\t</div>\n\t\t",
+      methods: {
+        update: function update(e) {
+          this.field.multiple = e, this.$store.commit("updateField", {
+            field: this.field
+          });
+        }
+      }
+    })), s.a.component("form-field-text", s.a.extend({
+      props: {
+        field: {
+          type: Object,
+          default: function _default() {
+            return {
+              class: "\\neon\\core\\form\\fields\\Text",
+              classLabel: "Text",
+              required: !1,
+              name: "text",
+              label: "Text",
+              hint: "",
+              placeholder: "",
+              type: "text"
+            };
+          }
+        },
+        model: String
+      },
+      template: "\n\t\t<div class='form-group' :class='{ 'required' : field.required }'>\n\t\t\t<label contenteditable='true' v-if='field.label' class='control-label' :for='field.name'>{{ field.label }}</label>\n\t\t\t<div class='hint-block hint-top'>{{ field.hint }}</div>\n\t\t\t<input :value='model' @input='$emit('input', $event.target.value)' :type='field.type' class='form-control' :name='field.name' :placeholder='field.placeholder' />\n\t\t</div>\n\t"
+    })), s.a.component("neon-switch-input", s.a.extend({
+      props: {
+        name: {
+          type: String
+        },
+        size: {
+          type: String,
+          default: ""
+        },
+        value: Boolean,
+        onLabel: {
+          type: String,
+          default: "On"
+        },
+        offLabel: {
+          type: String,
+          default: "Off"
+        }
+      },
+      template: "\n\t\t<label :class=''switch switch--' + size'>\n\t\t\t<input :name='name' type='hidden' value='0' />\n\t\t\t<input :name='name' type='checkbox' value='1' @change='update' :checked='value' >\n\t\t\t<div class='switch__slider switch__slider--round'>\n\t\t\t\t<div class='switch__on'>{{ onLabel }}</div>\n\t\t\t\t<div class='switch__off'>{{ offLabel }}</div>\n\t\t\t</div>\n\t\t</label>\n\t",
+      methods: {
+        update: function update() {
+          this.$emit("input", !this.value);
+        }
+      }
+    }));
+  },
+  xnNO: function xnNO(e, t) {},
+  zl7V: function zl7V(e, t, n) {
+    "use strict";
+
+    var a = function a() {
+      var e = this,
+          t = e.$createElement,
+          n = e._self._c || t;
+      return n("span", {
+        staticClass: "TextHighlighter"
+      }, [e.stringData.highlightString ? n("span", [e._v("\n\t\t" + e._s(e.stringData.leadingString)), n("span", {
+        staticClass: "TextHighlighter--is-highlighted"
+      }, [e._v(e._s(e.stringData.highlightString))]), e._v(e._s(e.stringData.trailingString) + "\n\t")]) : n("span", [e._v(e._s(e.originalString))])]);
+    },
+        i = [],
+        r = {
+      render: a,
+      staticRenderFns: i
+    };
+
+    t.a = r;
+  }
+}, ["x35b"]);

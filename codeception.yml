@@ -1,0 +1,32 @@
+actor: Tester
+bootstrap: _bootstrap.php
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+    output: tests/_output
+settings:
+    colors: true
+    memory_limit: 3048M
+    # For jenkins processing of the --xml output
+    strict_xml: true
+    # randomize test order
+    shuffle: false
+
+extensions:
+    enabled:
+        - neon\core\test\WebBrowserDriver
+    config:
+        neon\core\test\WebBrowserDriver:
+            # This must be DIFFERENT to the test web server port
+            port: 9515
+            suites: ['acceptance']
+coverage:
+    enabled: true
+    # url of file which includes c3 router.
+    c3_url: 'http://localhost:8888/c3.php'
+    whitelist:
+        include:
+            - neon/*.php

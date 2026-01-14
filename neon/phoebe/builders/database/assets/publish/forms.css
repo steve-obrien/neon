@@ -1,0 +1,81 @@
+.l__form-builder-sidebar { width:300px;  border-right:1px solid #ccc; background-color: #f7f9fa; overflow-y:scroll; z-index:1; }
+.l__form-builder-sidebar__body { padding:10px; }
+.l__form-builder-preview {  padding: 0 20px 20px 20px; overflow-y:scroll; background-color:#fff; min-width:400px; }
+
+/**
+ * extends btn
+ */
+.btn--component-icon { cursor: move; width: 126px; text-align: left; margin: 4px 3px; overflow:hidden; text-overflow: ellipsis;}
+.formBuilder_fields { position: relative; min-height: 200px; padding-top: 2px;}
+/**
+ * Set a field as currently being edited or selected
+ * Note: this has a javascript dependancy
+ */
+.formBuilder_field.m_loading {padding: 10px;}
+.neonForm.neonForm--fancy .form-group{ margin:0; border: 2px solid transparent; }
+
+/* wrapper class around a field */
+
+/**
+ * We only want to apply to the first level of form-group classes found - as the form builder is responsible for
+ * styling the fields - We do not want to remove margin to form-groups used to arrange multiple fields within a parent field.
+ */
+.formBuilder_field:hover,
+.formBuilder_field.ui-sortable-helper {  cursor:pointer; }
+.formBuilder_field > .form-group { margin:0; }
+.formBuilder_field { position: relative; margin:10px 1px 10px 1px; border: 2px solid transparent; }
+.formBuilder_field.m_selected { border: 2px solid #009ef4 !important; border-radius: 3px; box-shadow: 0 4px 10px rgba(0,0,0,.2); }
+
+/*.neonForm.neonForm--fancy .form-group.formBuilder_field--is-selected {background-color:#fffbdf !important; border-left: 3px solid #efda69;}*/
+/*.formBuilder_field--is-selected {background-color:#fffbdf !important; border-left: 3px solid #efda69;}*/
+
+
+/*.component-drop-marker{width:100%;pointer-events:none;border:2px solid #00adff;position:absolute;list-style:none;visibility:visible!important;box-shadow:0 1px 2px rgba(255,255,255,.4),0 -1px 2px rgba(255,255,255,.4);z-index:123456789;text-align:center}*/
+/*
+ * Drag and drop classes
+ */
+
+.ui-draggable-dragging {transform: rotate(-4deg); }
+.component-drop-marker { min-height: 50px; border:1px dotted #ccc;  margin: 10px 0 10px 0;border-radius:3px; }
+/**
+ * Controls
+ * --------------
+ * the parent element must be position relative.
+ * can be used inside a .neon-fb-field class or inside a .form-group
+ * Usage: ```
+ * <div class="formBuilder_field">
+ *     <div class="formBuilder_controls">... buttons etc ...</div>
+ * </div>
+ * ```
+ */
+.formBuilder_controls { position: absolute; right: 0; top: 0px; z-index:100; display: none; }
+.neonForm.neonForm--fancy .form-group.form-group__header { border-bottom: 1px solid #ccc; padding-bottom: 20px; border-left: 0; margin-bottom: 0; }
+.form-group.form-group__header .form-group__title { margin-bottom: 5px; margin-top: 5px; }
+.form-group.form-group__controls { border-bottom: 0; }
+
+.form-group.form-group--code-label .form-control { color: #c7254e; background-color: #f9f2f4; font-family: Monospace; }
+
+[v-cloak] { display: none; }
+
+#debug { position: absolute; left: 300px; right: 0px; bottom: 0px; top: 0px; padding: 0 20px 20px 20px; overflow-y: scroll;display:none; }
+.dragGrip {
+	content: '....';
+	width: 10px;
+	height: 20px;
+	display: inline-block;
+	overflow: hidden;
+	line-height: 5px;
+	padding: 0 4px 4px 4px;
+	cursor: move;
+	vertical-align: middle;
+	margin-top: -.7em;
+	margin-right: .3em;
+	font-size: 12px;
+	font-family: sans-serif;
+	letter-spacing: 2px;
+	color: #cccccc;
+	text-shadow: 1px 0 1px black;
+}
+.dragGrip::after { content: '.. .. .. ..'; }
+
+.ghost {opacity:0.5}

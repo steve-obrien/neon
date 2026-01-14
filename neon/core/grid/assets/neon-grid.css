@@ -1,0 +1,61 @@
+/** grid styles **/
+/*.rc-handle-container{overflow:hidden;}*/
+.neonGrid_controls{}
+.neonGrid_scopes {font-size: 11px;list-style-image: none;list-style-position: outside;list-style-type: none;margin: 0;padding: 0;white-space: nowrap;}
+.neonGrid_scopes li {display: inline;margin: 0;padding: 0;}
+.neonGrid_scopes .active{color: #000;font-weight: bold;}
+.neonGrid_scopes a {line-height: 2;padding: 0.2em;text-decoration: none;font-size: 12px;}
+.neonGrid_scopes a .count, .scope-list a.active .count{color: #999999;font-weight: normal;}
+
+.neonGrid_rowActions {visibility: hidden}
+tr:hover .neonGrid_rowActions {visibility: visible}
+
+.neonGrid_body.panel-body {overflow-x:scroll;padding:0px;}
+.neonGrid_body .table {border-left:0px;margin-bottom:0px;}
+
+.neonGrid_filters td {padding:2px;}
+.neonGrid_filters td input{padding:3px 5px;}
+.neonGrid_filters {background-color:#eee;}
+
+
+.panel .panel-table-container .table-bordered th:first-child, .panel .panel-table-container .table-bordered td:first-child {border-left:0px}
+.panel .panel-table-container .table-bordered th:last-child, .panel .panel-table-container .table-bordered td:last-child {border-left:0px}
+
+.neonGrid_debug pre{font-size:10px;}
+
+.neonGrid .table {table-layout:fixed; width:auto; min-width: 100%;}
+.neonGrid.neonGrid_nowrap .table > thead > tr > td,
+.neonGrid.neonGrid_nowrap .table > thead > tr > th,
+.neonGrid.neonGrid_nowrap .table .neonGrid_cell,
+.neonGrid.neonGrid_nowrap .table > tfoot > td
+{white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+.neonGrid.neonGrid_fillWidth .table { width:100% }
+
+.neonGrid .table .neonGrid_cell {word-break: break-all;}
+
+/* for nowrapping prevent breaks as they will stop the overflow above from happening */
+.neonGrid.neonGrid_nowrap .table > thead > tr > td br,
+.neonGrid.neonGrid_nowrap .table > tbody > tr > td br,
+.neonGrid.neonGrid_nowrap .table > tfoot > tr > td br
+{ display:none; }
+.neonGrid .table > tbody > tr > td p,
+.neonGrid .table > tfoot > tr > td p {padding:0;margin:0;}
+
+.rc-handle-container { position: relative; }
+.rc-handle { position: absolute; width: 7px; cursor: ew-resize; margin-left: -3px; z-index: 2; }
+table.rc-table-resizing { cursor: ew-resize; }
+table.rc-table-resizing thead,
+table.rc-table-resizing thead > th,
+table.rc-table-resizing thead > th > a { cursor: ew-resize; }
+
+/* remove bottom margin for forms inside the column filters */
+.neonGrid_filters .form-group {margin:0px; padding:0px;}
+.neonGrid_filters .form-group .form-control {margin:0px;}
+
+/* filter highlights */
+.neonSearchHighlight{background:#ccc;}
+.neonSpinner {visibility: hidden;}
+.is_loading .neonSpinner {visibility:visible;}
+.neonGrid_summary{float: left;line-height: 28px;display: block;padding: 0 10px;}
+.neonGrid_right {line-height:28px;}
+.neonGrid .pagination{float:left;}

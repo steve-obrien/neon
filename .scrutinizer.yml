@@ -1,0 +1,71 @@
+filter:
+    excluded_paths:
+        - 'vendor/*'
+        - '*/vendor/*'
+        - '*/libs/*'
+        - 'tests/*'
+        - '*min.js'
+        - '*.build.js'
+        - '*/dist/*'
+        - '*c3.php'
+        - '*/views/*'  # ignore all paths with view in it
+        - '*neon/core/helpers/Collection.php'
+        - '*neon/dev/*'
+checks:
+    php:
+        switch_fallthrough_commented: false
+        parameter_doc_comments: true
+        overriding_parameter: false
+        uppercase_constants: true
+        code_rating: true
+        remove_extra_empty_lines: true
+        remove_php_closing_tag: true
+        remove_trailing_whitespace: true
+        fix_use_statements:
+            remove_unused: true
+            preserve_multiple: false
+            preserve_blanklines: true
+            order_alphabetically: true
+        fix_php_opening_tag: true
+        fix_linefeed: true
+        fix_line_ending: true
+        fix_identation_4spaces: true
+        fix_doc_comments: true
+    javascript: true
+coding_style:
+    php:
+        indentation:
+            general:
+                use_tabs: true
+build:
+    environment:
+        variables:
+            DB_USER: 'root'
+            DB_PASSWORD: ''
+            DB_HOST: '127.0.0.1'
+        php:
+            version: 8.1
+        google_chrome:
+            use_latest: true
+    nodes:
+        # Test on PHP 8 with mariadb 10
+        php81_maria10:
+            environment:
+                php:
+                    version: 8.1
+            services:
+                mariadb: 10
+            tests:
+                override:
+                    -   command: './vendor/bin/codecept run unit --coverage --coverage-xml'
+                        coverage:
+                            file: 'tests/_output/coverage.xml'
+                            format: 'clover'
+        analysis:
+            requires:
+                # will only run when php74_maria10 node passes
+                -   node: php81_maria10
+            tests:
+                override:
+                    - js-scrutinizer-run
+                    - php-scrutinizer-run

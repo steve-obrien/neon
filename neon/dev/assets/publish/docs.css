@@ -1,0 +1,352 @@
+/**
+ * stylesheet for docs
+ */
+html { background: #fff; }
+.docs { font-size: 14px; }
+.docs p { margin-bottom: 20px }
+.docs h2, h3 { margin-top: 50px; line-height: 27px; }
+.docs h1 { margin-top:100px; margin-bottom: 15px; border-bottom: 1px solid #ddd; line-height: 60px; }
+.docs h2 { margin-top:100px; margin-bottom: 15px; border-bottom: 1px solid #ddd; line-height: 60px; }
+/**
+ * Tip!
+ * ----------------------------------
+ *
+ * This is a simple component that styles a inline tip
+ * typical useage:
+ *
+ * ```html
+ * <p class="tip">Remember to clear your cache!</p>
+ * <p class="tip tip--info">Your files will be stored in tmp</p>
+ * ```
+ */
+.tip { padding: 12px 24px 12px 30px; margin: 2em 0; border-left: 4px solid #f66; background-color: #f8f8f8; position: relative; border-bottom-right-radius: 2px; border-top-right-radius: 2px; }
+.tip:before { position: absolute; top: 12px; left: -12px; background-color: #f66; color: #fff; content: "!"; width: 20px; height: 20px; border-radius: 100%; text-align: center; line-height: 20px; font-size: 14px; font-size: 14px; }
+
+.tip--info { border-color: #6697ff; }
+.tip--info:before { content: "i"; background: #6697ff; }
+
+
+
+/**
+ * Syntax Highlighting
+ * ------------------------------------------------
+ */
+
+/* Code blocks */
+code { white-space: nowrap; }
+pre { font-size: 12px; -moz-tab-size: 4; -o-tab-size: 4; tab-size: 4; text-shadow:none; background:#f8f8f8; margin: 10px 0 20px; overflow: auto; border-radius: 2px; position: relative; border: none;  white-space: pre; }
+code.language-php:after { content: 'PHP'; }
+code.language-json:after { content: 'JSON';  }
+code.language-sql:after { content: 'SQL';  }
+code.language-html:after { content: 'HTML';  }
+code.language-js:after { content: 'JS'; }
+code.language-css:after { content: 'CSS'; }
+code.language-bash:after { content: 'BASH';  }
+code[class*="language-"]:after { position: absolute; top: 0; right: 0; color: #ccc; text-align: right; font-size: 0.75em; padding: 5px 10px 0; line-height: 15px; height: 15px; font-weight: 600; }
+
+.hljs { white-space: pre; }
+/**
+ * Syntax Highlighting - Light theme
+ * ------------------------------------------------
+ */
+.hljs-light pre { background: #f8f8f8; }
+.hljs-light .hljs { display: block; overflow-x: auto; padding: 0.5em; color: #383a42; background: #f8f8f8; }
+.hljs-light .hljs-comment, .hljs-light .hljs-quote { color: #a0a1a7; font-style: italic; }
+.hljs-light .hljs-doctag, .hljs-light .hljs-keyword, .hljs-light .hljs-formula { color: #a626a4; }
+.hljs-light .hljs-section, .hljs-light .hljs-name, .hljs-light .hljs-selector-tag, .hljs-light .hljs-deletion, .hljs-light .hljs-subst { color: #e45649; }
+.hljs-light .hljs-literal { color: #0184bb; }
+.hljs-light .hljs-string, .hljs-light .hljs-regexp, .hljs-light .hljs-addition, .hljs-light .hljs-attribute, .hljs-light .hljs-meta-string { color: #50a14f; }
+.hljs-light .hljs-built_in, .hljs-light .hljs-class .hljs-title { color: #c18401; }
+.hljs-light .hljs-attr, .hljs-light .hljs-variable, .hljs-light .hljs-template-variable, .hljs-light .hljs-type, .hljs-light .hljs-selector-class, .hljs-light .hljs-selector-attr, .hljs-light .hljs-selector-pseudo, .hljs-light .hljs-number { color: #986801; }
+.hljs-light .hljs-symbol, .hljs-light .hljs-bullet, .hljs-light .hljs-link, .hljs-light .hljs-meta, .hljs-light .hljs-selector-id, .hljs-light .hljs-title { color: #4078f2; }
+.hljs-light .hljs-emphasis { font-style: italic; }
+.hljs-light .hljs-strong { font-weight: bold; }
+.hljs-light .hljs-link { text-decoration: underline; }
+/**
+ * Syntax Highlighting - Dark theme
+ * ------------------------------------------------
+ */
+.hljs-dark pre { background: #282c34; }
+.hljs-dark .hljs { display: block; overflow-x: auto; padding: 0.5em; color: #abb2bf; background: #282c34;  }
+.hljs-dark .hljs-comment, .hljs-dark .hljs-quote { color: #5c6370; font-style: italic; }
+.hljs-dark .hljs-doctag, .hljs-dark .hljs-keyword, .hljs-dark .hljs-formula { color: #c678dd; }
+.hljs-dark .hljs-section, .hljs-dark .hljs-name, .hljs-dark .hljs-selector-tag, .hljs-dark .hljs-deletion, .hljs-dark .hljs-subst { color: #e06c75; }
+.hljs-dark .hljs-literal { color: #56b6c2; }
+.hljs-dark .hljs-string, .hljs-dark .hljs-regexp, .hljs-dark .hljs-addition, .hljs-dark .hljs-attribute, .hljs-dark .hljs-meta-string { color: #98c379; }
+.hljs-dark .hljs-built_in, .hljs-dark .hljs-class .hljs-title { color: #e6c07b; }
+.hljs-dark .hljs-attr, .hljs-dark .hljs-variable, .hljs-dark .hljs-template-variable, .hljs-dark .hljs-type, .hljs-dark .hljs-selector-class, .hljs-dark .hljs-selector-attr, .hljs-dark .hljs-selector-pseudo, .hljs-dark .hljs-number { color: #d19a66; }
+.hljs-dark .hljs-symbol, .hljs-dark .hljs-bullet, .hljs-dark .hljs-link, .hljs-dark .hljs-meta, .hljs-dark .hljs-selector-id, .hljs-dark .hljs-title { color: #61aeee; }
+.hljs-dark .hljs-emphasis { font-style: italic; }
+.hljs-dark .hljs-strong { font-weight: bold; }
+.hljs-dark .hljs-link { text-decoration: underline; }
+.hljs-dark .hljs, .hljs-light .hljs { display: inline; padding: 0.2em 0.4em; }
+.hljs-light pre .hljs, .hljs-dark pre .hljs { display: block; }
+pre { line-height: 2.5; }
+
+
+
+body { background-color: #fff; }
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/*
+Add transition to containers so they can push in and out.
+*/
+#layout, #menu, .menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+/*
+This is the parent `<div>` that contains the menu and the content area.
+*/
+#layout {
+    position: relative;
+    padding-left: 0;
+}
+#layout.active #menu {
+    left: 150px;
+    width: 150px;
+}
+
+#layout.active .menu-link {
+    left: 150px;
+}
+
+.header {
+    margin: 0;
+    color: #333;
+    text-align: center;
+    padding: 2.5em 2em 0;
+    border-bottom: 1px solid #eee;
+}
+.header h1 {
+    margin: 0.2em 0;
+    font-size: 3em;
+    font-weight: 300;
+}
+.header h2 {
+    font-weight: 300;
+    color: #ccc;
+    padding: 0;
+    margin-top: 0;
+}
+
+.content-subhead {
+    margin: 50px 0 20px 0;
+    font-weight: 300;
+    color: #888;
+}
+
+
+
+/*
+The `#menu` `<div>` is the parent `<div>` that contains the `.pure-menu` that
+appears on the left side of the page.
+*/
+
+#menu {
+    margin-left: -150px; /* "#menu" width */
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #191818;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+/*
+All anchors inside the menu should be styled like this.
+*/
+#menu a {
+    color: #999;
+    border: none;
+    padding: 0.6em 0 0.6em 0.6em;
+}
+
+/*
+Remove all background/borders, since we are applying them to #menu.
+*/
+#menu .pure-menu,
+#menu .pure-menu ul {
+    border: none;
+    background: transparent;
+}
+
+/*
+Add that light border to separate items into groups.
+*/
+#menu .pure-menu ul,
+#menu .pure-menu .menu-item-divided {
+    border-top: 1px solid #333;
+}
+/*
+Change color of the anchor links on hover/focus.
+*/
+#menu .pure-menu li a:hover,
+#menu .pure-menu li a:focus {
+    background: #333;
+}
+
+/*
+This styles the selected menu item `<li>`.
+*/
+#menu .pure-menu-selected,
+#menu .pure-menu-heading {
+    /*background: #1f8dd6;*/
+}
+/*
+This styles a link within a selected menu item `<li>`.
+*/
+#menu .pure-menu-selected a {
+    color: #fff;
+}
+
+.pure-menu-section {
+    color: #717171;
+    border: none;
+    padding: 0.6em 0 0.6em 0.6em;
+    background-color: #000;
+}
+/*
+This styles the menu heading.
+*/
+#menu .pure-menu-heading {
+    font-size: 110%;
+    color: #fff;
+    margin: 0;
+}
+
+/* -- Dynamic Button For Responsive Menu -------------------------------------*/
+
+/*
+The button to open/close the Menu is custom-made and not part of Pure. Here's
+how it works:
+*/
+
+/*
+`.menu-link` represents the responsive menu toggle that shows/hides on
+small screens.
+*/
+.menu-link {
+    position: fixed;
+    display: block; /* show this only on small screens */
+    top: 0;
+    left: 0; /* "#menu width" */
+    /*background: #000;*/
+    background: rgba(0,0,0,0.7);
+    font-size: 10px; /* change this value to increase/decrease button size */
+    z-index: 10;
+    width: 4em;
+    height: auto;
+    padding: 2em 1em;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+    background: #000;
+}
+
+.menu-link span {
+    position: relative;
+    display: block;
+}
+
+.menu-link span,
+.menu-link span:before,
+.menu-link span:after {
+    background-color: #fff;
+    width: 100%;
+    height: 0.2em;
+}
+
+.menu-link span:before,
+.menu-link span:after {
+    position: absolute;
+    margin-top: -0.6em;
+    content: " ";
+}
+
+.menu-link span:after {
+    margin-top: 0.6em;
+}
+
+
+/* -- Responsive Styles (Media Queries) ------------------------------------- */
+
+/*
+Hides the menu at `48em`, but modify this based on your app's needs.
+*/
+@media (min-width: 48em) {
+
+    .header,
+    .content {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #layout {
+        padding-left: 150px; /* left col width "#menu" */
+        left: 0;
+    }
+    #menu {
+        left: 150px;
+    }
+
+    .menu-link {
+        position: fixed;
+        left: 150px;
+        display: none;
+    }
+
+    #layout.active .menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 48em) {
+    /* Only apply this when the window is small. Otherwise, the following
+    case results in extra padding on the left:
+        * Make the window small.
+        * Tap the menu to trigger the active state.
+        * Make the window large again.
+    */
+    #layout.active {
+        position: relative;
+        left: 150px;
+    }
+}
+
+@media (min-width: 0px) {
+    .docs__article {
+        padding-right: 1em;
+        padding-left: 1em;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media (min-width: 500px) {
+    .docs__article {
+        padding-right: 2em;
+        padding-left: 2em;
+    }
+}
+
+
+html.hljs-dark { background-color: #282c34; } /* #222529; */
+body.hljs-dark { background-color: transparent; }
+body.hljs-dark {color: #bbb;}
+body.hljs-dark #menu {background-color: transparent;}
+body.hljs-dark .pure-menu-section { background-color: transparent; }
+body.hljs-dark .tip { background-color: #393f4a; }
+
+blockquote { font-size: 14px; }

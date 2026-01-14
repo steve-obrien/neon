@@ -1,0 +1,21 @@
+#!/usr/bin/env php
+<?php
+
+$bootstrap = dirname(__DIR__) . '/bootstrap.php';
+// Assumes neon has been installed as a composer dependancy and therefore is located inside ./vendor/newicon/neon
+$bootstrapComposer = dirname(dirname(dirname(__DIR__))) . '/bootstrap.php';
+
+if (file_exists($bootstrap)) {
+    require $bootstrap;
+} elseif (file_exists($bootstrapComposer))  {
+    require $bootstrapComposer;
+} else {
+    defined('DIR_ROOT') or define('DIR_ROOT', __DIR__);
+    define('NEON_VENDOR', DIR_ROOT . '/vendor');
+    require NEON_VENDOR . '/autoload.php';
+    echo "!! \n!! No bootstrap file. Operating outside project context\n!! \n";
+}
+
+$neon = \neon\core\Env::createConsoleApplication();
+$neon->registerAllApps();
+$neon->run();

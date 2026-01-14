@@ -1,0 +1,1 @@
+This is the site.tpl and should be overriden by the CMS or by a custom app - this is defined by the 'defaultRoute' => 'core/site', setting

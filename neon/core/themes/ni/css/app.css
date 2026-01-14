@@ -1,0 +1,86 @@
+@import "vars.css";
+@import "tailwindcss/base";
+
+/* Base styles */
+/***************/
+body { @apply font-sans font-light text-gray-900; min-width: 320px; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+/*a { @apply text-blue-600; }*/
+/*a:visited { @apply text-purple-700; }*/
+a:hover { text-decoration: none; @apply text-blue-500; }
+
+h1, h2, h3, h4, h5, h6 { margin-bottom: 1.2rem; font-weight: 700; line-height: 1.2; }
+p, dl, hr, table, blockquote { margin-bottom: 1.2rem; }
+.no-scroll { overflow: hidden !important; height: 100% !important; }
+abbr { cursor:help; }
+
+@import 'icons.css';
+@import "tailwindcss/components";
+@import "theme.css";
+
+@import "tailwindcss/utilities";
+
+/* Additional Newicon Utilities */
+/********************************/
+.transition-opacity-transform { transition-property: opacity, transform; }
+.delay-5 { transition-delay: 5ms }
+.delay-100 { transition-delay: 100ms }
+.delay-200 { transition-delay: 200ms }
+.delay-300 { transition-delay: 300ms }
+.delay-500 { transition-delay: 500ms }
+
+.bg-gradient-gray { background: linear-gradient(180deg, rgba(243,245,249,1) 0%, rgba(255,255,255,0) 100%); }
+/*
+ * Hide alpine js components until they are initialised
+ * This prevents any flicker of modals or elements
+ */
+[x-cloak] { display:none; }
+
+
+.testimonial { position: relative; }
+.testimonial:before { content: ''; position: absolute; bottom: 100%; left: -33px; width: 77px; height: 51px; margin-bottom: 25px; background-image: url("../images/bg/quotes-top.png"); background-size: 77px 51px; }
+.testimonial:after { content: ''; position: absolute; top: 100%; right: -8px; width: 77px; height: 51px; margin-top: 24px; background-image: url("../images/temp/quotes-bottom.png"); background-size: 77px 51px; }
+
+
+/*.debug { background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAFElEQVR4AWPAC97/9x0eCsAEPgwAVLshdpENIxcAAAAASUVORK5CYII=) repeat top left; }*/
+/*.debug-16 { background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMklEQVR4AWOgCLz/b0epAa6UGuBOqQHOQHLUgFEDnAbcBZ4UGwDOkiCnkIhdgNgNxAYAiYlD+8sEuo8AAAAASUVORK5CYII=) repeat top left; }*/
+/*.debug-8-solid { background:white url(data:image/gif;base64,R0lGODdhCAAIAPEAAADw/wDx/////wAAACwAAAAACAAIAAACDZQvgaeb/lxbAIKA8y0AOw==) repeat top left; }*/
+/*.debug-16-solid { background:white url(data:image/gif;base64,R0lGODdhEAAQAPEAAADw/wDx/xXy/////ywAAAAAEAAQAAACIZyPKckYDQFsb6ZqD85jZ2+BkwiRFKehhqQCQgDHcgwEBQA7) repeat top left; }*/
+
+
+
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		-webkit-transform: translate3d(0, 100%, 0);
+		transform: translate3d(0, 100%, 0);
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+	}
+}
+.fadeInUp {
+	-webkit-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+}
+
+@-webkit-keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+@keyframes fadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+.fadeIn {
+	-webkit-animation-name: fadeIn;
+	animation-name: fadeIn;
+}

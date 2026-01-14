@@ -1,0 +1,114 @@
+.fireflyModal_mask { position: fixed; z-index: 9998; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, .6); display: table; transition: opacity .2s ease; }
+.fireflyModal_header { padding: 0px; border-bottom: 1px solid #eee; background-color: #fff; border-radius: 3px 3px 0px 0px; }
+.fireflyModal_header .close { font-size: 31px; margin-top: 5px; margin-right: 10px; font-weight: normal; }
+.fireflyModal_wrapper { position: fixed; top: 0; bottom: 0; left: 0; right: 0; background-color:rgba(0,0,0,0.2);}
+.fireflyModal_container { position: absolute; top: 10px; bottom: 10px; right: 10px; left: 10px; background-color: #fff; border-radius: 3px; box-shadow: 0 2px 20px rgba(0, 0, 0, .66); transition: all .3s ease; overflow: hidden; }
+.fireflyModal_body { position: absolute; top: 56px; bottom: 48px; left: 0; right: 0; overflow: scroll; -webkit-overflow-scrolling: touch; background:#fff; }
+.fireflyModal_footer { position: absolute; bottom: 0; left: 0; right: 0; background-color: #fff; padding: 0; }
+.fireflyModal_footerButtons { display:flex; }
+.fireflyModal_footerButtons button{ flex: 1;padding: 15px;  border-width:1px 0 0 0; text-transform: uppercase; font-weight: 500;}
+
+.ffFilesList { padding:10px; background: white; overflow: auto; }
+.fireflyThumb { user-select: none; width:100%; background-color:#f5f6f9; border: 1px solid transparent; border-radius:3px; padding:10px; }
+
+.btn.modalButton { padding: 15px; border-width:1px 0 0 1px; flex: 1; }
+.btn.modalButton:first-child { border-width:1px 0 0 0; }
+
+.progress.progressThin {height:3px; margin-bottom: 5px;}
+.progress.progressThin .progress-bar{background-color:#009ef4;}
+.fireflyThumb_preview { }
+.fireflyThumb_folder {height:150px; background-size: 196px 150px; background: url('./folder.svg') no-repeat center; background-size: 120px 120px; }
+.fireflyItem {float:left; width:200px; margin:1%;   border:1px solid transparent;}
+.fireflyItem.is-selected .fireflyThumb  { border: 1px solid #009ef4; border-radius: 3px; box-shadow: 0 4px 10px rgba(0,0,0,.3); background:#f0faff; }
+.fireflyThumb_file { text-align:center; background: url('./file.svg') center center no-repeat; }
+.fireflyThumb_img { display: block; line-height: 1.42857143; max-height: 150px; max-width: 100%; width:100%; height: auto; background: #fff url('./transparent-bg.png') repeat; border:1px solid #fff; margin:auto; }
+.fireflyThumb_progress { padding: 0 50px; background: url(./file.svg) center center no-repeat; }
+.fireflyThumb_caption { text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media screen and (min-width: 800px) /* Mobile */ {
+    .fireflyModal_container { position: absolute; top: 30px; bottom: 30px; left: 30px; right: 30px; }
+}
+.dragOver .fireflyThumb {border: 1px solid #009ef4; border-radius: 3px; box-shadow: 0 4px 10px rgba(0,0,0,.3); background:#f0faff;}
+
+/*.fade-in-on-load {animation-duration: 1s; animation-name: fadeInOnLoad;}*/
+/*@keyframes fadeInOnLoad {*/
+    /*0%,50% {opacity: 0;}*/
+    /*100% {opacity: 1;}*/
+/*}*/
+
+.fireflyThumb_previewText { padding-top:50px; color:#00b3ee; text-transform: uppercase; text-align: center;}
+
+.fireflySidebar { width:280px; padding-top:20px; padding-right: 20px; padding-left:20px; top: 50px; }
+
+
+.fireflyEditor {}
+.fireflyEditor_toolbar {padding:5px;background-color:#ccc;}
+
+.workbenchHeader.workbenchHeader-modal {background-color: #f4f6f9;  box-shadow: none; border-bottom: none; border-top: none;}
+
+.fireflyMediaContainer { height: 100%; }
+/*.fireflyMediaContainer { overflow: auto; position: relative; }*/
+
+/* Large full screen modal to catch file drops */
+.bigDropUploader { position: fixed; top: 0; left: 0; right: 0;bottom: 0; background: rgba(0,0,0,.7); z-index: 250000; text-align: center;opacity: 1; -webkit-transition: opacity 250ms; transition: opacity 250ms; }
+.bigDropUploader_content { position: absolute;top: 20px;left: 20px;right: 20px; bottom: 20px; border: 3px dashed rgb(255, 255, 255); border-radius:10px;}
+.bigDropUploader_content h1 { margin: -.5em 0 0; position: absolute; top: 50%; left: 0; right: 0; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); font-size: 40px; color: #fff; padding: 0; }
+
+
+.fade-enter-active, .fade-leave-active { transition: opacity .3s }
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ { opacity: 0 }
+
+.fireflyThumbUpload { /* styles for the upload file placeholder */ }
+/* Transition effects for items - for example highlighting when dropping over */
+.fireflyItem { transition:  0.2s ease-in; -moz-transition: 0.2s ease-in; -ms-transition: 0.2s ease-in; -o-transition: 0.2s ease-in; -webkit-transition: 0.2s ease-in;  }
+/* Class that marks drop zones when dragging starts (nothing happens at the moment) */
+.fireflyItem.ui-droppable-active  {}
+/* inline "select files and drag and drop hint component - root class of firefly-media-uploader component */
+.fireflyMediaUploder { background: white; padding-bottom: 70px; }
+
+
+
+.breadcrumb::after {
+    display: block;
+    content: "";
+    clear: both;
+}
+.fireflyBreadcrumb{padding:5px;font-size:16px;float:left;}
+.fireflyBreadcrumb.m_dragOver {background-color:#ccc;}
+.fireflyBreadcrumb_link {}
+.fireflyBreadcrumb i {color:#ccc;}
+
+
+.neonLoadingImg {
+	min-width:64px;
+	min-height:64px;
+	padding:10px;
+	background: transparent url('./spinner-64px.gif') center no-repeat;
+}
+
+.fireflyDragOver {border:2px dashed #0000cc}
+
+.fireflyPicker {
+	display: flex;
+	flex-direction: column;
+	/* justify-content: center; */
+	align-content: center;
+	position: absolute;
+	/* height: 100vh; */
+	top: 0;
+	bottom: 0;
+	width:100%;
+}
+.fireflyMediaContainer {overflow:scroll;}
+
+.fireflyEditor {display:flex; flex-direction:column; justify-content: flex-start;}
+.fireflyEditor_body {overflow:scroll;}
+
+.fadeIn-enter-active, .fadeIn-leave-active {
+	transition: opacity .5s;
+}
+.fadeIn-enter, .fadeIn-leave-to /* .fade-leave-active below version 2.1.8 */ {
+	opacity: 0;
+}
+.fireflyFinder {height:100%;}
+
+.ui-selectable-helper {border: 1px solid #0066FF; background-color:#d9e8ff80; z-index:10000; position:absolute;}

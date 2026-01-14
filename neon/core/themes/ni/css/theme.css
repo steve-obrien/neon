@@ -1,0 +1,71 @@
+r/* Typography helpers */
+/**********************/
+.ni-italic { @apply font-serif text-gray-500 italic font-thin tracking-wide; }
+.ni-freehand { font-family: TrashHand, Arial, sans-serif ; color: #0067FF; }
+.ni-bg-title { position: relative; }
+.ni-bg-title:after { content: attr(data-title); @apply text-gray-100; position: absolute; top: -100px; left: -20px; z-index: -5; font-weight: 800; font-size: 331px; line-height: 1; white-space: nowrap; pointer-events: none; opacity: .5; }
+
+/* Buttons */
+/*---------*/
+.btn { @apply inline-flex items-center justify-center rounded font-bold border border-transparent px-5 py-2.5 text-base font-semibold text-center no-underline appearance-none;}
+.btn[disabled] {@apply opacity-75;}
+
+.btn:focus { outline: none; }
+/* outline buttons http://localhost/newicon-website/public/styleguide#button-primary */
+.btn-primary { @apply bg-blue-500 text-white; }
+.btn-primary:visited { @apply text-white; }
+.btn-primary:focus, .btn-primary:hover { @apply bg-blue-400 text-white; }
+.btn-primary:active { @apply bg-blue-600; }
+.btn-primary:focus { outline: none; }
+
+/* outline buttons http://localhost/newicon-website/public/styleguide#button-outline */
+.btn-outline-primary { @apply border border-blue-500 text-blue-500 bg-transparent; }
+.btn-outline-primary:hover { @apply border-blue-400 text-blue-400; }
+.btn-outline-primary:focus { outline: none; }
+
+.btn-outline { @apply border bg-transparent; }
+.btn-outline:focus { outline: none; }
+.btn-shadow:active{box-shadow: inset 0 5px 5px rgba(0,0,0,0.2)}
+
+.btn-fx { @apply transition shadow transform duration-150 }
+.btn-fx:focus, .btn-fx:hover { @apply -translate-y-px shadow-md; }
+.btn-fx:active { @apply translate-y-px shadow-inner-md }
+
+/* only apply shadow hover and active effects */
+.btn-fx-shadow { @apply transition shadow duration-150; }
+.btn-fx-shadow:focus, .btn-fx-shadow:hover { @apply shadow-md; }
+.btn-fx-shadow:active { @apply shadow-inner-md }
+
+.btn-xs { @apply px-3 py-1.5  text-xs    font-semibold  }
+.btn-sm { @apply px-4 py-2    text-sm    font-semibold  }
+.btn-md { @apply px-5 py-2.5  text-base  font-semibold  }
+.btn-lg { @apply px-6 py-3    text-base  font-bold      }
+.btn-xl { @apply px-8 py-4    text-base  font-bold      }
+
+/*	Nav Trigger */
+/* ------------------------------------------------------------ */
+.burger { position: relative; display: none; width: 24px; height: 12px; }
+.burger span { position: absolute; display: block; height: 2px; width: 100%; border-radius: 4px; transition: opacity .2s .25s, transform .2s 0s, top .2s .25s,; } /*  */
+.burger span:nth-child(1) { top: 0; }
+.burger span:nth-child(2) { top: 10px; }
+.open .burger span { transition: opacity .2s, transform .2s .25s, top .2s; background-color:black; } /* top .2s, */
+.open .burger span:nth-child(1),
+.open .burger span:nth-child(2) { top: 6px; }
+.open .burger span:nth-child(1) { transform: rotate(45deg); }
+.open .burger span:nth-child(2) { transform: rotate(-45deg); }
+
+/* text                                                         */
+/* - applies blog and written text styles - assumes a white bg  */
+/* ------------------------------------------------------------ */
+.text h1, .text h2, .text h3, .text h4, .text h5 { margin-top: 4rem }
+.text a { @apply text-blue-600 }
+.text a:active { color: #408CFF }
+.text a:visited { @apply text-purple-700 }
+hr { margin-top: 3rem; margin-bottom:3rem }
+.text ul { margin-left: -0.6rem;  margin-bottom: 1.25rem; }
+.text li { list-style-type: disc; padding-left: 0.6rem; }
+@media (max-width:850px) {
+	.text > ul, .text > ol { margin-left: 0rem; }
+	.text li { padding-left: 0rem; }
+}
+.text blockquote { @apply my-10 font-serif italic border-l-4 border-gray-200 pl-6 text-gray-700; }

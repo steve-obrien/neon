@@ -1,0 +1,19 @@
+# --------------------------- #
+# File system and IDE ignores #
+# --------------------------- #
+nbproject
+.netbeans.xml
+.DS_Store
+.idea
+.vscode
+
+_var
+var/
+/vendor
+tests/env.ini
+tests/_output
+tests/_root/var
+tests/_root/system
+
+node_modules
+var/storage/

@@ -1,0 +1,41 @@
+
+.neonModalResizer {display: block;overflow: hidden;position: absolute;width: 12px;height: 12px;right: 0;bottom: 0;background: transparent;cursor: se-resize;}
+.neonModalResizer::after {display: block;position: absolute;content: '';background: transparent;left: 0;top: 0;width: 0;height: 0;border-bottom: 10px solid #ddd;border-left: 10px solid transparent;}
+.neonModalResizer.clicked::after {border-bottom: 10px solid #369be9;}
+
+.neonModal_blockScroll {overflow: hidden;width: 100vw;}
+.neonModal_overlay {position: fixed;box-sizing: border-box;left: 0;top: 0;width: 100%;height: 100vh;background: rgba(0, 0, 0, 0.2);z-index: 999;opacity: 1; -webkit-backdrop-filter: blur(5px); backdrop-filter:blur(5px); }
+.neonModal_overlay.scrollable {height: 100%;min-height: 100vh;overflow-y: auto;-webkit-overflow-scrolling: touch;}
+.neonModal_overlay .neonModal_bgClick {width: 100%;height: 100%;}
+.neonModal_overlay .neonModal_box {position: relative;overflow: hidden;box-sizing: border-box;}
+.neonModal_overlay.scrollable .neonModal_box {margin-bottom: 2px;}
+.neonModal {background-color: white;text-align: left;border-radius: 3px;box-shadow: 0 20px 60px -2px rgba(27, 33, 58, 0.4);padding: 0;}
+.neonModal.m_fullscreen {width: 100vw;height: 100vh;margin: 0;left: 0;top: 0;}
+.neonModal_topRight {display: block;position: absolute;right: 0;top: 0;}
+
+.neonModal_container {display: flex;position: absolute;flex-direction: column;justify-content: flex-end;top: 0;bottom: 0;left: 0;right: 0;}
+.neonModal_content {flex: 1 0 auto;width: 100%;position:relative;}
+/* Buttons */
+.neonModal_buttons {display: flex;flex: 0 1 auto;width: 100%;border-top: 1px solid #eee;}
+.neonModal_buttonsNone {width: 100%;padding-bottom: 15px;}
+.neonModal_button {font-size: 12px !important;background: transparent;padding: 0;margin: 0;border: 0;cursor: pointer;box-sizing: border-box;line-height: 40px;height: 40px;color: inherit;font: inherit;outline: none;text-transform: uppercase;font-weight:bold;}
+.neonModal_button:hover {background: #F4F6F9;color:#000;}
+.neonModal_button:active {background: rgba(0, 0, 0, 0.025);}
+.neonModal_button:not(:first-of-type) {border-left: 1px solid #eee;}
+.neonModal_button[disabled] {opacity: 0.5;}
+
+/* Modal effects */
+/*
+ * The following styles are auto-applied to elements with
+ * transition="modal" when their visibility is toggled
+ * by Vue.js.
+ */
+.modal-enter { opacity: 0; transform: scale(0.9); }
+.modal-enter-active { transition: all 0.2s; }
+.modal-leave-active {  transition: all 0.1s; }
+.modal-leave-to { opacity: 0; -webkit-transform: scale(0.9); transform: scale(0.9); }
+
+.overlay-fade-enter-active,
+.overlay-fade-leave-active {transition: all 0.0s;}
+.overlay-fade-enter,
+.overlay-fade-leave-active {opacity: 0;}

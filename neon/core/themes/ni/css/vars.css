@@ -1,0 +1,4 @@
+:root {
+	--blue-500: #0067FF;
+	--primary: var(--blue-500);
+}

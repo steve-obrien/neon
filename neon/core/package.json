@@ -1,0 +1,27 @@
+{
+	"name": "core",
+	"version": "1.0.0",
+	"description": "",
+	"main": "core.js",
+	"directories": {
+		"doc": "docs",
+		"test": "test"
+	},
+	"scripts": {
+		"dev": "mix",
+		"watch": "mix watch",
+		"build": "mix --production",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"laravel-mix": "^6.0.49",
+		"vue-loader": "^15.11.1"
+	},
+	"dependencies": {
+		"@editorjs/editorjs": "^2.29.1",
+		"@editorjs/header": "^2.8.1"
+	}
+}

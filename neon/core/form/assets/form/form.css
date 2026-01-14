@@ -1,0 +1,296 @@
+.neonForm {
+	--controlBorderColorError: #ED4F32;
+	--controlBorderColor: #D8DDE6;
+	--controlBorderColorActive: #0086F1;
+	--inputBorderLeft: 12px;
+}
+
+/* Transitions must be named this way - vue convention */
+.neonFade-enter-active, .neonFade-leave-active {transition: opacity 0.5s ease-in, max-height 0.5s ease-in;max-height: 2000px;}
+.neonFade-enter, .neonFade-leave-to {transition: opacity 0.5s ease-out, max-height 0.5s ease-out;opacity: 0;max-height: 0;}
+
+
+/** nice forms - styles to work with core forms **/
+/*.neonForm .form-group { padding: 10px; margin-bottom: 0px; position: relative; }*/
+.neonField { padding: 0 10px; margin-bottom: 0px; position: relative; }
+.neonField_content { position:relative; }
+.neonInput { position:relative; }
+/*.neonForm .form-group label { margin-bottom: 0px; }*/
+/*.neonForm .form-group.has-error .control-label {color:#a94442}*/
+/*.neonForm .form-inline .form-group {position: relative; display: inline-block;}*/
+.neonField_label { margin-bottom: 5px; color:#53688E; font-size:14px; font-weight:600; }
+.has-error .neonField_label { color:#a94442 }
+.neonInput .form-control { padding:12px; }
+
+.neonDatetime_separator { display: inline-block; padding: 0 0.5em }
+
+
+/**
+ * Prevent horizontal resizing of textarea boxes
+ * -------
+ */
+.neonForm textarea { resize: vertical; }
+
+/**
+ * Hints
+ * -------
+ */
+.neonForm .hint-block { color: #666; font-size:12px; }
+
+/**
+ * Help and error messages
+ */
+.neonForm .help-block { margin: 0; }
+.neonForm .has-error .help-block { color: #a94442; font-weight: 500; }
+
+
+.neonForm .isRequired .neonField_label:after { content: ' *'; color: red; }
+
+.isRequired.neonFieldText .neonInput:before {content: '*';font-size: 18px;position: absolute;top: 11px;right: 15px;color: #0069ff;transition: all .3s ease;}
+.isRequired.isError .neonInput:before {color: var(--controlBorderColorError);}
+.isRequired.isValid .neonInput::before {opacity: 0;}
+
+/*.neonFieldText .neonInput:after,*/
+/*.neonFieldEmail .neonInput:after,*/
+/*.neonFieldTextarea .neonInput:after,*/
+.niForm .neonInput:after {font-size: 15px;position: absolute;top: 10px;right:15px;transition: all .3s cubic-bezier(.2,.41,.55,1.69);transform: scale(0);content: '';}
+.niForm .isValid.isDirty .neonInput:after {content: "\2714";color: #15CD72;transform: scale(1);}
+
+
+.neonForm .radio input[type="radio"], .neonForm .checkbox input[type="checkbox"] { margin: 2px 0 0 -20px; }
+
+/**
+ * form control styles - flat style - stupid bootstrap overrides
+ * -------------------
+ */
+.neonForm .ace_editor,
+.neonForm .form-control { border: 1px solid var(--controlBorderColor); border-radius:4px; height:48px; font-size:16px; font-weight:300; box-shadow: 0px 1px 0px rgba(255,255,255,0.9);  transition: all .2s ease-in-out; color: #53688E; }
+.neonForm textarea.form-control { height:5em; }
+
+.neonForm .ace_editor:hover,
+.neonForm .form-control:hover { border-color: #0086F1 }
+
+.neonForm .ace_editor.ace_focus,
+.neonForm .form-control:focus { border-color: #0086F1; box-shadow: 0px 1px 0px rgba(255,255,255,0.9); }
+
+.neonForm .has-error .form-control {border-color: var(--controlBorderColorError);}
+
+/*.neonForm .form-control { margin-top: 5px; }*/
+/*.neonForm .input-group {margin-top: 5px;}*/
+.neonForm .input-group .form-control { margin-top: 0; }
+.neonForm fieldset { padding:10px; }
+
+/** style placeholders **/
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */  color: #A8B7C8; }
+::-moz-placeholder { /* Firefox 19+ */  color: #A8B7C8; }
+:-ms-input-placeholder { /* IE 10+ */  color: #A8B7C8; }
+:-moz-placeholder { /* Firefox 18- */  color: #A8B7C8; }
+input::placeholder {color: #A8B7C8; }
+.neonForm .form-control::placeholder {color: #A8B7C8; }
+
+/**
+ * ----------------------------------------------------------------------------
+ * Hr Text Widget
+ * ----------------------------------------------------------------------------
+ * Usage: ```<div class="hr-text">My heading text</div>```
+ */
+.hr-text { padding:5px; overflow: hidden; text-align: center; font-size:16px; }
+.hr-text:before,
+.hr-text:after { background-color: #ccc; content: ""; display: inline-block; height: 1px; position: relative; vertical-align: middle; width: 50%; }
+.hr-text:before { right: 0.5em; margin-left: -50%; }
+.hr-text:after { left: 0.5em; margin-right: -50%; }
+/* ------------------------------------------------------------------------- */
+
+
+
+/**
+ * ----------------------------------------------------------------------------
+ * neon Switch styles - set the font size to adjust the size
+ * ----------------------------------------------------------------------------
+ * Example useage:
+ *
+ * ~~~HTML
+ * <!-- Rounded switch -->
+ * <label class="switch">
+ *     <input type="checkbox" v-model="button" >
+ *     <div class="switch__slider switch__slider--round">
+ *         <div class="switch__on">On</div>
+ *         <div class="switch__off">Off</div>
+ *     </div>
+ * </label>
+ * ~~~
+ */
+.neonSwitch { margin-top:5px; font-size:14px; }
+.neonSwitch._neonSmall { font-size:10px; }
+/* The switch - the box around the slider */
+.neonSwitch { position: relative; display: inline-block; width: 5em; height: 2em;  font-weight:400; }
+/* Hide default HTML checkbox */
+.neonSwitch input {/*display:none;*/position:absolute;left:0;width:0;height:0;margin:0;opacity:0;}
+/* The slider */
+.neonSwitch_slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; -webkit-transition: .2s; transition: .2s; user-select: none; }
+.neonSwitch_slider:before { position: absolute; content: ""; height: 1.8em; width: 1.8em; left: 0.1em; bottom: 0.1em; background-color: white; -webkit-transition: .2s; transition: .2s; z-index: 2; box-shadow: 0.1em 0.1em 0.1em rgba(0,0,0,0.3), inset 1px 1px 0px #fff;background-color: #ffffff;background: linear-gradient(to bottom, #fff 0%,#eeeeee 100%); }
+.neonSwitch input:checked + .neonSwitch_slider { background-color: #2196F3; }
+.neonSwitch input:focus + .neonSwitch_slider { box-shadow: 0px 0px 1px 1px #2196F3 }
+.neonSwitch input:checked + .neonSwitch_slider:before { -webkit-transform: translateX(2em);-ms-transform: translateX(2em);transform: translateX(3em); }
+/* Rounded sliders */
+.neonSwitch_slider._neonRound { border-radius: 2em; }
+.neonSwitch_slider._neonRound:before { border-radius: 50%; }
+.neonSwitch_true { position:absolute; left:0px; top:0px; color:white; z-index: 0; padding: 0.18em 0.9em; visibility: hidden; }
+.neonSwitch_false { position:absolute; right:0px; top:0px; color:black; z-index: 0; padding: 0.18em 1.0em; visibility: visible; }
+.neonSwitch input:checked + .neonSwitch_slider .neonSwitch_true { visibility: visible; }
+.neonSwitch input:checked + .neonSwitch_slider .neonSwitch_false { visibility: hidden; }
+/* ------------------------------------------------------------------------- */
+
+.neonDate {width:11.5em; position:relative;}
+.neonDate_icon {cursor:pointer; position: absolute; right: 10px; top: calc(50% - 7px); color:#888;}
+.form-inline .neonDate .form-control {width:100%;}
+.neonTime_input { width:3.5em; }
+.neonRepeaterButton.btn {padding:7px 12px 7px 12px;box-shadow:0px 1px 0px rgba(255,255,255,0.9);border-radius:3px;}
+.neonRepeater .neonLegend {padding: 0 10px 10px 10px; border-bottom: 1px solid #ccc; }
+.neonLegend_title {float:left;padding-top:5px;}
+.neonLegend_controls{float:right;}
+@media print {
+	/* controls disappear in print and this causes legend to collapse unless title not floated */
+	.neonLegend_title { float: none; }
+}
+
+
+.neonForm legend {margin-bottom: 0px;}
+
+
+.neonField_error {color: #f56c6c;font-size: 12px;line-height: 1;padding-top: 4px;top: 100%;left: 0;}
+
+/** Multi-select picker field style formatting */
+.neonFieldSelectpicker { display: flex; max-height: 300px; }
+.neonFieldSelectpicker_unselectedItems { margin-right: 2.5px; }
+.neonFieldSelectpicker_selectedItems { margin-left: 2.5px; }
+.neonFieldSelectpicker_unselectedItems .form-control { flex: 0 0 40px; } /* <-- The search box */
+.neonFieldSelectpicker_unselectedItems, .neonFieldSelectpicker_selectedItems { display: flex; flex: 1; flex-direction: column;}
+.neonFieldSelectpicker_unselectedItemsList, .neonFieldSelectpicker_selectedItemsList { overflow: scroll; margin-top: 5px; list-style: none; padding: 5px 0px;}
+.neonFieldSelectpicker_selectedItemsLabel { min-height: 40px; }
+.neonFieldSelectpicker_selectedItem, .neonFieldSelectpicker_unselectedItem { cursor: pointer; padding: 5px; border-bottom: 1px solid rgba(216,221,230, 0.5);}
+/** updates to fields for read only modes **/
+.neonForm .form-control[readonly] { background-color: #fdfdfd; border-width:0; opacity: 1; }
+
+
+/**
+ * ----------------------------------------------------------------------------
+ * Selectize
+ * ----------------------------------------------------------------------------
+ */
+
+/* Selectize clear button */
+.selectize-control.plugin-clear_button .selectizeClearAll {display:none;font-size: 15px;position: absolute;right: 28px;z-index: 10;color: #808080;top: 50%;transform: translateY(-50%);cursor: pointer;border-radius: 100px;padding: 5px;line-height: 10px;}
+.selectize-control:hover.plugin-clear_button .selectizeClearAll.selectizeClearAllShow {display:inline-block;}
+.selectize-control.plugin-clear_button .selectizeClearAll:hover {color: #000;}
+/** Neon specific */
+.selectize-control.single .selectize-input, .selectize-dropdown.single {text-overflow: ellipsis;}
+.selectize-control.single .selectize-input.locked,
+.selectize-control.multi .selectize-input.locked {border-width:0; box-shadow: none;  background-color: #fdfdfd; background-image:none;}
+.selectize-control.single .selectize-input.locked:after,
+.selectize-control.multi .selectize-input.locked:after {border-color: #ccc transparent transparent transparent;}
+.selectize-input.locked + .selectizClearAll {visibility: hidden;}
+.selectize-input, .selectize-control.single .selectize-input  {border-color: var(--controlBorderColor);}
+.has-error .selectize-input, .has-error .selectize-control.single .selectize-input, .has-error .selectize-dropdown.single {border-color: var(--controlBorderColorError);}
+.selectize-dropdown, .selectize-input, .selectize-input input {line-height: 22px; font-size:16px; font-weight:400;}
+.selectize-input {padding: 8px 50px 8px 12px;}
+.selectize-control:hover .selectize-input, .selectize-control:hover.single .selectize-input,
+.selectize-control .selectize-input.focus{border: 1px solid var(--controlBorderColorActive);}
+.selectize-input, .selectize-control.single .selectize-input.input-active {display:block;}
+.selectize-dropdown, .selectize-dropdown.single {min-width: 150px !important;}
+.selectize-dropdown .active {background-color:#e3e8f1;}
+.selectize_hasAdd { display: flex; }
+.selectize_hasAdd .selectize-control { flex-grow:1; }
+/**
+ * ----------------------------------------------------------------------------
+ * SwitchMultipleState - set the font size to adjust the size
+ * ----------------------------------------------------------------------------
+ */
+ .neonFieldSwitchMultipleState_radio { display: inline-block; }
+ .neonFieldSwitchMultipleState_radioLabel { padding: 0; }
+ .neonFieldSwitchMultipleState_radioInput { display: none; }
+ .neonFieldSwitchMultipleState_radioInput:checked + .neonSwitchMultipleState_radioSpan { cursor: default; color: #fff; background-color: #007BFF; box-shadow: 0 5px 5px 1px rgba(50, 50, 50, 0.5); z-index: 2; position: relative;}
+ .neonFieldSwitchMultipleState_radioInput + .neonSwitchMultipleState_radioSpan { width: 4em; padding: 10px; font-size:13px; background-color: #fff; box-shadow: 0 5px 5px 0 rgba(50, 50, 50, 0.25); transition-timing-function: ease; transition-property: all; transition-duration: 0.35s; transition-delay: 0s;}
+ .neonFieldSwit chMultipleState_radioInput + .neonSwitchMultipleState_radioSpan { border-radius: 5px 0 0 5px;}
+ .neonFieldSwitchMultipleState_radio ~ .neonFieldSwitchMultipleState_radio .neonFieldSwitchMultipleState_radioInput + .neonSwitchMultipleState_radioSpan { border-radius: 0;}
+ .neonFieldSwitchMultipleState_radio:last-child .neonFieldSwitchMultipleState_radioInput + .neonSwitchMultipleState_radioSpan { border-radius: 0 5px 5px 0;}
+
+.neonPhone_flag { vertical-align: middle; display: inline-block; padding-top: 3px; 	font-size: 30px;line-height: 16px;height: 16px;}
+/* emulate an input box with neonInputEffect */
+.neonInputEffect {border: 1px solid var(--controlBorderColor); border-radius: 3px;}
+.isFocused .neonInputEffect{border-color:var(--controlBorderColorActive);}
+.has-error .neonInputEffect{border-color:var(--controlBorderColorError);}
+.neonInputEffect:hover {border-color:var(--controlBorderColorActive);}
+.has-feedback {position:relative;}
+.form-control-feedback {position: absolute;top: 0;right: 0;z-index: 2;display: block;width: 34px;height: 34px;line-height: 34px;text-align: center;pointer-events: none;}
+.neonForm_errors {height:40px;}
+.neonField_errors {height:20px;}
+
+/**
+ * form control styles - flat style
+ */
+.form-control { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); border-radius: 3px; transition: none; border-color:#D8DDE6; }
+.form-control:hover { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); border-color: #999 }
+.form-control:focus { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); border-color: #0086F1 }
+.has-error .form-control:focus { box-shadow: none; }
+.has-success .form-control:focus { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); }
+
+.neonField_label {font-weight:600;}
+
+.neonForm .has-error .form-control:focus {box-shadow:none;}
+
+
+/** neonForm .niForm is a compact version of the form fields */
+
+.niForm .form-control,
+.niForm .selectize-input {min-height:48px;padding:6px 50px 6px 12px;font-weight:400;transition: all .2s ease-in-out;}
+
+.niForm .ace_editor, .neonForm.niForm .form-control {color:#444;}
+
+/* When the field is dirty show the label and add top padding: */
+.niForm.form-group.has-error .form-control,
+.niForm.form-group.isDirty .form-control {padding:20px 50px 5px 12px;}
+
+
+.niForm.form-group.has-error .selectize-input,
+.niForm.form-group.isDirty .selectize-input {padding:20px 50px 5px 12px;}
+
+.niForm.isDirty .neonInputGroup_prepend {padding:18px 5px 5px 12px;}
+/* ----- */
+
+.niForm.has-error .form-control:focus{border-color:#ED4F32;}
+.neonForm .has-error .form-control {box-shadow: none;}
+
+
+.neonInputGroup {position: relative;display: flex;width: 100%;flex-wrap: wrap;align-items: stretch;}
+.neonInputGroup .form-control {position: relative;width: 1%;margin-bottom: 0;flex: 1 1 auto;border: none; box-shadow: none;}
+.neonInputGroup_prepend {border-radius: 3px 0 0 3px;height: 48px;padding: 10px 0 0 12px;font-size: 16px;color: #444;font-weight: 400;}
+.neonForm .neonInputGroup .form-control:focus {border:0; box-shadow: none;}
+
+.neonForm .input-group {border: 1px solid #d8dde6;}
+.neonForm .isFocused .input-group{border-color: var(--controlBorderColorActive);}
+.neonForm .input-group .ace_editor.ace_focus, .neonForm .input-group .form-control:focus{box-shadow: none;}
+
+
+.niForm .neonField_errors {position:absolute; top:5px; left: var(--inputBorderLeft); z-index: 2;pointer-events: none;}
+/*.niForm .has-error .neonField_errors .help-block{font-size:11px;}*/
+.niForm .neonField_errors .help-block {font-weight:700;color:#ED4F32;pointer-events: none;}
+.neonForm.niForm ::placeholder {color:#676767;}
+.niForm .selectize-input {padding:12px 50px 12px 12px;box-shadow: none;}
+
+.niForm.neonField .neonInput_placeholderLabel {visibility:hidden; opacity:0; color:#676767; z-index:2; pointer-events:none; transition:all .2s ease-in-out; font-size:11px; display:block; position:absolute; left: var(--inputBorderLeft); font-weight:700; top:5px;}
+.niForm.neonField.isDirty .neonInput_placeholderLabel {visibility: visible; opacity:1;}
+/* Hide form field label when an error is shown */
+.niForm.neonField.isDirty.has-error .neonInput_placeholderLabel {opacity: 0; visibility: hidden;}
+
+/* if you prefer labels to shrink on focus */
+/*.neonForm.niForm .neonField.isFocused .form-control {padding:20px 50px 7px 12px;}*/
+/*.neonForm.niForm .neonField.isFocused .neonInput_placeholderLabel {visibility:visible;opacity:1;}*/
+
+/**
+ * ----------------------------------------------------------------------------
+ * File Uploaders - override the el defaults
+ * ----------------------------------------------------------------------------
+ */
+.neonInput .el-upload-list__item-status-label, .neonInput .el-icon-close { left:-15px; }
+.el-icon-close:hover {color:red;}

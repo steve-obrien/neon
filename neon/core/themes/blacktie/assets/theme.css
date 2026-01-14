@@ -1,0 +1,211 @@
+/**
+ * black tie theme
+ */
+html {background-color:#eee;}
+/** Typography **/
+body { font-family:"Nunito Sans","avenir next","avenir", "Helvetica Neue","Helvetica","Arial",sans-serif; font-weight: 400;font-size: 12px; line-height:1.8; background-color:#eee; -webkit-font-smoothing: subpixel-antialiased; text-rendering: optimizeLegibility; }
+
+/** Text **/
+strong {font-weight:600;}
+th {font-weight:600;}
+label {font-weight:normal;}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {font-weight:300;}
+
+
+/**** Pinched from official bootstrap theme ***/
+/**** Docs: http://bootstrap-themes.github.io/marketing/docs/index.html#blocks ***/
+.block {position: relative;display:table;width: 100%;padding: 60px 30px;color: inherit;background-position: center;background-size: cover;background-repeat: no-repeat;}
+.block-fill-height {display: table;width: 100%;height: 110vh;}
+.block-overflow-hidden {overflow: hidden;}
+.block-bg-clip {position: absolute;top: -25px;right: 0;bottom: -25px;left: 0;overflow: hidden;}
+.block-bg {position: absolute;top: 25px;right: -25px;bottom: 25px;left: -25px;overflow: hidden;-webkit-transform: rotate(-2deg);transform: rotate(-2deg);}
+.block-bg-img {position: absolute;top: -25px;right: 0;bottom: -25px;left: 0;background-position: center;background-size: cover;background-repeat: no-repeat;-webkit-transform: rotate(2deg);transform: rotate(2deg);}
+.block-inverse .block-bg-img {background-color: #444444;}
+.block-bg-img-top {background-position: top;}
+.block-bg-img-bottom {background-position: bottom;}
+.block-bordered-lg:before,
+.block-bordered:before {position: absolute;top: 0;left: 0;right: 0;z-index: 10;content: '';width: 33%;margin: 0 auto;border-top: 1px solid;border-top-color: #ccc;border-top-color: rgba(0, 0, 0, 0.1);}
+.block-bordered-lg:before {width: 80%;}
+.block-paralax {background-attachment: fixed;}
+.block-inverse {color: #ffffff;background-color: #444444;}
+.block-inverse.block-bordered:before, .block-inverse hr {border-color: rgba(255, 255, 255, 0.2);}
+/** example of lazy css, far too many selectors **/
+.block-inverse h1,.block-inverse h2,.block-inverse h3,.block-inverse h4,.block-inverse h5,.block-inverse h6,.block-inverse .h1,.block-inverse .h2,.block-inverse .h3,.block-inverse .h4,.block-inverse .h5,.block-inverse .h6 {color: inherit;}
+.block-inverse .btn-outline.btn-default {color: #ffffff;background-color: transparent;border-color: #ffffff;}
+.block-inverse .btn-outline.btn-default:focus, .block-inverse .btn-outline.btn-default.focus, .block-inverse .btn-outline.btn-default:hover, .block-inverse .btn-outline.btn-default:active, .block-inverse .btn-outline.btn-default.active, .open > .dropdown-toggle.block-inverse .btn-outline.btn-default {color: #ffffff;background-color: #ffffff;box-shadow: none;}
+.block-inverse .btn-outline.btn-default.disabled, .block-inverse .btn-outline.btn-default[disabled], fieldset[disabled] .block-inverse .btn-outline.btn-default, .block-inverse .btn-outline.btn-default.disabled:hover, .block-inverse .btn-outline.btn-default[disabled]:hover, fieldset[disabled] .block-inverse .btn-outline.btn-default:hover, .block-inverse .btn-outline.btn-default.disabled:focus, .block-inverse .btn-outline.btn-default[disabled]:focus, fieldset[disabled] .block-inverse .btn-outline.btn-default:focus, .block-inverse .btn-outline.btn-default.disabled.focus, .block-inverse .btn-outline.btn-default[disabled].focus, fieldset[disabled] .block-inverse .btn-outline.btn-default.focus, .block-inverse .btn-outline.btn-default.disabled:active, .block-inverse .btn-outline.btn-default[disabled]:active, fieldset[disabled] .block-inverse .btn-outline.btn-default:active, .block-inverse .btn-outline.btn-default.disabled.active, .block-inverse .btn-outline.btn-default[disabled].active, fieldset[disabled] .block-inverse .btn-outline.btn-default.active {border-color: #ffffff;}
+.block-inverse .btn-outline.btn-default .badge {color: #ffffff;background-color: #ffffff;}
+.block-inverse .btn-outline.btn-default:focus, .block-inverse .btn-outline:focus, .block-inverse .btn-outline.btn-default.focus, .block-inverse .btn-outline.focus, .block-inverse .btn-outline.btn-default:hover, .block-inverse .btn-outline:hover, .block-inverse .btn-outline.btn-default:active, .block-inverse .btn-outline:active, .block-inverse .btn-outline.btn-default.active, .block-inverse .btn-outline.active, .open > .dropdown-toggle.block-inverse .btn-outline.btn-default, .open > .dropdown-toggle.block-inverse .btn-outline {color: #000;}
+.block-transparent {background-color: transparent;}
+.block-background {position: absolute;top: 0;right: 0;bottom: 0;left: 0;}
+.block-background > iframe {display: block;width: 100%;height: 100%;}
+.block-foreground {position: relative;z-index: 2;display: inline-block;}
+
+.block-label {margin-bottom: 20px;font-weight: 400;letter-spacing: 4px;color: #685d9f;text-transform: uppercase;}
+.h1.block-title,h1.block-title {font-size: 56px;line-height: 1;}
+.block .lead {font-size: 18px;}
+.block-angle {margin-bottom: -25px;}
+.block-xs-top,.block-xs-bottom,.block-xs-middle {display: table-cell;vertical-align: middle;}
+.block-xs-bottom {vertical-align: bottom;}
+.block-xs-top {vertical-align: top;}
+@media (min-width: 768px) {
+  .block-sm-top,.block-sm-bottom,.block-sm-middle {display: table-cell;vertical-align: middle;}
+  .block-sm-bottom {vertical-align: bottom;}
+  .block-sm-top {vertical-align: top;}
+}
+@media (min-width: 992px) {
+  .block-md-top,.block-md-bottom,.block-md-middle {display: table-cell;vertical-align: middle;}
+  .block-md-bottom {vertical-align: bottom;}
+  .block-md-top {vertical-align: top;}
+}
+@media (min-width: 1200px) {
+  .block-lg-top,.block-lg-bottom,.block-lg-middle {display: table-cell;vertical-align: middle;}
+  .block-lg-bottom {vertical-align: bottom;}
+  .block-lg-top {vertical-align: top;}
+}
+@media screen and (min-width: 768px) {
+  .block {padding: 100px 0;}
+  .block:not(.block-secondary) .lead {font-size: 21px;}
+}
+
+/** Navrbar - fix bootstrap navbar styles **/
+@media (min-width: 768px) {
+    .navbar-nav > li > a {padding-top: 10px; padding-bottom: 10px;}
+}
+.navbar {min-height: 40px;}
+.navbar.navbar-main {border-radius:0px;margin-bottom:0px;/*box-shadow:0 2px 3px rgba(0,0,0,.3)*/}
+.navbar-right {margin-right: 0;}
+.navbar-brand {float: left; height: 40px; padding: 10px 10px; font-size: 18px; line-height: 20px;  }
+.navbar.navbar-main { padding-left: 0; padding-right: 0; }
+.nav > li > a.navbarUserDropdown {padding:0px 10px; margin:0;}
+
+/** panel styles **/
+.panel-default{border-color: #ccc;}
+.panel-default > .panel-heading{background-color:#fff;border-width:0; border-bottom: 1px solid #d8d8d8;}
+.panel {box-shadow:0px 1px 2px 0px rgba(0,0,0,.1);margin-bottom: 20px;border-radius: 3px;overflow-x:hidden;}
+.panel-footer {padding: 10px 15px;background-color:#fff;border-top: 1px solid #D4D4D4;}
+
+.pagination{margin:0;}
+
+/** AdminHeader widget styles **/
+.neonToolbar{border-bottom:1px solid #cfdbe2;margin-bottom:20px;padding-top: 10px; padding-bottom: 10px; border-bottom: 1px solid #b4c3ca; padding-bottom: 7px; background-color: #f7f9fa; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);}
+.neonToolbar_title{margin:0;font-size: 25px;line-height: 30px;}
+
+
+.alert{margin:0;}
+.alert-admin{border-radius:0;}
+
+.breadcrumb{background:transparent;margin:0;}
+
+/** create a sticky footer... could be solved by flexbox **/
+html,body{height:100%;}
+.wrapper{min-height: 100%;height: auto !important;height: 100%;margin: 0 auto -50px; padding: 0 0 60px;position:relative;}
+.footer{height: 50px; position: absolute; right: 0; bottom: 0; left: 0; padding: 1rem;  text-align: center; }
+
+/** helpers **/
+.mt20 {margin-top:20px !important;}
+.mts {margin-top:5px;}
+.mtm {margin-top:10px;}
+.man {margin:0px}
+.mls{margin-left:5px;}
+
+
+/**
+ * form control styles - flat style
+ */
+.form-control { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); border-radius: 3px; transition: none; border-color:#D8DDE6; }
+.form-control:hover { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); border-color: #999 }
+.form-control:focus { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); border-color: #0086F1 }
+.has-error .form-control:focus { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); }
+.has-success .form-control:focus { box-shadow: 0px 1px 0px rgba(255,255,255,0.9); }
+.control-label{font-weight:600;}
+
+
+
+/**
+ * Buttons
+ */
+.btn.btn-default:focus, .btn.btn-default.focus {outline:none;}
+.btn.btn-primary:focus, .btn.btn-primary.focus {outline:none;}
+
+
+
+
+/** label styles */
+.label { font-weight: 300; font-size: 80%; letter-spacing: 0.5px; border-radius: .15em; padding: .2em .6em .2em; box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.2); line-height: 2.1; /* so that labels and badges wrap on new lines well without overlapping */}
+.badge { font-weight: 300; font-size: 11px; }
+
+.panel.panel-grid {overflow-x:scroll;}
+
+.nav.nav-stacked > li { border-bottom: 1px solid #eee; }
+.nav.nav-stacked > li:last-child { border-bottom: none; }
+.nav-stacked > li + li { margin-top:0px; }
+/*.nav-stacked.nav-pills > li > a {border-left:3px solid transparent;}*/
+/*.nav-stacked.nav-pills > li.active > a, .nav-stacked.nav-pills > li.active > a:hover, .nav-stacked.nav-pills > li.active > a:focus {border-radius:0;background:transparent;border-left:3px solid #337ab7;color:inherit;}*/
+.nav-stacked.nav-pills > li.active > a, .nav-stacked.nav-pills > li.active > a:hover, .nav-stacked.nav-pills > li.active > a:focus {border-radius:0;}
+.nav-stacked.nav-pills > li:first-child > a, .nav-stacked.nav-pills > li:first-child > a:hover, .nav-stacked.nav-pills > li:first-child > a:focus {border-radius: 3px 3px 0 0}
+.nav-stacked.nav-pills > li:last-child > a, .nav-stacked.nav-pills > li:last-child > a:hover, .nav-stacked.nav-pills > li:last-child > a:focus {border-radius: 0 0 3px 3px}
+/* Useful when using a fa icon in a button or link with text on the right */
+.fa-btn {margin-right:5px;}
+.panel.panel-flush .panel-body {padding:0;}
+
+.avatar {border-radius:100px;}
+.nav-avatar {padding:5px;height:40px;}
+
+.close {font-size: 35px; font-weight: 200; margin: 10px 15px;}
+
+.btn.btn-default:focus { background: #F4F6F9; }
+.btn.btn-default { border-color:#A8B7C8; transition: 0.15s cubic-bezier(0.17, 0.67, 0.52, 0.97); outline:0; }
+.btn.btn-default:hover { background: #F4F6F9; transition: 0.15s cubic-bezier(0.17, 0.67, 0.52, 0.97); outline: 0; }
+.btn.btn-default:active { transform: scale(0.95); outline: 0;}
+.btn.btn-primary { border-color:transparent; color: #fff; background: #007BFF; box-shadow: 0 5px 10px 0 rgba(0,134,241,0.20); }
+.btn.btn-primary:hover { background-color:#006DD5; border-color:transparent; transition: 0.15s cubic-bezier(0.17, 0.67, 0.52, 0.97); }
+.btn.btn-primary:active { transform: scale(0.95); border-color:transparent; background-color: #005DB5; box-shadow: 0 2px 4px 0 rgba(0,93,181,0.20), 0 2px 2px rgba(0, 0, 0, 0.3) inset; }
+.btn.btn-primary:focus { border-color:transparent; background-color: #005DB5; }
+
+
+.btn.btn-primary.neonButton {
+  border-color:transparent;
+  transition: 0.25s cubic-bezier(0.17, 0.67, 0.52, 0.97)
+}
+.btn.btn-primary.neonButton:hover {
+  background-color:#006DD5;
+  border-color:transparent;
+  transition: 0.15s cubic-bezier(0.17, 0.67, 0.52, 0.97);
+}
+.btn.btn-primary.neonButton:active {
+  border-color:transparent;
+  background-color: #005DB5;
+  transform: scale(0.95);
+  /* Rectangle 4: */
+  /*background-image: linear-gradient(0deg, #007BFF 2%, #005DB5 100%);*/
+  box-shadow: 0 2px 4px 0 rgba(0,93,181,0.20), 0px 1px rgba(0, 0, 0, 0.3) inset;
+}
+/* utility classes - mirror bootstrap 4 */
+.mt-0 {margin-top: 0 !important}
+.mb-0 {margin-bottom: 0 !important}
+.ml-0 {margin-left: 0 !important}
+.mr-0 {margin-right: 0 !important}
+.ma-0 {margin: 0 0 0 0 !important}
+.mr-1 {margin-right:5px; !important}
+/** override the default bootstrap alerts */
+.alert {border: 1px dashed #D8DDE6; border-radius: 4px; color:#333;}
+.alert-success {border-color: #b0d696; background-color: #f0f9eb;}
+.alert-warning {border-color: #e8bc79; background-color: #fdf6ec;}
+.alert-danger {border-color: #e4adad; background: #fef0f0;}
+.alert h4 {margin-top: 5px;}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus { color:inherit; background-color: #ecf5ff; }
+.nav > li > a:hover, .nav > li > a:focus {background-color: #ecf5ff;}
+.nav.nav-stacked > li{border-bottom:1px solid #ecf5ff;}
+.nav.nav-stacked > li a {padding:15px;}
+
+.neonSearchHighlight{background:#ccc;}
+
+.workbench {display: flex;-webkit-box-orient: vertical;flex-direction: column;position: absolute;top: 42px;right: 0px;bottom: 0px;left: 0px;z-index: 0;}
+.workbenchBody {display: -webkit-box;display: -moz-box;display: -webkit-flex;display: -ms-flexbox;display: box;display: flex;overflow-y: auto;-webkit-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;box-flex: 1;-webkit-flex: 1 1 auto;-ms-flex: 1 1 auto;flex: 1 1 auto;position: relative;height: 100%;background-color:#fff;}
+.workbenchBody_content {overflow-y: auto;overflow-x: hidden;position: relative;padding-top: 1.285714285714286em;-webkit-box-flex: 1;-moz-box-flex: 1;-o-box-flex: 1;-ms-box-flex: 1;box-flex: 1;-webkit-flex-grow: 1;flex-grow: 1;border-right: 1px solid #b4c3ca;background-color: #eee;}
+.workbenchBody_entity-sidebar {overflow-y: auto;overflow-x: hidden;position: relative;padding-top: 1.285714285714286em;z-index: 0;width: 24vw;-webkit-flex-shrink: 0;flex-shrink: 0;max-width: 60rem;background: #f7f9fa;}
+.workbenchBody_form { padding: 0px 20px 0px 20px; }
+.workbenchHeader {border-bottom: 1px solid #b4c3ca;border-top: 1px solid #b4c3ca;display: box; display: -webkit-box;  display: -moz-box;display: flex; display: -webkit-flex;  display: -ms-flexbox;-webkit-box-orient: horizontal;  -moz-box-orient: horizontal;  -o-box-orient: horizontal;flex-direction: row; -webkit-flex-direction: row;  -ms-flex-direction: row;align-items: center; -webkit-box-align: center;  -moz-box-align: center;  -o-box-align: center; -ms-flex-align: center;  -webkit-align-items: center;background-color: #f7f9fa;box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);padding-left: 2em;padding-right: 2em;position: relative;min-height: 51px;z-index: 100;}
+.workbenchHeader_title { margin:0 20px 0 0; font-size:24px;}

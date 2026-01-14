@@ -1,0 +1,110 @@
+.cobe-widget-overlay { position: absolute;right: 0px;left: 0px;top: 0px;bottom: 0px;z-index: 8000;cursor: pointer;}
+.cobe-widget-overlay .cobe-widget-bg {
+	z-index: 0;display: block;position: absolute;top: 0;bottom: 0;left: 0;right: 0;
+}
+.cobe-widget-overlay .cobe-widget-bg:hover{
+	z-index: 0;display: block;position: absolute;top: 0;bottom: 0;left: 0;right: 0;background: #8b8b8b;opacity: 0.25;border:1px solid #000;
+	background: #fff;
+	opacity: 0.8;
+	-webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.4);  -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.4);  -o-box-shadow: 0 3px 10px rgba(0,0,0,0.4);  -ms-box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+	box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+	font: 12px/1.2em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	letter-spacing: 0.03em;
+	min-height: 2.2em;
+	outline: none;
+}
+
+/**
+ * ======================================================================
+ * Editor specific themeing - text style callouts
+ * ======================================================================
+ * gives indication to the user whilst editing
+ * the parent class of .edit-debug must exist
+ */
+/* cke_focus means ckeditor is currently editing the text */
+.edit-debug .cke_focus [style*=nowrap]::before,
+.edit-debug .cke_focus [style*=capitalize]::before,
+.edit-debug .cke_focus [style*=lowercase]::before,
+.edit-debug .cke_focus [style*=uppercase]::before,
+.edit-debug .cke_focus a:not([href])::before,
+.edit-debug .cke_focus abbr::before,
+.edit-debug .cke_focus address::before,
+.edit-debug .cke_focus blockquote::before,
+.edit-debug .cke_focus cite::before,
+.edit-debug .cke_focus code::before,
+.edit-debug .cke_focus del::before,
+.edit-debug .cke_focus ins::before,
+.edit-debug .cke_focus label::before,
+.edit-debug .cke_focus mark::before,
+.edit-debug .cke_focus q::before,
+.edit-debug .cke_focus strike::before,
+.edit-debug .cke_focus sub::before,
+.edit-debug .cke_focus sup::before,
+.edit-debug .cke_focus table::before,
+.edit-debug .cke_focus time::before
+{
+	text-indent: 0;
+	content: '</>';
+	font-family: Helvetica;
+	font-style: normal;
+	margin-top: -6px;
+	box-shadow: 0 0 2px #000;
+	line-height: 1;
+	letter-spacing: 1px;
+	height: 8px;
+	display: inline-block;
+	background-color: #000;
+	font-size: 8px;
+	color: #fff;
+	position: absolute;
+	padding: 2px 3px 0;
+	font-weight: 700;
+}
+
+.edit-debug .cke_focus [style*=uppercase]::before {
+	content: '<UPPERCASE>';
+}
+
+.widget-overlay {
+	display: block;
+	border: 1px solid #333;
+	background: #fff;
+	opacity: 0.8;
+	-webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.4);  -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.4);  -o-box-shadow: 0 3px 10px rgba(0,0,0,0.4);  -ms-box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+	box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+	font: 12px/1.2em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	letter-spacing: 0.03em;
+	min-height: 2.2em;
+	outline: none;
+	-webkit-transition: all 0.4s ease-in-out;  -moz-transition: all 0.4s ease-in-out;  -o-transition: all 0.4s ease-in-out;  -ms-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+.widget-overlay:hover {
+	background: #444;
+}
+.widget-overlay .widget-overlay-lbl {
+	display: inline-block;
+	background: #000;
+	color: #efefef;
+	padding: 0.4em 0.5em 0.6em 0.5em;
+	vertical-align: top;
+}
+
+.widget-overlay:hover .widget-overlay-lbl {
+	color: #000;
+	background: #efefef;
+}
+.cobe-drop-zone {border: 1px dashed #ccc; min-height:50px;}
+
+.cobe-editable { outline:1px dashed #666; overflow:auto; display:inline-block;}
+.cobe-editable:hover { outline:1px solid #007AFF; overflow:auto; }
+.cobe-editable.m_success { animation: flashBackgroundColourSuccess 1s;}
+@keyframes flashBackgroundColourSuccess {
+  50% { background-color: #efe }
+  100% { background-color: inherit; }
+}
+.cobe-editable.m_error { animation: flashBackgroundColourError 1s;}
+@keyframes flashBackgroundColourError {
+  50% { background-color: #fee }
+  100% { background-color: inherit; }
+}
