@@ -54,4 +54,54 @@ class File extends \yii\helpers\FileHelper
 		static::createDirectory(dirname($path));
 		return file_put_contents($path, $content);
 	}
+
+	/**
+	 * safely obtain the basename
+	 * @param string $name
+	 * @return string
+	 */
+	public static function extractUploadBasename(string $name): string
+	{
+		$normalised = str_replace('\\', '/', $name);
+		return basename($normalised);
+	}
+
+	/**
+	 * asserts an upload filename is valid (otherwise an exception is generated)
+	 * @param string $originalName
+	 * @param string|null $baseName
+	 * @return void
+	 */
+	public static function assertValidUploadFilename(string $originalName, ?string $baseName = null): void
+	{
+		$normalised = str_replace('\\', '/', $originalName);
+		$baseName = $baseName ?? self::extractUploadBasename($originalName);
+
+		if (
+			$baseName === '' ||
+			$baseName === '.' ||
+			$baseName === '..' ||
+			$baseName !== $normalised ||
+			strpos($originalName, "\0") !== false ||
+			preg_match('/[\x00-\x1F\x7F]/', $originalName) === 1
+		) {
+			throw new \InvalidArgumentException('Invalid upload filename');
+		}
+
+		if (preg_match('/^[A-Za-z0-9._ -]+$/', $baseName) !== 1) {
+			throw new \InvalidArgumentException('Invalid upload filename');
+		}
+	}
+
+	/**
+	 * either get an upload filename safely (avoiding file traversal etc) or generate an exception
+	 * @param string $name
+	 * @return string
+	 */
+	public static function getSafeUploadFilename(string $name): string
+	{
+		$baseName = self::extractUploadBasename($name);
+		self::assertValidUploadFilename($name, $baseName);
+		return $baseName;
+	}
 }

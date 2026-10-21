@@ -16,4 +16,3 @@ tests/_root/var
 tests/_root/system
 
 node_modules
-var/storage/

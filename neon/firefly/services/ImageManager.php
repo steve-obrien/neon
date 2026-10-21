@@ -10,6 +10,7 @@
 
 namespace neon\firefly\services;
 
+use http\Exception\InvalidArgumentException;
 use \Intervention\Image\ImageManager as InterventionImageManager;
 use \Intervention\Image\Exception\NotReadableException;
 use \Intervention\Image\Image as Image;
@@ -52,16 +53,18 @@ class ImageManager
 	 */
 	public function process($source, $params): string
 	{
-		// get firefly image if the source is a firefly id
-		if (Hash::isUuid64($source)) {
-			if (!neon()->firefly->fileManager->exists($source))
-				throw new HttpException(404);
-			$meta = neon()->firefly->fileManager->getMeta($source);
-			// can be 'image/svg' or 'image/svg+xml'
-			if (Str::startsWith($meta['mime_type'], 'image/svg'))
-				return neon()->firefly->fileManager->read($source);
-			$source = neon()->firefly->fileManager->readStream($source);
+		if (FireflySecurityPolicy::fileImageOnlyAcceptsUuids() && !Hash::isUuid64($source)) {
+			throw new \InvalidArgumentException( 'Invalid file id');
 		}
+		// get firefly image if the source is a firefly id
+		if (!neon()->firefly->fileManager->exists($source)) {
+			throw new HttpException(404);
+		}
+		$meta = neon()->firefly->fileManager->getMeta($source);
+		// can be 'image/svg' or 'image/svg+xml'
+		if (Str::startsWith($meta['mime_type'], 'image/svg'))
+			return neon()->firefly->fileManager->read($source);
+		$source = neon()->firefly->fileManager->readStream($source);
 		$manager = $this->getImageDriver();
 		$image = $manager->make($source);
 		$image = $this->processImage($image, $params);

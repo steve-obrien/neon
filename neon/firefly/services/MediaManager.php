@@ -187,6 +187,9 @@ class MediaManager extends Component implements IMediaManager
 		// Find the file
 		$fileMeta = neon()->firefly->getMeta($id);
 
+		if (FireflySecurityPolicy::safePathsOnly()) {
+			$path = $this->getSafeLogicalPath($path);
+		}
 		try {
 			$this->createDirectory($path);
 		} catch (DirectoryExistsException $e) { /* This error is ok */ }
@@ -396,5 +399,49 @@ class MediaManager extends Component implements IMediaManager
 	{
 		$path = $this->getRootPath() . ltrim($path, '/');
 		return strlen($path) === 1 ? '/' : rtrim($path, '/');
+	}
+
+	/**
+	 * attempt to get a safe path or fail!
+	 * @param string $path
+	 * @return string
+	 */
+	public function getSafeLogicalPath(string $path)
+	{
+		$path = str_replace('\\', '/', (string) $path);
+		$path = trim($path);
+
+		if ($path === '' || $path === '/') {
+			return '/';
+		}
+
+		if (str_contains($path, "\0") || preg_match('/[\x00-\x1F\x7F]/', $path) === 1) {
+			throw new \InvalidArgumentException('Invalid Firefly path cannot contain unsafe chars');
+		}
+
+		$rawParts = explode('/', $path);
+		$parts = [];
+
+		foreach ($rawParts as $part) {
+			if ($part === '') {
+				continue;
+			}
+
+			if ($part === '.' || $part === '..') {
+				throw new \InvalidArgumentException("Invalid Firefly path cannot contain '.' or '..'");
+			}
+
+			if (preg_match('/^[A-Za-z0-9._ -]+$/', $part) !== 1) {
+				throw new \InvalidArgumentException('Invalid Firefly path contains unsupported characters');
+			}
+
+			$parts[] = $part;
+		}
+
+		if (empty($parts)) {
+			return '/';
+		}
+
+		return '/' . implode('/', $parts);
 	}
 }

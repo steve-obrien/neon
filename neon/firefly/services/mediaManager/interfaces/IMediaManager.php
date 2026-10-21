@@ -199,4 +199,6 @@ interface IMediaManager
 	 * @return string path
 	 */
 	public function getRealPath($path);
+
+
 }

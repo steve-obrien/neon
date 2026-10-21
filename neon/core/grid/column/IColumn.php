@@ -189,7 +189,7 @@ interface IColumn
 	 * Set any configuration for a filter field. This will depend on the type of
 	 * filter that is being used.
 	 *
-	 * @param $config  see the available config for the relevant filter field type
+	 * @param array $config see the available config for the relevant filter field type
 	 */
 	public function setFilterFieldConfig($config);
 

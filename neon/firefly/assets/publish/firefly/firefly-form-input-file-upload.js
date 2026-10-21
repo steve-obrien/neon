@@ -69,14 +69,54 @@ Vue.component('firefly-form-input-file-upload', {
 				uploader.start();
 			},
 			onFileUploaded: function (uploader, file, result) {
-				var response = JSON.parse(result.response);
-				file.uuid = response.result.uuid;
-				vm.emitFilesChanged();
+				try {
+					var response = JSON.parse(result.response);
+					if (response.error) {
+						// handle error response from server
+						FIREFLY.events.$emit('uploadError', {
+							error: {
+								code: response.error.code || 0,
+								message: response.error.message || 'Upload failed.',
+							},
+							uploader: uploader,
+							file: file,
+							response: response
+						})
+						return;
+					}
+					if (!response.result || !response.result.uuid) {
+						// handle poorly formed response from server
+						FIREFLY.events.$emit('uploadError', {
+							error: {
+								code: 0,
+								message: 'Upload failed: invalid server response.'
+							},
+							uploader: uploader,
+							file: file,
+							response: response
+						});
+						return;
+					}
+					file.uuid = response.result.uuid;
+					vm.emitFilesChanged();
+				}
+				catch (e) {
+					// handle an exception
+					FIREFLY.events.$emit('uploadError', {
+						error: {
+							code: 0,
+							message: 'Upload failed: '+e.message,
+						},
+						uploader: uploader,
+						file: file,
+						response: e.message
+					});
+				}
 			},
 			onUploadProgress: function(up, file) {},
 			onStateChanged: function(uploader) {
 				vm.$emit('uploading', (uploader.state === vm.UPLOADING));
-			},
+			}
 		});
 
 		// load the file if a file uuid has been set
@@ -94,7 +134,6 @@ Vue.component('firefly-form-input-file-upload', {
 			} else {
 				val = this.files[0].uuid;
 			}
-			console.log(val, 'val')
 			this.$emit('input', val);
 		},
 		onClearClick: function(id) {
@@ -127,3 +166,6 @@ Vue.component('firefly-form-input-file-upload', {
 		},
 	}
 });
+// Expose FIREFLY globally since project-specific code may want to listen to its event bus
+// This is needed because its unclear how/if this is otherwise exposed to/by neon!
+window.FIREFLY = FIREFLY;

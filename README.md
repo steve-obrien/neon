@@ -3,6 +3,8 @@
 Neon
 ====
 
+Forked from: [newicon/neon `releases`](https://bitbucket.org/newicon/neon/src/releases/) (commit `2434e9c28e60ac00ccbb090dd818d6557e150720`).
+
 Neon is a software development framework developed and maintained by [Newicon.net](https://newicon.net).  
 For more info check out the website [https://newicon.net/neon](https://newicon.net/neon).
 

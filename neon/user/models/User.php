@@ -69,6 +69,11 @@ class User extends ActiveRecord implements
 	const STATUS_PENDING = 'PENDING';
 
 	/**
+	 * @var callable for checking a password's strength before allowing it to be set
+	 */
+	private static $passwordPolicyChecker  = null;
+
+	/**
 	 * @inheritdoc
 	 */
 	public static function tableName()
@@ -188,6 +193,11 @@ class User extends ActiveRecord implements
 			}
 		}
 		return null;
+	}
+
+
+	public static function setPasswordPolicyChecker(callable $checker) {
+		self::$passwordPolicyChecker = $checker;
 	}
 
 	/**
@@ -441,6 +451,13 @@ class User extends ActiveRecord implements
 	 */
 	public function setPassword($password)
 	{
+		if (self::$passwordPolicyChecker !== null) {
+			$checker = self::$passwordPolicyChecker;
+			$result = $checker($password, $this);
+			if (!$result) {
+				throw new \InvalidArgumentException('Password does not meet policy requirements.');
+			}
+		}
 		$this->password_hash = neon()->user->generatePasswordHash($password);
 	}
 

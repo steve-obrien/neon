@@ -632,7 +632,9 @@ Vue.component('neon-core-form-fields-ide', {
 			 */
 			dataMapKey: {type: String, editor: false},
 			endpoint: {type: String, default: '/core/form/get-map-objects'},
-			create:  {type: Boolean, default: false}
+			create:  {type: Boolean, default: false},
+			/** default 100 is a dumb default but ensures back compatibility */
+			limit: {type: Number, default: 100}
 		},
 		data() {
 			return {
@@ -722,7 +724,7 @@ Vue.component('neon-core-form-fields-ide', {
 				);
 			},
 			load: function(query, callback) {
-				var url = neon.url(this.endpoint, {objectToken: this.rootForm.objectToken, formField: this.getServerPath(), query:query});
+				var url = neon.url(this.endpoint, {objectToken: this.rootForm.objectToken, formField: this.getServerPath(), query:query, length: this.limit});
 				$.getJSON(url, {}, (data) => {
 					if (callback) callback(data);
 					this.selectBoxItems = data;

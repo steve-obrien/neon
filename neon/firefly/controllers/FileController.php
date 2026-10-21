@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use neon\core\helpers\Arr;
 use neon\core\helpers\Hash;
 use neon\core\helpers\Str;
+use neon\firefly\services\FireflySecurityPolicy;
 use neon\firefly\services\plupload\Receiver;
 use neon\core\web\Response;
 use neon\firefly\services\fileManager\models\FileManager;
@@ -49,6 +50,10 @@ class FileController extends \yii\web\Controller
 		$request = neon()->request;
 		$firefly = neon()->firefly;
 		$id = $request->get('id');
+		if (FireflySecurityPolicy::fileGetOnlyAcceptsUuids() && !Hash::isUuid64($id)) {
+			throw new HttpException(400, 'Invalid file id');
+		}
+
 		if (!$firefly->fileManager->exists($id)) {
 			neon()->response->headers->add('Content-Type', 'image/jpeg');	
 			neon()->response->format = Response::FORMAT_RAW;
@@ -102,6 +107,10 @@ class FileController extends \yii\web\Controller
 	public function actionImg()
 	{
 		$id = neon()->request->getRequired('id');
+
+		if (env('NEON_FIREFLY_FILE_IMG_ONLY_ACCEPT_UUIDS',false) && !Hash::isUuid64($id)) {
+			throw new HttpException(400, 'Invalid file id');
+		}
 
 		if (Hash::isUuid64($id) && !neon()->firefly->fileManager->exists($id)) {
 			// show placeholder image - should be handled by image manager - controllers should not know

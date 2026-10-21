@@ -10,6 +10,7 @@
 namespace neon\firefly\services;
 
 use neon\core\db\Query;
+use neon\core\helpers\File;
 use neon\core\helpers\Url;
 use neon\daedalus\services\ddsManager\models\DdsMember;
 use neon\firefly\services\fileManager\FileNotFoundException;
@@ -40,10 +41,16 @@ class FileManager implements IFileManager
 	 */
 	public function save($contents, $name = null, $meta = null)
 	{
+		if (FireflySecurityPolicy::safeFilenamesOnly() && $name!==null) {
+			$name = File::getSafeUploadFilename($name);
+		}
 		$driver = $this->getDrive();
 		$fm = new Model();
 		$path = $this->_generatePath($fm, $name);
 		$success = $driver->put($path, $contents);
+		if (!$success) {
+			return null;
+		}
 		if ($success) {
 			$fm->attributes = [
 				'name' => $name,
@@ -64,7 +71,13 @@ class FileManager implements IFileManager
 	public function saveFile($file, $meta = null)
 	{
 		neon()->firefly->isFileObjectValid($file);
-		$stream = fopen($file->getRealPath(), 'r+');
+		$realPath = $file->getRealPath();
+		if (FireflySecurityPolicy::safeFileRealpathsOnly()) {
+			$realPath = $this->getSafeRealpath($realPath);
+		}
+		FireflySecurityPolicy::assertDetectedMimetype($realPath);
+
+		$stream = fopen($realPath, 'rb');
 		$uuid = $this->save($stream, $file->getFilename(), $meta);
 		if (is_resource($stream)) fclose($stream);
 		return $uuid;
@@ -75,7 +88,12 @@ class FileManager implements IFileManager
 	 */
 	public function saveFromUrl($url, $name, $meta = null)
 	{
-		return $this->save(fopen($url, 'r'), $name, $meta);
+		$stream = fopen($url, 'r');
+		if ($stream === false) {
+			throw new \RuntimeException("Could not open URL/file source");
+		}
+		FireflySecurityPolicy::assertDetectedMimetypeFromStream($stream);
+		return $this->save($stream, $name, $meta);
 	}
 
 	/**
@@ -87,7 +105,12 @@ class FileManager implements IFileManager
 	 */
 	public function saveFileFromUrl($url, $name)
 	{
-		return $this->save(fopen($url, 'r'), $name);
+		$stream = fopen($url, 'r');
+		if ($stream === false) {
+			throw new \RuntimeException("Could not open URL/file source");
+		}
+		FireflySecurityPolicy::assertDetectedMimetypeFromStream($stream);
+		return $this->save($stream, $name);
 	}
 
 	/**
@@ -358,6 +381,9 @@ class FileManager implements IFileManager
 		} catch (FileNotFoundException $e) {
 			return false;
 		}
+		if (FireflySecurityPolicy::safeFilenamesOnly()) {
+			$name = File::getSafeUploadFilename($name);
+		}
 		$file->name = $name;
 		return $file->save();
 	}
@@ -465,6 +491,29 @@ class FileManager implements IFileManager
 			$name = 'nameless';
 		}
 		return date('Y') . '/' . date('m') . '/' . $fileName . '.' . $fm->uuid . $extension;
+	}
+
+	/**
+	 * tries to ensure a realpath is actually a realpath and is safe & available
+	 * @param $realPath
+	 * @return string
+	 */
+	private function getSafeRealpath($realPath): string
+	{
+		if (!is_string($realPath) || $realPath === '') {
+			throw new \InvalidArgumentException('Invalid file path');
+		}
+		if (str_contains($realPath, "\0")) {
+			throw new \InvalidArgumentException('Invalid file path');
+		}
+		if (preg_match('#^[a-zA-Z][a-zA-Z0-9+\-.]*://#', $realPath) === 1) {
+			throw new \InvalidArgumentException('Stream wrappers are not allowed');
+		}
+		$realPath = realpath($realPath);
+		if ($realPath === false || !is_file($realPath) || !is_readable($realPath)) {
+			throw new \InvalidArgumentException('Invalid file path');
+		}
+		return $realPath;
 	}
 
 }

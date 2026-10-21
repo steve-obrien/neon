@@ -86,55 +86,200 @@ trait BuilderTrait
 	 */
 	abstract public function add($field, $defaults=[], $overwrite=false);
 
-	/**
-	 * Adds a sub form box to the form
-	 *
-	 * @param string|IField $name
-	 * @param array $options
-	 * @return IField|Form
-	 */
-	public function addSubForm($name, $options=[])
-	{
-		if (is_object($name)) {
-			return $this->add($name);
-		} else {
-			return $this->add($options, ['name' => $name, 'class' => '\neon\core\form\Form']);
-		}
-	}
+
+	/*********************/
+	/* Add Field Helpers */
+	/*********************/
 
 	/**
-	 * Adds a text box field to the form
+	 * Add a Checkbox field
 	 *
 	 * @param string $name
 	 * @param array $options
-	 * @return IField|fields\Text
+	 * @return IField|fields\Checkbox
+	 * @throws UnknownFieldClass
 	 */
-	public function addFieldText($name, $options=[])
+	public function addFieldCheckbox($name, $options=[])
 	{
-		return $this->add($options, ['name' => $name, 'class' => 'text']);
+		return $this->add($options, ['class' => 'checkbox', 'name' => $name]);
 	}
 
 	/**
-	 * Adds a password field to the form
+	 * Add a CheckList field
 	 *
 	 * @param string $name
 	 * @param array $options
-	 * @return IField|fields\Password
+	 * @return IField|fields\CheckList
+	 * @throws UnknownFieldClass
 	 */
-	public function addFieldPassword($name, $options=[])
+	public function addFieldCheckList($name, $options=[])
 	{
-		return $this->add($options, ['name' => $name, 'class' => 'password']);
+		return $this->add($options, ['class' => 'checklist', 'name' => $name]);
 	}
 
 	/**
-	 * Adds a field input box to the form
+	 * Add a Choice field
+	 *
+	 * @param $name
+	 * @param $options
+	 * @return IField|fields\Choice
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldChoice($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'choice', 'name' => $name]);
+	}
+
+	/**
+	 * Add a ChoiceMultiple field
+	 *
+	 * @param $name
+	 * @param $options
+	 * @return IField|fields\ChoiceMultiple
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldChoiceMultiple($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'choicemultiple', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Colour field
+	 *
+	 * @param $name
+	 * @param $options
+	 * @return IField|fields\Color
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldColour($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'color', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Currency field
+	 *
+	 * @param $name
+	 * @param $options
+	 * @return IField|fields\Currency
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldCurrency($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'currency', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Date field
 	 *
 	 * @param string $name
-	 * @return IField|fields\Text
+	 * @param array $options
+	 * @return IField|fields\Date
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldDate($name, $options=[])
+	{
+		return $this->add($options, ['name' => $name, 'class' => 'date']);
+	}
+
+	/**
+	 * Adds a DateRange field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\DateRange
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldDateRange($name, $options=[])
+	{
+		return $this->add($options, ['name' => $name, 'class' => 'daterange']);
+	}
+
+	/**
+	 * Adds a DateTime field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\DateTime
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldDateTime($name, $options=[])
+	{
+		return $this->add($options, ['name' => $name, 'class' => 'datetime']);
+	}
+
+	/**
+	 * Adds an Email field
+	 *
+	 * @param string $name
+	 * @return IField|fields\Email
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldEmail($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'email', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a File field
+	 *
+	 * @param string $name
+	 * @return IField|fields\File
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldFile($name, $options=[])
 	{
 		return $this->add($options, ['class' => 'file', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a FileBrowser field
+	 *
+	 * @param string $name
+	 * @return IField|fields\FileBrowser
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldFileBrowser($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'filebrowser', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a FileMultiple field
+	 *
+	 * @param string $name
+	 * @return IField|fields\FileMultiple
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldFileMultiple($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'filemultiple', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Hidden field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Hidden
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldHidden($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'hidden', 'name' => $name]);
+	}
+
+	/**
+	 * Adds an Ide field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Ide
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldIde($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'ide', 'name' => $name]);
 	}
 
 	/**
@@ -143,7 +288,8 @@ trait BuilderTrait
 	 * for image handling such as crop / aspect ratio etc.
 	 *
 	 * @param string $name
-	 * @return IField|fields\Text
+	 * @return IField|fields\Image
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldImage($name, $options=[])
 	{
@@ -151,125 +297,162 @@ trait BuilderTrait
 	}
 
 	/**
-	 * Adds a email input box field to the form
-	 *
-	 * @param string $name
-	 * @return IField|fields\Email
-	 */
-	public function addFieldEmail($name, $options=[])
-	{
-		return $this->add($options, ['class' => 'email', 'name' => $name]);
-	}
-
-	/**
-	 * Adds a submit button field to the form
+	 * Adds an Integer field
 	 *
 	 * @param string $name
 	 * @param array $options
-	 * @return IField|fields\Submit
-	 */
-	public function addFieldSubmit($name, $options=[])
-	{
-		return $this->add($options, ['class' => 'submit', 'name' => $name]);
-	}
-
-	/**
-	 * Adds a hidden text box field to the form
-	 *
-	 * @param string $name
-	 * @param array $options
-	 * @return IField|fields\Text
-	 */
-	public function addFieldHidden($name, $options=[])
-	{
-		return $this->add($options, ['class' => 'hidden', 'name' => $name]);
-	}
-
-	/**
-	 * Add a checkbox field
-	 *
-	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\Checkbox
-	 */
-	public function addFieldCheckbox($name, $options=[])
-	{
-		return $this->add($options, ['class' => 'checkbox', 'name' => $name]);
-	}
-
-	/**
-	 * Add a checkbox list field
-	 *
-	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\Checkbox
-	 */
-	public function addFieldCheckList($name, $options=[])
-	{
-		return $this->add($options, ['class' => 'checklist', 'name' => $name]);
-	}
-
-	/**
-	 * Adds a Date field to the form
-	 *
-	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\Date
-	 */
-	public function addFieldDate($name, $options=[])
-	{
-		return $this->add($options, ['name' => $name, 'class' => 'date']);
-	}
-
-	/**
-	 * Adds a DateTime field to the form
-	 *
-	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\DateTime
-	 */
-	public function addFieldDateTime($name, $options=[])
-	{
-		return $this->add($options, ['name' => $name, 'class' => 'datetime']);
-	}
-
-	/**
-	 * Adds an integer field to the form
-	 *
-	 * @param string $name
-	 * @param array  $options
 	 * @return IField|fields\Integer
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldInteger($name, $options=[])
 	{
-		return $this->add($options, ['name' => $name, 'class' => 'integer']);
+		return $this->add($options, [ 'class' => 'integer', 'name' => $name]);
 	}
 
 	/**
-	 * Add a select box field
+	 * Adds a Json field
 	 *
 	 * @param string $name
-	 * @param array  $options
+	 * @param array $options
+	 * @return IField|fields\Json
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldJson($name, $options=[])
+	{
+		return $this->add($options, [ 'class' => 'json', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Link field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Link
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldLink($name, $options)
+	{
+		return $this->add($options, ['class' => 'link', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Markdown field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Markdown
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldMarkdown($name, $options)
+	{
+		return $this->add($options, ['class' => 'markdown', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Password field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Password
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldPassword($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'password', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Phone field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Phone
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldPhone($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'phone', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Radio field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Radio
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldRadio($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'radio', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Real field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Real
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldReal($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'real', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Section field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Section
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldSection($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'section', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Select field
+	 *
+	 * @param string $name
+	 * @param array $options
 	 * @return IField|fields\Select
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldSelect($name, $options=[])
 	{
 		return $this->add($options, ['class' => 'select', 'name' => $name]);
 	}
-	
+
 	/**
-	 * Add a dynamic select box field
-	 
+	 * Add a SelectChain field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\SelectChain
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldSelectChain($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'selectchain', 'name' => $name]);
+	}
+
+	/**
+	 * Add a SelectDynamic field
+	 *
 	 * These will make calls to the database to get their select list.
-	 * These require a *dataMapProvider* which is the neon app which will make 
+	 * These require a *dataMapProvider* which is the neon app which will make
 	 * the database call. If this is missing daedalus will be assumed.
 	 *
-	 * Also you need to provide a *dataMapKey* which will depend on the service,
+	 * Also, you need to provide a *dataMapKey* which will depend on the service,
 	 * for example for daedalus this is the table you want to search in
 	 *
 	 * @param string $name
-	 * @param array  $options  see notes above
+	 * @param array $options see notes above
 	 * @return IField|fields\SelectDynamic
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldSelectDynamic($name, $options=[])
 	{
@@ -283,23 +466,51 @@ trait BuilderTrait
 	}
 
 	/**
-	 * Add a section field
+	 * Adds a SelectMultiple field
 	 *
 	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\Section
+	 * @param array $options
+	 * @return IField|fields\SelectMultiple
+	 * @throws UnknownFieldClass
 	 */
-	public function addFieldSection($name, $options=[])
+	public function addFieldSelectMultiple($name, $options=[])
 	{
-		return $this->add($options, ['class' => 'section', 'name' => $name]);
+		return $this->add($options, ['class' => 'selectmultiple', 'name' => $name]);
 	}
 
 	/**
-	 * Add a switch button field
+	 * Adds a SelectPicker field
 	 *
 	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\SwitchButton
+	 * @param array $options
+	 * @return IField|fields\SelectPicker
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldSelectPicker($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'selectpicker', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a Submit field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Submit
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldSubmit($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'submit', 'name' => $name]);
+	}
+
+	/**
+	 * Add a Switch field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Switch
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldSwitch($name, $options=[])
 	{
@@ -307,11 +518,51 @@ trait BuilderTrait
 	}
 
 	/**
+	 * Add a SwitchButton field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\SwitchButton
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldSwitchButton($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'switchbutton', 'name' => $name]);
+	}
+
+	/**
+	 * Add a SwitchMultipleState field
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\SwitchMultipleState
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldSwitchMultipleState($name, $options=[])
+	{
+		return $this->add($options, ['class' => 'switchmultiplestate', 'name' => $name]);
+	}
+
+	/**
+	 * Adds a text box field to the form
+	 *
+	 * @param string $name
+	 * @param array $options
+	 * @return IField|fields\Text
+	 * @throws UnknownFieldClass
+	 */
+	public function addFieldText($name, $options=[])
+	{
+		return $this->add($options, ['name' => $name, 'class' => 'text']);
+	}
+
+	/**
 	 * Add a text box field to a form
 	 *
 	 * @param string $name
-	 * @param array  $options
+	 * @param array $options
 	 * @return IField|fields\Textarea
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldTextArea($name, $options=[])
 	{
@@ -322,8 +573,9 @@ trait BuilderTrait
 	 * Adds a Time field to the form
 	 *
 	 * @param string $name
-	 * @param array  $options
+	 * @param array $options
 	 * @return IField|fields\Time
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldTime($name, $options=[])
 	{
@@ -334,24 +586,34 @@ trait BuilderTrait
 	 * Add a wysiwyg field
 	 *
 	 * @param string $name
-	 * @param array  $options
+	 * @param array $options
 	 * @return IField|fields\Wysiwyg
+	 * @throws UnknownFieldClass
 	 */
 	public function addFieldWysiwyg($name, $options=[])
 	{
 		return $this->add($options, ['class' => 'wysiwyg', 'name' => $name]);
 	}
 
+	/*********************/
+	/* Add Form Helpers */
+	/*********************/
+
 	/**
-	 * Add a link field
+	 * Adds a sub form box to the form
 	 *
-	 * @param string $name
-	 * @param array  $options
-	 * @return IField|fields\Wysiwyg
+	 * @param string|IField $name
+	 * @param array $options
+	 * @return IField|Form
+	 * @throws UnknownFieldClass
 	 */
-	public function addFieldLink($name, $options)
+	public function addSubForm($name, $options=[])
 	{
-		return $this->add($options, ['class' => 'link', 'name' => $name]);
+		if (is_object($name)) {
+			return $this->add($name);
+		} else {
+			return $this->add($options, ['name' => $name, 'class' => '\neon\core\form\Form']);
+		}
 	}
 
 	/**
@@ -365,6 +627,10 @@ trait BuilderTrait
 	{
 		return $this->add($options, ['class' => 'repeater', 'name' => $name]);
 	}
+
+	/***********************/
+	/* Other Field Helpers */
+	/***********************/
 
 	/**
 	 * A generic add function to add things to a form
@@ -453,6 +719,10 @@ trait BuilderTrait
 			throw new \InvalidArgumentException("There is no alias with the key '$alias' in the Forms fieldAliases array");
 		return $this->fieldAliases[strtolower($alias)];
 	}
+
+	/****************/
+	/* DDS Defaults */
+	/****************/
 
 	/**
 	 * Get form field definitions (config arrays) for DDS data types

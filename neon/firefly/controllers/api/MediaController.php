@@ -9,11 +9,13 @@
 namespace neon\firefly\controllers\api;
 
 use neon\core\helpers\Arr;
+use neon\firefly\services\FireflySecurityPolicy;
 use neon\firefly\services\plupload\Receiver;
 use neon\core\web\ApiController;
 use neon\firefly\services\mediaManager\models\Media;
 use yii\db\Query;
 use yii\web\BadRequestHttpException;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 
 /**
@@ -34,7 +36,18 @@ class MediaController extends ApiController
 
 	public function beforeAction($action)
 	{
-		return parent::beforeAction($action);
+		if ( FireflySecurityPolicy::isApiDisabled()) {
+				// firefly API kill-switch!
+				//
+				// given the comments below it was clearly known in 2018 this API endpoint was likely
+				// a security vulnerability & yet *nothing* has been done about it in nearly 10 years 🤦‍♂️
+				//
+				// if there was time it would make sense to go through and secure each, but some neon
+				// apps do not even use the API at all!
+				throw new HttpException(404, 'Not found');
+			}
+
+			return parent::beforeAction($action);
 
 		// TODO 20180901 NJ - securely set root paths
 		//
@@ -133,9 +146,14 @@ class MediaController extends ApiController
 	 */
 	public function actionUploadFromUrl()
 	{
+		if (FireflySecurityPolicy::isApiUploadFromUrlDisabled()) {
+			throw new HttpException(404, 'Not found');
+		}
 		$url = request()->post('url');
 		$path = request()->post('path');
-		$id = neon()->firefly->saveFromUrl($url, basename($url));
+		$basename = basename($url);
+		FireflySecurityPolicy::assertWhitelistedExtension($basename);
+		$id = neon()->firefly->saveFromUrl($url, $basename);
 		return neon()->firefly->mediaManager->addFile($id, $path);
 	}
 

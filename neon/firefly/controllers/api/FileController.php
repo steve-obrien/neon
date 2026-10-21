@@ -14,6 +14,8 @@ use neon\core\web\ApiController;
 use neon\firefly\services\fileManager\actions\DownloadAction;
 use neon\firefly\services\fileManager\actions\UploadAction;
 use neon\firefly\services\fileManager\actions\MetaAction;
+use neon\firefly\services\FireflySecurityPolicy;
+use yii\web\HttpException;
 
 class FileController extends ApiController
 {
@@ -34,6 +36,15 @@ class FileController extends ApiController
 			'download' => ['GET', 'POST'],
 			'update' => ['POST']
 		];
+	}
+
+	public function beforeAction($action)
+	{
+		if ( FireflySecurityPolicy::isApiDisabled()) {
+			// firefly API kill-switch!
+			throw new HttpException(404, 'Not found');
+		}
+		return parent::beforeAction($action);
 	}
 
 	/**

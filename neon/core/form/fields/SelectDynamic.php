@@ -77,6 +77,13 @@ class SelectDynamic extends Choice
 	public $dataMapFields=[];
 
 	/**
+	 * an explicit limit attribute allows it to actually be used without the dumb __set implementation silently
+	 * discarding it
+	 * the arbitrary 100 default is to mimic the existing (questionable) behaviour
+	 */
+	public $limit = 100;
+
+	/**
 	 * @inheritdoc
 	 */
 	public function setItems($value)
@@ -226,7 +233,7 @@ class SelectDynamic extends Choice
 	 */
 	public function getProperties()
 	{
-		return array_merge(parent::getProperties(), ['dataMapProvider', 'dataMapKey', 'dataMapFilters', 'dataMapFields', 'items']);
+		return array_merge(parent::getProperties(), ['dataMapProvider', 'dataMapKey', 'dataMapFilters', 'dataMapFields', 'items', 'limit']);
 	}
 
 	/**
